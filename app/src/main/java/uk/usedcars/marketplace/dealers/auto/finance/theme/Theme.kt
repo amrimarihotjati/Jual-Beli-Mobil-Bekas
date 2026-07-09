@@ -43,10 +43,10 @@ private val DarkColorScheme = darkColorScheme(
 
 @Composable
 fun JualBeliMobilBekasTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false, // ALWAYS FORCE LIGHT MODE for that Clean Facebook Look
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+    val colorScheme = LightColorScheme // Force Light
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {

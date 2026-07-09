@@ -94,7 +94,7 @@ fun CarCard(car: UsedCar, onClick: (UsedCar) -> Unit) {
                     .background(Color.White)
             ) {
                 AsyncImage(
-                    model = car.imageUrl,
+                    model = car.imageUrls.firstOrNull() ?: "",
                     contentDescription = car.name,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()

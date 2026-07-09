@@ -17,7 +17,7 @@ data class UsedCar(
     val brand: String,
     val year: String,
     @SerializedName("price_range") val priceRange: String,
-    @SerializedName("image_url") val imageUrl: String,
+    @SerializedName("image_urls") val imageUrls: List<String> = emptyList(),
     val description: String,
     val tags: List<String> = emptyList()
 )

@@ -11,7 +11,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.LocalGasStation
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.Modifier
@@ -228,7 +228,7 @@ fun CarCard(
                         horizontalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
                         SpecChip(icon = Icons.Default.Settings, text = car.transmission)
-                        SpecChip(icon = Icons.Default.LocationOn, text = car.fuelType)
+                        SpecChip(icon = Icons.Default.LocalGasStation, text = car.fuelType)
                         SpecChip(icon = Icons.Default.Person, text = car.seats)
                     }
                     Spacer(modifier = Modifier.height(6.dp))

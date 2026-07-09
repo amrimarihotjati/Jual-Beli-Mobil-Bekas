@@ -21,7 +21,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.LocalGasStation
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Info
@@ -260,7 +260,7 @@ fun CarDetailScreen(
                         }
                         Spacer(modifier = Modifier.height(16.dp))
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            SpecItem(Icons.Default.LocationOn, "BBM", car.fuelType)
+                            SpecItem(Icons.Default.LocalGasStation, "BBM", car.fuelType)
                             SpecItem(Icons.Default.Place, "Lokasi", car.location)
                         }
                         Spacer(modifier = Modifier.height(16.dp))

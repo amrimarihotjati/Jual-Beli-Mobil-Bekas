@@ -7,6 +7,8 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.CompareArrows
+import androidx.compose.material.icons.filled.CreditCard
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -136,6 +138,6 @@ fun MainLayoutScreen(
 sealed class BottomNavItem(val route: String, val icon: androidx.compose.ui.graphics.vector.ImageVector, val title: String) {
     object CarPrices : BottomNavItem("car_prices_tab", Icons.Default.Home, "Beranda")
     object Home : BottomNavItem("home_tab", Icons.Default.ShoppingCart, "Marketplace")
-    object Compare : BottomNavItem("compare_tab", Icons.Default.Star, "Komparasi")
-    object Calculator : BottomNavItem("calculator_tab", Icons.Default.Build, "Simulasi")
+    object Compare : BottomNavItem("compare_tab", Icons.Default.CompareArrows, "Bandingkan")
+    object Calculator : BottomNavItem("calculator_tab", Icons.Default.CreditCard, "Kredit")
 }

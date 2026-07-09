@@ -1,8 +1,7 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
 import android.app.Activity
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,7 +13,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -232,16 +231,22 @@ fun SmartCompareRow(label: String, val1: String, val2: String, type: CompareType
 
 @Composable
 fun CompareCell(text: String, isWinner: Boolean, modifier: Modifier = Modifier) {
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically, 
+        modifier = modifier
+            .clip(androidx.compose.foundation.shape.RoundedCornerShape(6.dp))
+            .background(if (isWinner) Color(0xFFE8F5E9) else Color.Transparent)
+            .padding(horizontal = if (isWinner) 8.dp else 0.dp, vertical = if (isWinner) 4.dp else 0.dp)
+    ) {
         Text(
             text = text,
-            fontSize = if (isWinner) 15.sp else 14.sp,
+            fontSize = if (isWinner) 16.sp else 14.sp,
             fontWeight = if (isWinner) FontWeight.ExtraBold else FontWeight.SemiBold,
-            color = if (isWinner) Color(0xFF4CAF50) else MaterialTheme.colorScheme.onSurface
+            color = if (isWinner) Color(0xFF2E7D32) else MaterialTheme.colorScheme.onSurface
         )
         if (isWinner) {
             Spacer(modifier = Modifier.width(4.dp))
-            Icon(Icons.Default.CheckCircle, contentDescription = "Winner", tint = Color(0xFF4CAF50), modifier = Modifier.size(16.dp))
+            Icon(Icons.Default.CheckCircle, contentDescription = "Winner", tint = Color(0xFF2E7D32), modifier = Modifier.size(16.dp))
         }
     }
 }

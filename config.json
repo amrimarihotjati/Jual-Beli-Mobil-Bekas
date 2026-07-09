@@ -25,7 +25,7 @@
         {
             "id": 1,
             "name": "OLX Autos",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/OLX_green_logo.svg",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/olx.png",
             "description": "Platform terbesar untuk jual beli mobil bekas dengan pilihan terluas di Indonesia.",
             "direct_link": "https://www.olx.co.id/mobil-bekas_c198",
             "rating": 4.8,
@@ -47,7 +47,7 @@
         {
             "id": 2,
             "name": "Carsome",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Carsome_Logo.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/carsome.png",
             "description": "Mobil bekas berkualitas dengan garansi 1 tahun dan layanan terpercaya.",
             "direct_link": "https://www.carsome.id/",
             "rating": 4.9,
@@ -69,7 +69,7 @@
         {
             "id": 3,
             "name": "Carro",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Carro_Logo.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/carro.png",
             "description": "Marketplace otomotif inovatif dengan fasilitas test drive di rumah Anda.",
             "direct_link": "https://carro.co.id/",
             "rating": 4.8,
@@ -91,7 +91,7 @@
         {
             "id": 4,
             "name": "Mobil123",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Mobil123_Logo.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/mobil123.png",
             "description": "Portal otomotif nomor 1 di Indonesia dengan jutaan listing mobil baru dan bekas.",
             "direct_link": "https://www.mobil123.com/",
             "rating": 4.7,
@@ -113,7 +113,7 @@
         {
             "id": 5,
             "name": "Carmudi",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Carmudi_logo.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/carmudi.png",
             "description": "Situs jual beli kendaraan online terkemuka dengan pilihan mobil bekas berkualitas.",
             "direct_link": "https://www.carmudi.co.id/",
             "rating": 4.6,
@@ -135,7 +135,7 @@
         {
             "id": 6,
             "name": "OTO",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Oto_Logo.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/oto.png",
             "description": "Temukan harga mobil bekas, review, dan spesifikasi lengkap untuk pilihan yang tepat.",
             "direct_link": "https://www.oto.com/mobil-bekas",
             "rating": 4.7,
@@ -157,7 +157,7 @@
         {
             "id": 7,
             "name": "Caroline.id",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/caroline.png",
             "description": "Platform transparan untuk jual beli mobil bekas dengan jaminan mesin dan harga pasti.",
             "direct_link": "https://www.caroline.id/",
             "rating": 4.8,
@@ -179,7 +179,7 @@
         {
             "id": 8,
             "name": "Seva",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/seva.png",
             "description": "Platform dari Astra untuk pembelian mobil dengan fitur Instant Approval.",
             "direct_link": "https://www.seva.id/",
             "rating": 4.9,
@@ -201,7 +201,7 @@
         {
             "id": 9,
             "name": "CintaMobil",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/cintamobil.png",
             "description": "Marketplace mobil dengan tips otomotif, review lengkap, dan harga terbaik.",
             "direct_link": "https://cintamobil.com/",
             "rating": 4.6,
@@ -223,7 +223,7 @@
         {
             "id": 10,
             "name": "Momobil",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/momobil.png",
             "description": "Situs jual beli mobil bekas dari Adira Finance dengan pembiayaan yang mudah.",
             "direct_link": "https://momobil.id/",
             "rating": 4.7,
@@ -245,7 +245,7 @@
         {
             "id": 11,
             "name": "Garasi.id",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/garasi.png",
             "description": "Platform otomotif modern dengan fitur Inspeksi Mobil menyeluruh dan Garansi Mesin.",
             "direct_link": "https://garasi.id/",
             "rating": 4.8,
@@ -267,7 +267,7 @@
         {
             "id": 12,
             "name": "Auto2000",
-            "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/auto2000.png",
             "description": "Layanan jual beli mobil bekas Toyota resmi dan bersertifikat kualitas terbaik.",
             "direct_link": "https://auto2000.co.id/",
             "rating": 4.9,

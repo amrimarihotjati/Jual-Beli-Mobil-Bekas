@@ -18,6 +18,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Place
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -42,6 +48,8 @@ import android.app.Activity
 fun CarDetailScreen(
     car: UsedCar,
     config: AppConfig,
+    isFavorite: Boolean,
+    onFavoriteToggle: () -> Unit,
     onBack: () -> Unit
 ) {
     val context = LocalContext.current
@@ -55,6 +63,15 @@ fun CarDetailScreen(
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                    }
+                },
+                actions = {
+                    IconButton(onClick = onFavoriteToggle) {
+                        Icon(
+                            imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                            contentDescription = "Favorite",
+                            tint = if (isFavorite) Color.Red else MaterialTheme.colorScheme.onSurface
+                        )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -90,6 +107,19 @@ fun CarDetailScreen(
                 .verticalScroll(rememberScrollState())
         ) {
             val pagerState = rememberPagerState(pageCount = { if (car.imageUrls.isEmpty()) 1 else car.imageUrls.size })
+            var isAutoScrolling by remember { mutableStateOf(true) }
+
+            LaunchedEffect(pagerState.currentPage, pagerState.isScrollInProgress) {
+                if (pagerState.isScrollInProgress) {
+                    isAutoScrolling = false
+                }
+                if (isAutoScrolling && car.imageUrls.size > 1) {
+                    kotlinx.coroutines.delay(3000)
+                    val nextPage = (pagerState.currentPage + 1) % car.imageUrls.size
+                    pagerState.animateScrollToPage(nextPage)
+                }
+            }
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -205,14 +235,21 @@ fun CarDetailScreen(
                             fontWeight = FontWeight.ExtraBold,
                             color = MaterialTheme.colorScheme.primary
                         )
-                        Spacer(modifier = Modifier.height(16.dp))
                         HorizontalDivider(color = Color.LightGray.copy(alpha = 0.5f))
                         Spacer(modifier = Modifier.height(16.dp))
-                        Text(
-                            text = "Tahun Produksi: ${car.year}",
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.SemiBold
-                        )
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                            SpecItem(Icons.Default.Settings, "Transmisi", car.transmission)
+                            SpecItem(Icons.Default.Info, "Tahun", car.year)
+                        }
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                            SpecItem(Icons.Default.LocationOn, "BBM", car.fuelType)
+                            SpecItem(Icons.Default.Place, "Lokasi", car.location)
+                        }
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
+                            SpecItem(Icons.Default.Info, "Kilometer", car.mileage)
+                        }
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
@@ -315,6 +352,18 @@ fun CarDetailScreen(
                 }
                 Spacer(modifier = Modifier.height(32.dp))
             }
+        }
+    }
+}
+
+@Composable
+fun SpecItem(icon: androidx.compose.ui.graphics.vector.ImageVector, label: String, value: String) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.width(150.dp)) {
+        Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(24.dp))
+        Spacer(modifier = Modifier.width(8.dp))
+        Column {
+            Text(label, fontSize = 12.sp, color = Color.Gray)
+            Text(value, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
         }
     }
 }

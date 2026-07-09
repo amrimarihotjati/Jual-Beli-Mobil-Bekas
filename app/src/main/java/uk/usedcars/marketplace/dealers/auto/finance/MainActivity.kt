@@ -9,10 +9,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.android.gms.ads.MobileAds
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -51,6 +53,7 @@ class MainActivity : ComponentActivity() {
                     return CarViewModel(repository) as T
                 }
             })
+            val context = LocalContext.current
 
             JualBeliMobilBekasTheme {
                 Surface(
@@ -100,11 +103,14 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("car_detail") {
                             val state = viewModel.uiState.collectAsState().value
+                            val favorites by viewModel.favorites.collectAsState()
                             viewModel.selectedCar?.let { car ->
                                 if (state is uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiState.Success) {
                                     CarDetailScreen(
                                         car = car,
                                         config = state.config,
+                                        isFavorite = favorites.contains(car.id),
+                                        onFavoriteToggle = { viewModel.toggleFavorite(context, car.id) },
                                         onBack = { navController.popBackStack() }
                                     )
                                 }

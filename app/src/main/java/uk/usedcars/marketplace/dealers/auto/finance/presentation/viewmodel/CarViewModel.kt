@@ -10,6 +10,8 @@ import uk.usedcars.marketplace.dealers.auto.finance.data.repository.CarRepositor
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
+import uk.usedcars.marketplace.dealers.auto.finance.utils.FavoriteManager
+import android.content.Context
 
 sealed class UiState {
     object Loading : UiState()
@@ -21,6 +23,9 @@ class CarViewModel(private val repository: CarRepository) : ViewModel() {
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Loading)
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
+
+    private val _favorites = MutableStateFlow<Set<String>>(emptySet())
+    val favorites: StateFlow<Set<String>> = _favorites.asStateFlow()
 
     private var clickCount = 0
     private var interstitialInterval = 0
@@ -58,5 +63,14 @@ class CarViewModel(private val repository: CarRepository) : ViewModel() {
         } else {
             false
         }
+    }
+
+    fun loadFavorites(context: Context) {
+        _favorites.value = FavoriteManager.getFavorites(context)
+    }
+
+    fun toggleFavorite(context: Context, carId: String) {
+        FavoriteManager.toggleFavorite(context, carId)
+        _favorites.value = FavoriteManager.getFavorites(context)
     }
 }

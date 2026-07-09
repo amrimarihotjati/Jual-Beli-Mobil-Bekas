@@ -8,28 +8,37 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CarPriceInfoScreen(
     config: AppConfig,
+    favorites: Set<String>,
+    onFavoriteToggle: (String) -> Unit,
     onCarClick: (UsedCar) -> Unit
 ) {
     var searchQuery by remember { mutableStateOf("") }
     var selectedBrand by remember { mutableStateOf("Semua") }
+    var showOnlyFavorites by remember { mutableStateOf(false) }
 
     val brands = remember(config.usedCars) {
         listOf("Semua") + config.usedCars.map { it.brand }.distinct().sorted()
@@ -39,8 +48,9 @@ fun CarPriceInfoScreen(
         val matchesSearch = car.name.contains(searchQuery, ignoreCase = true) ||
                             car.tags.any { tag -> tag.contains(searchQuery, ignoreCase = true) }
         val matchesBrand = selectedBrand == "Semua" || car.brand.equals(selectedBrand, ignoreCase = true)
+        val matchesFavorite = !showOnlyFavorites || favorites.contains(car.id)
         
-        matchesSearch && matchesBrand
+        matchesSearch && matchesBrand && matchesFavorite
     }
 
     Column(
@@ -70,6 +80,18 @@ fun CarPriceInfoScreen(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.padding(bottom = 8.dp)
         ) {
+            item {
+                FilterChip(
+                    selected = showOnlyFavorites,
+                    onClick = { showOnlyFavorites = !showOnlyFavorites },
+                    label = { Text("⭐ Favorit", color = if (showOnlyFavorites) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.primary) },
+                    colors = FilterChipDefaults.filterChipColors(
+                        selectedContainerColor = MaterialTheme.colorScheme.primary,
+                        selectedLabelColor = MaterialTheme.colorScheme.onPrimary
+                    ),
+                    shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp)
+                )
+            }
             items(brands) { brand ->
                 FilterChip(
                     selected = brand == selectedBrand,
@@ -115,7 +137,12 @@ fun CarPriceInfoScreen(
                 ) { index ->
                     val item = gridItems[index]
                     if (item is UsedCar) {
-                        CarCard(item, onCarClick)
+                        CarCard(
+                            car = item, 
+                            isFavorite = favorites.contains(item.id),
+                            onFavoriteToggle = { onFavoriteToggle(item.id) },
+                            onClick = onCarClick
+                        )
                     } else {
                         NativeAdViewComposable(cacheKey = "grid_ad_$index")
                     }
@@ -126,11 +153,16 @@ fun CarPriceInfoScreen(
 }
 
 @Composable
-fun CarCard(car: UsedCar, onClick: (UsedCar) -> Unit) {
+fun CarCard(
+    car: UsedCar, 
+    isFavorite: Boolean,
+    onFavoriteToggle: () -> Unit,
+    onClick: (UsedCar) -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(260.dp)
+            .height(290.dp)
             .clickable { onClick(car) },
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
@@ -149,6 +181,21 @@ fun CarCard(car: UsedCar, onClick: (UsedCar) -> Unit) {
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
+                IconButton(
+                    onClick = onFavoriteToggle,
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(4.dp)
+                        .size(32.dp)
+                        .background(Color.White.copy(alpha = 0.7f), androidx.compose.foundation.shape.CircleShape)
+                ) {
+                    Icon(
+                        imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                        contentDescription = "Favorite",
+                        tint = if (isFavorite) Color.Red else Color.Gray,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
             }
             Column(
                 modifier = Modifier
@@ -172,9 +219,19 @@ fun CarCard(car: UsedCar, onClick: (UsedCar) -> Unit) {
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
-                    Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(6.dp))
+                    
+                    // Chips for specs
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        SpecChip(icon = Icons.Default.Settings, text = car.transmission.take(2)) // AT/MT
+                        SpecChip(icon = Icons.Default.LocationOn, text = car.fuelType)
+                    }
+                    Spacer(modifier = Modifier.height(6.dp))
                     Text(
-                        text = car.year,
+                        text = "${car.year} • ${car.mileage}",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -189,5 +246,19 @@ fun CarCard(car: UsedCar, onClick: (UsedCar) -> Unit) {
                 )
             }
         }
+    }
+}
+
+@Composable
+fun SpecChip(icon: androidx.compose.ui.graphics.vector.ImageVector, text: String) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .background(Color(0xFFF0F0F0), androidx.compose.foundation.shape.RoundedCornerShape(4.dp))
+            .padding(horizontal = 4.dp, vertical = 2.dp)
+    ) {
+        Icon(icon, contentDescription = null, modifier = Modifier.size(10.dp), tint = Color.DarkGray)
+        Spacer(modifier = Modifier.width(2.dp))
+        Text(text, fontSize = 10.sp, color = Color.DarkGray, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }

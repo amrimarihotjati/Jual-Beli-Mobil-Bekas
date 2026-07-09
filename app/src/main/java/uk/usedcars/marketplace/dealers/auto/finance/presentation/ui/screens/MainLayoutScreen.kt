@@ -8,7 +8,10 @@ import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -22,6 +25,7 @@ import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiSta
 import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
 import android.app.Activity
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.LaunchedEffect
 
 @Composable
 fun MainLayoutScreen(
@@ -31,6 +35,11 @@ fun MainLayoutScreen(
 ) {
     val context = LocalContext.current
     val navController = rememberNavController()
+    
+    LaunchedEffect(Unit) {
+        viewModel.loadFavorites(context)
+    }
+    
     val items = listOf(
         BottomNavItem.CarPrices,
         BottomNavItem.Home,
@@ -100,8 +109,11 @@ fun MainLayoutScreen(
             composable(BottomNavItem.CarPrices.route) {
                 val state = viewModel.uiState.collectAsState().value
                 if (state is UiState.Success) {
+                    val favorites by viewModel.favorites.collectAsState()
                     CarPriceInfoScreen(
                         config = state.config,
+                        favorites = favorites,
+                        onFavoriteToggle = { carId -> viewModel.toggleFavorite(context, carId) },
                         onCarClick = { car ->
                             AdMobManager.showInterstitialAdWithCounter(context as Activity) {
                                 onNavigateToCarDetail(car)

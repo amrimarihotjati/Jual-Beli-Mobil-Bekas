@@ -115,7 +115,7 @@ fun CarPriceInfoScreen(
                 val list = mutableListOf<Any>()
                 filteredCars.forEachIndexed { index, car ->
                     list.add(car)
-                    if ((index + 1) % 6 == 0) {
+                    if ((index + 1) % 4 == 0) {
                         list.add("AD")
                     }
                 }
@@ -226,7 +226,7 @@ fun CarCard(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
-                        SpecChip(icon = Icons.Default.Settings, text = car.transmission.take(2)) // AT/MT
+                        SpecChip(icon = Icons.Default.Settings, text = car.transmission)
                         SpecChip(icon = Icons.Default.LocationOn, text = car.fuelType)
                     }
                     Spacer(modifier = Modifier.height(6.dp))
@@ -254,11 +254,11 @@ fun SpecChip(icon: androidx.compose.ui.graphics.vector.ImageVector, text: String
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .background(Color(0xFFF0F0F0), androidx.compose.foundation.shape.RoundedCornerShape(4.dp))
-            .padding(horizontal = 4.dp, vertical = 2.dp)
+            .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f), androidx.compose.foundation.shape.RoundedCornerShape(4.dp))
+            .padding(horizontal = 6.dp, vertical = 4.dp)
     ) {
-        Icon(icon, contentDescription = null, modifier = Modifier.size(10.dp), tint = Color.DarkGray)
-        Spacer(modifier = Modifier.width(2.dp))
-        Text(text, fontSize = 10.sp, color = Color.DarkGray, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Icon(icon, contentDescription = null, modifier = Modifier.size(12.dp), tint = MaterialTheme.colorScheme.primary)
+        Spacer(modifier = Modifier.width(4.dp))
+        Text(text, fontSize = 10.sp, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }

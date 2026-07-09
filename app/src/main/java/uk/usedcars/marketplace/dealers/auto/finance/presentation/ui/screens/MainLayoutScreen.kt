@@ -43,7 +43,8 @@ fun MainLayoutScreen(
     val items = listOf(
         BottomNavItem.CarPrices,
         BottomNavItem.Home,
-        BottomNavItem.Calculator
+        BottomNavItem.Calculator,
+        BottomNavItem.Compare
     )
 
     Scaffold(
@@ -122,6 +123,12 @@ fun MainLayoutScreen(
                     )
                 }
             }
+            composable(BottomNavItem.Compare.route) {
+                val state = viewModel.uiState.collectAsState().value
+                if (state is UiState.Success) {
+                    DedicatedCompareScreen(config = state.config)
+                }
+            }
         }
     }
 }
@@ -129,5 +136,6 @@ fun MainLayoutScreen(
 sealed class BottomNavItem(val route: String, val icon: androidx.compose.ui.graphics.vector.ImageVector, val title: String) {
     object CarPrices : BottomNavItem("car_prices_tab", Icons.Default.Home, "Beranda")
     object Home : BottomNavItem("home_tab", Icons.Default.ShoppingCart, "Marketplace")
+    object Compare : BottomNavItem("compare_tab", Icons.Default.Star, "Komparasi")
     object Calculator : BottomNavItem("calculator_tab", Icons.Default.Build, "Simulasi")
 }

@@ -3,20 +3,20 @@ package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
@@ -28,10 +28,18 @@ fun CarPriceInfoScreen(
     onCarClick: (UsedCar) -> Unit
 ) {
     var searchQuery by remember { mutableStateOf("") }
-    val filteredCars = config.usedCars.filter {
-        it.name.contains(searchQuery, ignoreCase = true) ||
-        it.brand.contains(searchQuery, ignoreCase = true) ||
-        it.tags.any { tag -> tag.contains(searchQuery, ignoreCase = true) }
+    var selectedBrand by remember { mutableStateOf("Semua") }
+
+    val brands = remember(config.usedCars) {
+        listOf("Semua") + config.usedCars.map { it.brand }.distinct().sorted()
+    }
+
+    val filteredCars = config.usedCars.filter { car ->
+        val matchesSearch = car.name.contains(searchQuery, ignoreCase = true) ||
+                            car.tags.any { tag -> tag.contains(searchQuery, ignoreCase = true) }
+        val matchesBrand = selectedBrand == "Semua" || car.brand.equals(selectedBrand, ignoreCase = true)
+        
+        matchesSearch && matchesBrand
     }
 
     Column(
@@ -40,7 +48,7 @@ fun CarPriceInfoScreen(
             .background(MaterialTheme.colorScheme.background)
     ) {
         // Search Bar
-        Box(modifier = Modifier.padding(16.dp)) {
+        Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp)) {
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
@@ -53,6 +61,26 @@ fun CarPriceInfoScreen(
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface
                 )
             )
+        }
+
+        // Brand Filter Chips
+        LazyRow(
+            contentPadding = PaddingValues(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.padding(bottom = 8.dp)
+        ) {
+            items(brands) { brand ->
+                FilterChip(
+                    selected = brand == selectedBrand,
+                    onClick = { selectedBrand = brand },
+                    label = { Text(brand) },
+                    colors = FilterChipDefaults.filterChipColors(
+                        selectedContainerColor = MaterialTheme.colorScheme.primary,
+                        selectedLabelColor = MaterialTheme.colorScheme.onPrimary
+                    ),
+                    shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp)
+                )
+            }
         }
 
         if (filteredCars.isEmpty()) {

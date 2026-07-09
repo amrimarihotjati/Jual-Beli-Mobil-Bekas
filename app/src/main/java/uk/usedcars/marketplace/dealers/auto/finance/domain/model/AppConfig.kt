@@ -29,5 +29,7 @@ data class Marketplace(
     val rating: Double = 0.0,
     @SerializedName("total_cars") val totalCars: String = "",
     @SerializedName("promo_text") val promoText: String = "",
-    val features: List<String> = emptyList()
+    val features: List<String> = emptyList(),
+    val services: List<String> = emptyList(),
+    @SerializedName("operational_hours") val operationalHours: String = ""
 )

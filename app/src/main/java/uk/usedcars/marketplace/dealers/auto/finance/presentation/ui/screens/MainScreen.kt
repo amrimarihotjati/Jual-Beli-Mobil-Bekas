@@ -42,6 +42,7 @@ import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarViewModel
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiState
 import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
 
 @Composable
 fun MainScreen(
@@ -165,7 +166,7 @@ fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // Middle Section: Native Ad
-                NativeAdPlaceholder(config.admobConfig.nativeId)
+                NativeAdViewComposable(cacheKey = "marketplace_ad")
 
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -278,54 +279,6 @@ fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
                     }
                 }
             }
-        }
-    }
-}
-
-@Composable
-fun NativeAdPlaceholder(adUnitId: String) {
-    var nativeAd by remember { mutableStateOf<NativeAd?>(null) }
-    val context = LocalContext.current
-
-    LaunchedEffect(adUnitId) {
-        val adLoader = AdLoader.Builder(context, adUnitId)
-            .forNativeAd { ad ->
-                nativeAd = ad
-            }
-            .build()
-        adLoader.loadAd(AdRequest.Builder().build())
-    }
-
-    if (nativeAd != null) {
-        AndroidView(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            factory = { ctx ->
-                val adView = LayoutInflater.from(ctx).inflate(R.layout.native_ad_layout, null) as NativeAdView
-                
-                adView.headlineView = adView.findViewById<TextView>(R.id.ad_headline)
-                adView.bodyView = adView.findViewById<TextView>(R.id.ad_body)
-                adView.callToActionView = adView.findViewById<Button>(R.id.ad_call_to_action)
-
-                (adView.headlineView as TextView).text = nativeAd?.headline
-                (adView.bodyView as TextView).text = nativeAd?.body
-                (adView.callToActionView as Button).text = nativeAd?.callToAction
-
-                adView.setNativeAd(nativeAd!!)
-                adView
-            }
-        )
-    } else {
-        // Shimmer or placeholder
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(100.dp)
-                .padding(horizontal = 16.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text("Loading Ad...", color = Color.Gray)
         }
     }
 }

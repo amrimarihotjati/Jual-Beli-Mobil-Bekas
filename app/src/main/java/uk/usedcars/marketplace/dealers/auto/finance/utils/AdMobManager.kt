@@ -19,6 +19,9 @@ object AdMobManager {
     private var interstitialAd: InterstitialAd? = null
     private var isAdLoading = false
     
+    // Cache for Native Ads to prevent reloading on scroll
+    private val nativeAdCache = mutableMapOf<String, NativeAd>()
+    
     // Frequency capping: show every 3 interactions
     private var interactionCount = 0
     private const val INTERACTION_THRESHOLD = 3
@@ -114,5 +117,24 @@ object AdMobManager {
             .withNativeAdOptions(NativeAdOptions.Builder().build())
             
         builder.build().loadAd(AdRequest.Builder().build())
+    }
+
+    fun loadNativeAdCached(context: Context, adUnitId: String, cacheKey: String, onAdLoaded: (NativeAd?) -> Unit) {
+        if (nativeAdCache.containsKey(cacheKey)) {
+            val cachedAd = nativeAdCache[cacheKey]
+            if (cachedAd != null) {
+                Log.d(TAG, "Returning cached native ad for key: $cacheKey")
+                onAdLoaded(cachedAd)
+                return
+            }
+        }
+        
+        Log.d(TAG, "Loading new native ad for key: $cacheKey")
+        loadNativeAd(context, adUnitId) { ad ->
+            if (ad != null) {
+                nativeAdCache[cacheKey] = ad
+            }
+            onAdLoaded(ad)
+        }
     }
 }

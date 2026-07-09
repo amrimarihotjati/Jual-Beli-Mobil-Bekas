@@ -23,20 +23,22 @@ import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
 @Composable
 fun NativeAdViewComposable(
     adUnitId: String = "ca-app-pub-3940256099942544/2247696110",
+    cacheKey: String = "default_native_ad",
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
     val nativeAdState = remember { mutableStateOf<NativeAd?>(null) }
 
-    LaunchedEffect(adUnitId) {
-        AdMobManager.loadNativeAd(context, adUnitId) { ad ->
+    LaunchedEffect(adUnitId, cacheKey) {
+        AdMobManager.loadNativeAdCached(context, adUnitId, cacheKey) { ad ->
             nativeAdState.value = ad
         }
     }
 
     DisposableEffect(nativeAdState.value) {
         onDispose {
-            nativeAdState.value?.destroy()
+            // Do not destroy the ad here because it is cached!
+            // AdMobManager will manage the lifecycle or we destroy it on app exit.
         }
     }
 

@@ -117,7 +117,7 @@ fun CarPriceInfoScreen(
                     if (item is UsedCar) {
                         CarCard(item, onCarClick)
                     } else {
-                        NativeAdViewComposable()
+                        NativeAdViewComposable(cacheKey = "grid_ad_$index")
                     }
                 }
             }

@@ -218,7 +218,7 @@ fun CarDetailScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 
                 // Native Ad inside Details
-                NativeAdViewComposable()
+                NativeAdViewComposable(cacheKey = "detail_ad_${car.id}")
                 
                 Spacer(modifier = Modifier.height(16.dp))
                 

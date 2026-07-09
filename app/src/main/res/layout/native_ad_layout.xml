@@ -11,6 +11,18 @@
         android:padding="16dp">
         
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iklan"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="#F9A825"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:layout_marginBottom="4dp"/>
+        
+        <TextView
             android:id="@+id/ad_headline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -21,6 +21,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -127,10 +128,8 @@ fun CreditCalculatorScreen(onBack: () -> Unit) {
                         onClick = {
                             if (activity != null) {
                                 // AdMobManager will show ad, then execute calculate
-                                AdMobManager.showInterstitialAd(activity) {
+                                AdMobManager.showInterstitialAdWithCounter(activity) {
                                     calculate()
-                                    // Preload next ad
-                                    AdMobManager.loadInterstitialAd(context, "ca-app-pub-3940256099942544~3347511713")
                                 }
                             } else {
                                 calculate()
@@ -175,17 +174,9 @@ fun CreditCalculatorScreen(onBack: () -> Unit) {
                     }
                 }
                 
-                // Bottom Banner Ad Placeholder Space
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(80.dp)
-                        .padding(16.dp)
-                        .background(Color.LightGray, RoundedCornerShape(8.dp)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text("Ad Banner Placement", color = Color.DarkGray)
-                }
+                // Bottom Banner Ad Space
+                Spacer(modifier = Modifier.height(16.dp))
+                NativeAdViewComposable(cacheKey = "calculator_ad")
             }
         }
     }

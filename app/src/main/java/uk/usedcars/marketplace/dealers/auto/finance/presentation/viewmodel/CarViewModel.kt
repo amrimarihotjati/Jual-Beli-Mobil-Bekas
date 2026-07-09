@@ -8,6 +8,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import uk.usedcars.marketplace.dealers.auto.finance.data.repository.CarRepository
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
+import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
+import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
 
 sealed class UiState {
     object Loading : UiState()
@@ -23,7 +25,8 @@ class CarViewModel(private val repository: CarRepository) : ViewModel() {
     private var clickCount = 0
     private var interstitialInterval = 0
 
-    var selectedMarketplace: uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace? = null
+    var selectedMarketplace: Marketplace? = null
+    var selectedCar: UsedCar? = null
 
     init {
         fetchConfig()

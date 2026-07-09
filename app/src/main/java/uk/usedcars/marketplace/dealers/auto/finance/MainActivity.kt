@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -21,6 +22,8 @@ import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.DetailScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.IntroScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.MainScreen
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.MainLayoutScreen
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.CarDetailScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.SplashScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.CreditCalculatorScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarViewModel
@@ -67,27 +70,24 @@ class MainActivity : ComponentActivity() {
                         composable("intro") {
                             IntroScreen(
                                 onFinishIntro = {
-                                    navController.navigate("main") {
+                                    navController.navigate("main_layout") {
                                         popUpTo("intro") { inclusive = true }
                                     }
                                 }
                             )
                         }
-                        composable("main") {
-                            MainScreen(
+                        composable("main_layout") {
+                            MainLayoutScreen(
                                 viewModel = viewModel,
                                 onNavigateToDetail = { marketplace ->
                                     viewModel.selectedMarketplace = marketplace
                                     navController.navigate("detail")
                                 },
-                                onNavigateToCalculator = {
-                                    navController.navigate("calculator")
+                                onNavigateToCarDetail = { car ->
+                                    // Normally pass to viewModel, let's just add it dynamically or store in viewModel
+                                    viewModel.selectedCar = car
+                                    navController.navigate("car_detail")
                                 }
-                            )
-                        }
-                        composable("calculator") {
-                            CreditCalculatorScreen(
-                                onBack = { navController.popBackStack() }
                             )
                         }
                         composable("detail") {
@@ -96,6 +96,18 @@ class MainActivity : ComponentActivity() {
                                     marketplace = marketplace,
                                     onBack = { navController.popBackStack() }
                                 )
+                            }
+                        }
+                        composable("car_detail") {
+                            val state = viewModel.uiState.collectAsState().value
+                            viewModel.selectedCar?.let { car ->
+                                if (state is uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiState.Success) {
+                                    CarDetailScreen(
+                                        car = car,
+                                        config = state.config,
+                                        onBack = { navController.popBackStack() }
+                                    )
+                                }
                             }
                         }
                     }

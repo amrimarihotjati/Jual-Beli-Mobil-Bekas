@@ -1,16 +1,17 @@
 plugins {
   alias(libs.plugins.android.application)
+  alias(libs.plugins.kotlin.android)
   alias(libs.plugins.compose.compiler)
   alias(libs.plugins.kotlin.serialization)
 }
 
 android {
     namespace = "uk.usedcars.marketplace.dealers.auto.finance"
-    compileSdk = 36
+    compileSdk = 35
     defaultConfig {
         applicationId = "uk.usedcars.marketplace.dealers.auto.finance"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
     }

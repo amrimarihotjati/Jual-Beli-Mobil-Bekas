@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.TextView
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -16,6 +17,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -81,87 +83,116 @@ fun MainScreen(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
-    Column(modifier = Modifier.fillMaxSize()) {
-        Text(
-            text = "Hai, Selamat Datang!",
-            style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(16.dp)
-        )
-
-        // Top Section: Slideshow
-        val pagerState = rememberPagerState(pageCount = { config.slideshow.size })
-        HorizontalPager(
-            state = pagerState,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp)
-        ) { page ->
-            val item = config.slideshow[page]
-            Box(modifier = Modifier.padding(horizontal = 16.dp)) {
-                AsyncImage(
-                    model = item.imageUrl,
-                    contentDescription = item.title,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize()
+    LazyVerticalGrid(
+        columns = androidx.compose.foundation.lazy.grid.GridCells.Fixed(2),
+        contentPadding = PaddingValues(bottom = 16.dp),
+        modifier = Modifier.fillMaxSize()
+    ) {
+        item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(maxLineSpan) }) {
+            Column {
+                Text(
+                    text = "Hai, Selamat Datang!",
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)
                 )
-                Box(
+
+                // Top Section: Slideshow
+                val pagerState = rememberPagerState(pageCount = { config.slideshow.size })
+                HorizontalPager(
+                    state = pagerState,
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    contentAlignment = Alignment.BottomStart
-                ) {
-                    Text(
-                        text = item.title,
-                        color = Color.White,
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold
-                    )
+                        .fillMaxWidth()
+                        .height(180.dp)
+                ) { page ->
+                    val item = config.slideshow[page]
+                    Box(
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .clip(androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
+                    ) {
+                        AsyncImage(
+                            model = item.imageUrl,
+                            contentDescription = item.title,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize()
+                        )
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(Color.Black.copy(alpha = 0.3f))
+                                .padding(16.dp),
+                            contentAlignment = Alignment.BottomStart
+                        ) {
+                            Text(
+                                text = item.title,
+                                color = Color.White,
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                    }
                 }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Middle Section: Native Ad
+                NativeAdPlaceholder(config.admobConfig.nativeId)
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Text(
+                    text = "Marketplace Rekomendasi",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+                )
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Middle Section: Native Ad
-        NativeAdPlaceholder(config.admobConfig.nativeId)
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // Bottom Section: Grid of Marketplaces
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(16.dp),
-            modifier = Modifier.fillMaxSize()
-        ) {
-            items(config.marketplaces) { marketplace ->
-                ElevatedCard(
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .fillMaxWidth()
-                        .clickable { onMarketplaceClick(marketplace) },
-                    elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
+        items(config.marketplaces) { marketplace ->
+            Card(
+                modifier = Modifier
+                    .padding(horizontal = 8.dp, vertical = 8.dp)
+                    .fillMaxWidth()
+                    .clickable { onMarketplaceClick(marketplace) },
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp)
+            ) {
+                Column(
+                    modifier = Modifier.padding(12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Column(
-                        modifier = Modifier.padding(16.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
+                    Box(
+                        modifier = Modifier
+                            .size(72.dp)
+                            .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
+                            .background(Color.White),
+                        contentAlignment = Alignment.Center
                     ) {
                         AsyncImage(
                             model = marketplace.logoUrl,
                             contentDescription = marketplace.name,
-                            modifier = Modifier
-                                .size(64.dp)
-                                .padding(bottom = 8.dp),
+                            modifier = Modifier.fillMaxSize().padding(4.dp),
                             contentScale = ContentScale.Fit
                         )
-                        Text(
-                            text = marketplace.name,
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
                     }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = marketplace.name,
+                        style = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = "⭐ ${marketplace.rating}",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = FontWeight.SemiBold
+                    )
                 }
             }
         }

@@ -6,10 +6,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -18,26 +17,88 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun IntroScreen(onFinishIntro: () -> Unit) {
     val introPages = listOf(
-        IntroPage("Selamat Datang", "Platform jual beli mobil bekas terpercaya."),
-        IntroPage("Banyak Pilihan", "Temukan berbagai macam mobil dari berbagai marketplace."),
-        IntroPage("Mudah & Cepat", "Transaksi aman, cepat, dan transparan.")
+        IntroPage("Selamat Datang", "Platform jual beli mobil bekas terpercaya. Temukan mobil impianmu dengan mudah."),
+        IntroPage("Banyak Pilihan", "Temukan berbagai macam mobil dari berbagai marketplace terkemuka di satu tempat."),
+        IntroPage("Mudah & Cepat", "Transaksi aman, cepat, dan transparan. Wujudkan mobil impianmu sekarang juga.")
     )
 
     val pagerState = rememberPagerState(pageCount = { introPages.size })
+    val coroutineScope = rememberCoroutineScope()
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-    ) {
+    Scaffold(
+        topBar = {
+            if (pagerState.currentPage != introPages.lastIndex) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(16.dp),
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    TextButton(onClick = onFinishIntro) {
+                        Text("Lewati", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
+                    }
+                }
+            }
+        },
+        bottomBar = {
+            Column(
+                modifier = Modifier.padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 32.dp),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    repeat(introPages.size) { iteration ->
+                        val color = if (pagerState.currentPage == iteration) MaterialTheme.colorScheme.primary else Color.LightGray
+                        val width = if (pagerState.currentPage == iteration) 24.dp else 10.dp
+                        Box(
+                            modifier = Modifier
+                                .padding(horizontal = 4.dp)
+                                .clip(CircleShape)
+                                .background(color)
+                                .height(10.dp)
+                                .width(width)
+                        )
+                    }
+                }
+
+                if (pagerState.currentPage == introPages.lastIndex) {
+                    Button(
+                        onClick = onFinishIntro,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(56.dp)
+                    ) {
+                        Text("Mulai Sekarang", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                    }
+                } else {
+                    Button(
+                        onClick = {
+                            coroutineScope.launch {
+                                pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                            }
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(56.dp)
+                    ) {
+                        Text("Selanjutnya", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                    }
+                }
+            }
+        }
+    ) { innerPadding ->
         HorizontalPager(
             state = pagerState,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .background(MaterialTheme.colorScheme.background)
         ) { page ->
             Column(
                 modifier = Modifier
@@ -46,6 +107,19 @@ fun IntroScreen(onFinishIntro: () -> Unit) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
+                // Placeholder for an illustration image
+                Box(
+                    modifier = Modifier
+                        .size(240.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.secondary),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("Gambar\nIlustrasi", color = MaterialTheme.colorScheme.onSurface, textAlign = TextAlign.Center)
+                }
+                
+                Spacer(modifier = Modifier.height(48.dp))
+                
                 Text(
                     text = introPages[page].title,
                     fontSize = 28.sp,
@@ -61,38 +135,6 @@ fun IntroScreen(onFinishIntro: () -> Unit) {
                     textAlign = TextAlign.Center
                 )
             }
-        }
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 32.dp),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            repeat(introPages.size) { iteration ->
-                val color = if (pagerState.currentPage == iteration) MaterialTheme.colorScheme.primary else Color.LightGray
-                Box(
-                    modifier = Modifier
-                        .padding(4.dp)
-                        .clip(CircleShape)
-                        .background(color)
-                        .size(10.dp)
-                )
-            }
-        }
-
-        if (pagerState.currentPage == introPages.lastIndex) {
-            Button(
-                onClick = onFinishIntro,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(32.dp)
-                    .height(56.dp)
-            ) {
-                Text("Mulai Cari Mobil", fontSize = 18.sp)
-            }
-        } else {
-            Spacer(modifier = Modifier.height(120.dp))
         }
     }
 }

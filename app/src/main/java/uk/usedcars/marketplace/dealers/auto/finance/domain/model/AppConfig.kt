@@ -21,9 +21,13 @@ data class SlideshowItem(
 )
 
 data class Marketplace(
-    @SerializedName("id") val id: Int,
-    @SerializedName("name") val name: String,
+    val id: Int,
+    val name: String,
     @SerializedName("logo_url") val logoUrl: String,
-    @SerializedName("description") val description: String,
-    @SerializedName("direct_link") val directLink: String
+    val description: String,
+    @SerializedName("direct_link") val directLink: String,
+    val rating: Double = 0.0,
+    @SerializedName("total_cars") val totalCars: String = "",
+    @SerializedName("promo_text") val promoText: String = "",
+    val features: List<String> = emptyList()
 )

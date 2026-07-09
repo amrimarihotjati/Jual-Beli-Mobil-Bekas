@@ -16,6 +16,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -103,22 +105,71 @@ fun CarDetailScreen(
                     )
                 }
                 
+                
                 // Indicators
                 if (car.imageUrls.size > 1) {
                     Row(
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
-                            .padding(bottom = 8.dp),
+                            .padding(bottom = 12.dp),
                         horizontalArrangement = Arrangement.Center
                     ) {
                         repeat(car.imageUrls.size) { iteration ->
                             val color = if (pagerState.currentPage == iteration) MaterialTheme.colorScheme.primary else Color.LightGray
                             Box(
                                 modifier = Modifier
-                                    .padding(2.dp)
+                                    .padding(4.dp)
                                     .clip(CircleShape)
                                     .background(color)
                                     .size(8.dp)
+                            )
+                        }
+                    }
+
+                    // Left Arrow
+                    if (pagerState.currentPage > 0) {
+                        Box(
+                            modifier = Modifier
+                                .align(Alignment.CenterStart)
+                                .padding(start = 12.dp)
+                                .size(40.dp)
+                                .clip(CircleShape)
+                                .background(Color.Black.copy(alpha = 0.4f)),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                Icons.Default.KeyboardArrowLeft,
+                                contentDescription = "Previous Image",
+                                tint = Color.White
+                            )
+                        }
+                    }
+                    
+                    // Right Arrow & Hint
+                    if (pagerState.currentPage < car.imageUrls.size - 1) {
+                        Row(
+                            modifier = Modifier
+                                .align(Alignment.CenterEnd)
+                                .padding(end = 12.dp)
+                                .clip(RoundedCornerShape(20.dp))
+                                .background(Color.Black.copy(alpha = 0.4f))
+                                .padding(horizontal = 12.dp, vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            if (pagerState.currentPage == 0) {
+                                Text(
+                                    text = "Geser",
+                                    color = Color.White,
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    modifier = Modifier.padding(end = 4.dp)
+                                )
+                            }
+                            Icon(
+                                Icons.Default.KeyboardArrowRight,
+                                contentDescription = "Next Image",
+                                tint = Color.White,
+                                modifier = Modifier.size(24.dp)
                             )
                         }
                     }

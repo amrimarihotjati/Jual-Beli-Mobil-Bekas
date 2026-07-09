@@ -3,6 +3,8 @@ package uk.usedcars.marketplace.dealers.auto.finance
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -15,12 +17,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import uk.usedcars.marketplace.dealers.auto.finance.data.api.ApiService
 import uk.usedcars.marketplace.dealers.auto.finance.data.repository.CarRepository
+import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.DetailScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.IntroScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.MainScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.SplashScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarViewModel
-import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
+import uk.usedcars.marketplace.dealers.auto.finance.theme.JualBeliMobilBekasTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,44 +48,47 @@ class MainActivity : ComponentActivity() {
                 }
             })
 
-            NavHost(navController = navController, startDestination = "splash") {
-                composable("splash") {
-                    SplashScreen(
-                        onNavigateToIntro = {
-                            navController.navigate("intro") {
-                                popUpTo("splash") { inclusive = true }
+            JualBeliMobilBekasTheme {
+                Surface(
+                    color = MaterialTheme.colorScheme.background,
+                    contentColor = MaterialTheme.colorScheme.onBackground
+                ) {
+                    NavHost(navController = navController, startDestination = "splash") {
+                        composable("splash") {
+                            SplashScreen(
+                                onNavigateToIntro = {
+                                    navController.navigate("intro") {
+                                        popUpTo("splash") { inclusive = true }
+                                    }
+                                }
+                            )
+                        }
+                        composable("intro") {
+                            IntroScreen(
+                                onFinishIntro = {
+                                    navController.navigate("main") {
+                                        popUpTo("intro") { inclusive = true }
+                                    }
+                                }
+                            )
+                        }
+                        composable("main") {
+                            MainScreen(
+                                viewModel = viewModel,
+                                onNavigateToDetail = { marketplace ->
+                                    viewModel.selectedMarketplace = marketplace
+                                    navController.navigate("detail")
+                                }
+                            )
+                        }
+                        composable("detail") {
+                            viewModel.selectedMarketplace?.let { marketplace ->
+                                DetailScreen(
+                                    marketplace = marketplace,
+                                    onBack = { navController.popBackStack() }
+                                )
                             }
                         }
-                    )
-                }
-                composable("intro") {
-                    IntroScreen(
-                        onFinishIntro = {
-                            navController.navigate("main") {
-                                popUpTo("intro") { inclusive = true }
-                            }
-                        }
-                    )
-                }
-                composable("main") {
-                    MainScreen(
-                        viewModel = viewModel,
-                        onNavigateToDetail = { marketplace ->
-                            // Pass marketplace ID or serialized data. 
-                            // For simplicity, we can retrieve it from the ViewModel in a real app, 
-                            // but here we just pass it as arguments if needed, 
-                            // or better, store selected item in ViewModel.
-                            viewModel.selectedMarketplace = marketplace
-                            navController.navigate("detail")
-                        }
-                    )
-                }
-                composable("detail") {
-                    viewModel.selectedMarketplace?.let { marketplace ->
-                        DetailScreen(
-                            marketplace = marketplace,
-                            onBack = { navController.popBackStack() }
-                        )
                     }
                 }
             }

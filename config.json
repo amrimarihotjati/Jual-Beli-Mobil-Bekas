@@ -42,7 +42,21 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2014",
+            "headquarters": "Jakarta Selatan, Indonesia",
+            "tags": [
+                "C2C",
+                "Inspeksi Ahli",
+                "Banyak Pilihan",
+                "Terpercaya"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         },
         {
             "id": 2,
@@ -64,7 +78,20 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2015",
+            "headquarters": "Selangor, Malaysia",
+            "tags": [
+                "175 Titik Inspeksi",
+                "Beli Mobil",
+                "Jual Mobil 1 Jam"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         },
         {
             "id": 3,
@@ -86,7 +113,20 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2015",
+            "headquarters": "Singapura",
+            "tags": [
+                "Garansi 1 Tahun",
+                "Lulus 160 Titik Inspeksi",
+                "Transparan"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         },
         {
             "id": 4,
@@ -108,7 +148,21 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2015",
+            "headquarters": "Jakarta, Indonesia",
+            "tags": [
+                "Mobil Bekas",
+                "Garansi Mesin",
+                "Tukar Tambah",
+                "Cicilan Ringan"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         },
         {
             "id": 5,
@@ -130,7 +184,21 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2015",
+            "headquarters": "Jakarta, Indonesia",
+            "tags": [
+                "Mobil Bekas",
+                "Garansi Mesin",
+                "Tukar Tambah",
+                "Cicilan Ringan"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         },
         {
             "id": 6,
@@ -152,7 +220,21 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2015",
+            "headquarters": "Jakarta, Indonesia",
+            "tags": [
+                "Mobil Bekas",
+                "Garansi Mesin",
+                "Tukar Tambah",
+                "Cicilan Ringan"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         },
         {
             "id": 7,
@@ -174,7 +256,21 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2015",
+            "headquarters": "Jakarta, Indonesia",
+            "tags": [
+                "Mobil Bekas",
+                "Garansi Mesin",
+                "Tukar Tambah",
+                "Cicilan Ringan"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         },
         {
             "id": 8,
@@ -196,7 +292,21 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2015",
+            "headquarters": "Jakarta, Indonesia",
+            "tags": [
+                "Mobil Bekas",
+                "Garansi Mesin",
+                "Tukar Tambah",
+                "Cicilan Ringan"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         },
         {
             "id": 9,
@@ -218,7 +328,21 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2015",
+            "headquarters": "Jakarta, Indonesia",
+            "tags": [
+                "Mobil Bekas",
+                "Garansi Mesin",
+                "Tukar Tambah",
+                "Cicilan Ringan"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         },
         {
             "id": 10,
@@ -240,7 +364,21 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2015",
+            "headquarters": "Jakarta, Indonesia",
+            "tags": [
+                "Mobil Bekas",
+                "Garansi Mesin",
+                "Tukar Tambah",
+                "Cicilan Ringan"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         },
         {
             "id": 11,
@@ -262,7 +400,21 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2015",
+            "headquarters": "Jakarta, Indonesia",
+            "tags": [
+                "Mobil Bekas",
+                "Garansi Mesin",
+                "Tukar Tambah",
+                "Cicilan Ringan"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         },
         {
             "id": 12,
@@ -284,7 +436,21 @@
                 "Tukar Tambah",
                 "Inspeksi Mobil"
             ],
-            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB"
+            "operational_hours": "Setiap Hari, 08:00 - 20:00 WIB",
+            "established_year": "2015",
+            "headquarters": "Jakarta, Indonesia",
+            "tags": [
+                "Mobil Bekas",
+                "Garansi Mesin",
+                "Tukar Tambah",
+                "Cicilan Ringan"
+            ],
+            "payment_methods": [
+                "Cash",
+                "Kredit BCA",
+                "Kredit Mandiri",
+                "CIMB Niaga Auto Finance"
+            ]
         }
     ]
 }

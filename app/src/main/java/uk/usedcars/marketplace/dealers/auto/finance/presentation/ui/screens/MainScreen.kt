@@ -125,8 +125,12 @@ fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
                         unfocusedContainerColor = MaterialTheme.colorScheme.surface
                     )
                 )
+                
+                // Top Banner Ad Space (Maximized Visibility)
+                NativeAdViewComposable(cacheKey = "marketplace_ad")
+                Spacer(modifier = Modifier.height(16.dp))
 
-                // Top Section: Slideshow
+                // Slideshow Section
                 val pagerState = rememberPagerState(pageCount = { config.slideshow.size })
                 HorizontalPager(
                     state = pagerState,
@@ -162,11 +166,6 @@ fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
                         }
                     }
                 }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // Middle Section: Native Ad
-                NativeAdViewComposable(cacheKey = "marketplace_ad")
 
                 Spacer(modifier = Modifier.height(16.dp))
 

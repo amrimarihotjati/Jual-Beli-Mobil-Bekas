@@ -50,11 +50,13 @@ fun CarDetailScreen(
     config: AppConfig,
     isFavorite: Boolean,
     onFavoriteToggle: () -> Unit,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onCompare: (String) -> Unit
 ) {
     val context = LocalContext.current
-    val sheetState = rememberModalBottomSheetState()
-    var showBottomSheet by remember { mutableStateOf(false) }
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    var showMarketplaceSheet by remember { mutableStateOf(false) }
+    var showCompareSheet by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -87,13 +89,23 @@ fun CarDetailScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Box(modifier = Modifier.padding(16.dp)) {
-                    Button(
-                        onClick = { showBottomSheet = true },
-                        modifier = Modifier.fillMaxWidth().height(50.dp),
-                        shape = RoundedCornerShape(8.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
-                    ) {
-                        Text("Cari Mobil Ini di Marketplace", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Button(
+                            onClick = { showCompareSheet = true },
+                            modifier = Modifier.weight(1f).height(50.dp),
+                            shape = RoundedCornerShape(8.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
+                        ) {
+                            Text("Bandingkan", fontSize = 14.sp, fontWeight = FontWeight.Bold, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                        }
+                        Button(
+                            onClick = { showMarketplaceSheet = true },
+                            modifier = Modifier.weight(1.5f).height(50.dp),
+                            shape = RoundedCornerShape(8.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                        ) {
+                            Text("Cari di Marketplace", fontSize = 14.sp, fontWeight = FontWeight.Bold, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                        }
                     }
                 }
             }
@@ -209,6 +221,10 @@ fun CarDetailScreen(
                 }
             }
             
+            // Native Ad right below images for maximum visibility
+            Spacer(modifier = Modifier.height(8.dp))
+            NativeAdViewComposable(cacheKey = "detail_ad_${car.id}")
+            
             Column(modifier = Modifier.padding(16.dp)) {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
@@ -252,10 +268,6 @@ fun CarDetailScreen(
                         }
                     }
                 }
-                Spacer(modifier = Modifier.height(16.dp))
-                
-                // Native Ad inside Details
-                NativeAdViewComposable(cacheKey = "detail_ad_${car.id}")
                 
                 Spacer(modifier = Modifier.height(16.dp))
                 
@@ -308,9 +320,9 @@ fun CarDetailScreen(
         }
     }
 
-    if (showBottomSheet) {
+    if (showMarketplaceSheet) {
         ModalBottomSheet(
-            onDismissRequest = { showBottomSheet = false },
+            onDismissRequest = { showMarketplaceSheet = false },
             sheetState = sheetState
         ) {
             Column(
@@ -334,7 +346,7 @@ fun CarDetailScreen(
                                     } catch (e: Exception) {
                                         Toast.makeText(context, "Gagal membuka link", Toast.LENGTH_SHORT).show()
                                     }
-                                    showBottomSheet = false
+                                    showMarketplaceSheet = false
                                 }
                             }
                             .padding(vertical = 12.dp),
@@ -349,6 +361,55 @@ fun CarDetailScreen(
                         Text(marketplace.name, fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
                     }
                     HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f))
+                }
+                Spacer(modifier = Modifier.height(32.dp))
+            }
+        }
+    }
+
+    if (showCompareSheet) {
+        ModalBottomSheet(
+            onDismissRequest = { showCompareSheet = false },
+            sheetState = sheetState
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                Text("Bandingkan dengan...", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(16.dp))
+                androidx.compose.foundation.lazy.LazyColumn {
+                    items(config.usedCars.size) { index ->
+                        val compareCar = config.usedCars[index]
+                        if (compareCar.id != car.id) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable {
+                                        AdMobManager.showInterstitialAdWithCounter(context as Activity) {
+                                            showCompareSheet = false
+                                            onCompare(compareCar.id)
+                                        }
+                                    }
+                                    .padding(vertical = 12.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                AsyncImage(
+                                    model = compareCar.imageUrls.firstOrNull() ?: "",
+                                    contentDescription = compareCar.name,
+                                    modifier = Modifier.size(60.dp).clip(RoundedCornerShape(8.dp)),
+                                    contentScale = ContentScale.Crop
+                                )
+                                Spacer(modifier = Modifier.width(16.dp))
+                                Column {
+                                    Text(compareCar.name, fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
+                                    Text(compareCar.priceRange, color = MaterialTheme.colorScheme.primary, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                                }
+                            }
+                            HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f))
+                        }
+                    }
                 }
                 Spacer(modifier = Modifier.height(32.dp))
             }

@@ -80,6 +80,11 @@ fun CreditCalculatorScreen(onBack: () -> Unit) {
                 .verticalScroll(rememberScrollState())
                 .background(MaterialTheme.colorScheme.background)
         ) {
+            // Top Banner Ad Space (Maximized Visibility)
+            Spacer(modifier = Modifier.height(8.dp))
+            NativeAdViewComposable(cacheKey = "calculator_ad")
+            Spacer(modifier = Modifier.height(8.dp))
+
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -173,10 +178,6 @@ fun CreditCalculatorScreen(onBack: () -> Unit) {
                         Text(formatter.format(cicilan), fontWeight = FontWeight.Bold, fontSize = 24.sp, color = MaterialTheme.colorScheme.primary)
                     }
                 }
-                
-                // Bottom Banner Ad Space
-                Spacer(modifier = Modifier.height(16.dp))
-                NativeAdViewComposable(cacheKey = "calculator_ad")
             }
         }
     }

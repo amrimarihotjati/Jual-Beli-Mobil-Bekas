@@ -11,9 +11,10 @@
 
 ## ✨ Features
 
-- **Modern UI/UX**: Designed with a premium, sleek, and intuitive startup-style interface using Material 3 and Jetpack Compose.
-- **Dynamic Content Configuration**: Fully powered by a remote `config.json` that dynamically updates slideshow promotions, marketplace listings, and AdMob configurations without requiring app updates.
-- **Interactive Onboarding**: A smooth Horizontal Pager introduction for first-time users.
+- **Tokopedia-Style Modern UI/UX**: Redesigned with a premium, green-themed, e-commerce aesthetic. Features clean card designs, prominent ratings, explicit navigation, and a modern bottom bar in the detail screen.
+- **High-Performance Grid Layout**: Refactored the main screen to use `LazyVerticalGrid` and Coil's `crossfade`, ensuring silky-smooth scrolling even with heavy image loading, completely eliminating previous performance lags.
+- **Dynamic Content Configuration**: Fully powered by a remote `config.json` that dynamically updates slideshow promotions, detailed marketplace listings (including ratings, total cars, features, and promo texts), and AdMob configurations without requiring app updates.
+- **Interactive Onboarding**: A smooth Horizontal Pager introduction with explicit "Selanjutnya" and "Lewati" navigation buttons for first-time users.
 - **Smart Ad Integration (AdMob Next Gen)**:
   - **Native Advanced Ads**: Elegantly woven into the Main Screen feed to maintain user experience.
   - **Interval-based Interstitials**: Intelligently triggered Interstitial Ads based on remote configuration to balance monetization and user satisfaction.

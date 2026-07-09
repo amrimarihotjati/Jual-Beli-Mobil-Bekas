@@ -69,33 +69,20 @@ fun MainScreen(
                 AdMobManager.loadInterstitialAd(context, state.config.admobConfig.interstitialId)
             }
             
-            Scaffold(
-                floatingActionButton = {
-                    FloatingActionButton(
-                        onClick = onNavigateToCalculator,
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        contentColor = Color.White
-                    ) {
-                        Icon(androidx.compose.material.icons.Icons.Default.Star, contentDescription = "Simulasi Kredit")
+            // Removed Scaffold & FAB
+            MainContent(
+                config = state.config,
+                onMarketplaceClick = { marketplace ->
+                    if (viewModel.onMarketplaceClicked() && activity != null) {
+                        AdMobManager.showInterstitialAd(activity) {
+                            onNavigateToDetail(marketplace)
+                            AdMobManager.loadInterstitialAd(context, state.config.admobConfig.interstitialId)
+                        }
+                    } else {
+                        onNavigateToDetail(marketplace)
                     }
                 }
-            ) { paddingValues ->
-                Box(modifier = Modifier.padding(paddingValues)) {
-                    MainContent(
-                        config = state.config,
-                        onMarketplaceClick = { marketplace ->
-                            if (viewModel.onMarketplaceClicked() && activity != null) {
-                                AdMobManager.showInterstitialAd(activity) {
-                                    onNavigateToDetail(marketplace)
-                                    AdMobManager.loadInterstitialAd(context, state.config.admobConfig.interstitialId)
-                                }
-                            } else {
-                                onNavigateToDetail(marketplace)
-                            }
-                        }
-                    )
-                }
-            }
+            )
         }
     }
 }
@@ -109,7 +96,7 @@ fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
     }
 
     LazyColumn(
-        contentPadding = PaddingValues(bottom = 80.dp), // Extra padding for FAB
+        contentPadding = PaddingValues(bottom = 16.dp),
         modifier = Modifier.fillMaxSize()
     ) {
         item {

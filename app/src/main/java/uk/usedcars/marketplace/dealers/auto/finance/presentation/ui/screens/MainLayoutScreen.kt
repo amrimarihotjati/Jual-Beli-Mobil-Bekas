@@ -3,6 +3,8 @@ package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
@@ -26,9 +28,9 @@ fun MainLayoutScreen(
 ) {
     val navController = rememberNavController()
     val items = listOf(
+        BottomNavItem.CarPrices,
         BottomNavItem.Home,
-        BottomNavItem.Calculator,
-        BottomNavItem.CarPrices
+        BottomNavItem.Calculator
     )
 
     Scaffold(
@@ -68,7 +70,7 @@ fun MainLayoutScreen(
     ) { paddingValues ->
         NavHost(
             navController = navController,
-            startDestination = BottomNavItem.Home.route,
+            startDestination = BottomNavItem.CarPrices.route,
             modifier = Modifier.padding(paddingValues)
         ) {
             composable(BottomNavItem.Home.route) {
@@ -101,7 +103,7 @@ fun MainLayoutScreen(
 }
 
 sealed class BottomNavItem(val route: String, val icon: androidx.compose.ui.graphics.vector.ImageVector, val title: String) {
-    object Home : BottomNavItem("home_tab", Icons.Default.Home, "Beranda")
-    object Calculator : BottomNavItem("calculator_tab", Icons.Default.Star, "Simulasi")
-    object CarPrices : BottomNavItem("car_prices_tab", Icons.Default.Info, "Harga Pasar")
+    object CarPrices : BottomNavItem("car_prices_tab", Icons.Default.Home, "Beranda")
+    object Home : BottomNavItem("home_tab", Icons.Default.ShoppingCart, "Marketplace")
+    object Calculator : BottomNavItem("calculator_tab", Icons.Default.Build, "Simulasi")
 }

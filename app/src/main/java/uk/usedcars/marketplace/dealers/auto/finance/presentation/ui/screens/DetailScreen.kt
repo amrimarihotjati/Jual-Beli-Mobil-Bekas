@@ -40,9 +40,10 @@ fun DetailScreen(
                 onClick = {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(marketplace.directLink))
                     context.startActivity(intent)
-                },
-                text = { Text("Kunjungi Marketplace") }
-            )
+                }
+            ) {
+                Text("Kunjungi Marketplace")
+            }
         }
     ) { paddingValues ->
         Column(

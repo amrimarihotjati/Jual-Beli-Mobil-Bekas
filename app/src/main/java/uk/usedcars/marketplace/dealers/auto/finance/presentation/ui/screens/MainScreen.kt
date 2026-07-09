@@ -46,7 +46,8 @@ import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
 @Composable
 fun MainScreen(
     viewModel: CarViewModel,
-    onNavigateToDetail: (Marketplace) -> Unit
+    onNavigateToDetail: (Marketplace) -> Unit,
+    onNavigateToCalculator: () -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
@@ -64,34 +65,51 @@ fun MainScreen(
             }
         }
         is UiState.Success -> {
-            // Load interstitial so it's ready when clicked
             LaunchedEffect(Unit) {
                 AdMobManager.loadInterstitialAd(context, state.config.admobConfig.interstitialId)
             }
             
-            MainContent(
-                config = state.config,
-                onMarketplaceClick = { marketplace ->
-                    if (viewModel.onMarketplaceClicked() && activity != null) {
-                        AdMobManager.showInterstitialAd(activity) {
-                            onNavigateToDetail(marketplace)
-                            AdMobManager.loadInterstitialAd(context, state.config.admobConfig.interstitialId)
-                        }
-                    } else {
-                        onNavigateToDetail(marketplace)
+            Scaffold(
+                floatingActionButton = {
+                    FloatingActionButton(
+                        onClick = onNavigateToCalculator,
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        contentColor = Color.White
+                    ) {
+                        Icon(androidx.compose.material.icons.Icons.Default.Star, contentDescription = "Simulasi Kredit")
                     }
                 }
-            )
+            ) { paddingValues ->
+                Box(modifier = Modifier.padding(paddingValues)) {
+                    MainContent(
+                        config = state.config,
+                        onMarketplaceClick = { marketplace ->
+                            if (viewModel.onMarketplaceClicked() && activity != null) {
+                                AdMobManager.showInterstitialAd(activity) {
+                                    onNavigateToDetail(marketplace)
+                                    AdMobManager.loadInterstitialAd(context, state.config.admobConfig.interstitialId)
+                                }
+                            } else {
+                                onNavigateToDetail(marketplace)
+                            }
+                        }
+                    )
+                }
+            }
         }
     }
 }
-
-
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
+    var searchQuery by remember { mutableStateOf("") }
+    val filteredMarketplaces = config.marketplaces.filter { 
+        it.name.contains(searchQuery, ignoreCase = true) || 
+        it.tags.any { tag -> tag.contains(searchQuery, ignoreCase = true) } 
+    }
+
     LazyColumn(
-        contentPadding = PaddingValues(bottom = 16.dp),
+        contentPadding = PaddingValues(bottom = 80.dp), // Extra padding for FAB
         modifier = Modifier.fillMaxSize()
     ) {
         item {
@@ -101,6 +119,23 @@ fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
                     style = MaterialTheme.typography.headlineMedium,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)
+                )
+
+                // Search Bar
+                OutlinedTextField(
+                    value = searchQuery,
+                    onValueChange = { searchQuery = it },
+                    placeholder = { Text("Cari mobil atau fitur (Bisa Cicil, Garansi...)") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                        .padding(bottom = 16.dp),
+                    shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp),
+                    singleLine = true,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedContainerColor = MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.surface
+                    )
                 )
 
                 // Top Section: Slideshow
@@ -156,7 +191,7 @@ fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
             }
         }
 
-        items(config.marketplaces) { marketplace ->
+        items(filteredMarketplaces) { marketplace ->
             Card(
                 modifier = Modifier
                     .padding(horizontal = 16.dp, vertical = 8.dp)

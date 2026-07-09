@@ -22,6 +22,7 @@ import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.Deta
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.IntroScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.MainScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.SplashScreen
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.CreditCalculatorScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarViewModel
 import uk.usedcars.marketplace.dealers.auto.finance.theme.JualBeliMobilBekasTheme
 
@@ -78,7 +79,15 @@ class MainActivity : ComponentActivity() {
                                 onNavigateToDetail = { marketplace ->
                                     viewModel.selectedMarketplace = marketplace
                                     navController.navigate("detail")
+                                },
+                                onNavigateToCalculator = {
+                                    navController.navigate("calculator")
                                 }
+                            )
+                        }
+                        composable("calculator") {
+                            CreditCalculatorScreen(
+                                onBack = { navController.popBackStack() }
                             )
                         }
                         composable("detail") {

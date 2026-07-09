@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -88,6 +89,17 @@ fun CarPriceInfoScreen(
                 Text("Mobil tidak ditemukan", color = Color.Gray)
             }
         } else {
+            val gridItems = remember(filteredCars) {
+                val list = mutableListOf<Any>()
+                filteredCars.forEachIndexed { index, car ->
+                    list.add(car)
+                    if ((index + 1) % 6 == 0) {
+                        list.add("AD")
+                    }
+                }
+                list
+            }
+
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
@@ -95,8 +107,18 @@ fun CarPriceInfoScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 modifier = Modifier.fillMaxSize()
             ) {
-                items(filteredCars) { car ->
-                    CarCard(car, onCarClick)
+                items(
+                    count = gridItems.size,
+                    span = { index ->
+                        if (gridItems[index] is String) GridItemSpan(2) else GridItemSpan(1)
+                    }
+                ) { index ->
+                    val item = gridItems[index]
+                    if (item is UsedCar) {
+                        CarCard(item, onCarClick)
+                    } else {
+                        NativeAdViewComposable()
+                    }
                 }
             }
         }

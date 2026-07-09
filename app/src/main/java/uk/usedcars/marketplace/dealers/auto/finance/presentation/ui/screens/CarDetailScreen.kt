@@ -33,6 +33,9 @@ import coil.compose.AsyncImage
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
+import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
+import android.app.Activity
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -212,7 +215,11 @@ fun CarDetailScreen(
                         )
                     }
                 }
-
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                // Native Ad inside Details
+                NativeAdViewComposable()
+                
                 Spacer(modifier = Modifier.height(16.dp))
                 
                 if (car.tags.isNotEmpty()) {
@@ -281,15 +288,17 @@ fun CarDetailScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                try {
-                                    val searchUrl = "https://google.com/search?q=${car.name.replace(" ", "+")}+di+${marketplace.name.replace(" ", "+")}"
-                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(searchUrl))
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                    context.startActivity(intent)
-                                } catch (e: Exception) {
-                                    Toast.makeText(context, "Gagal membuka link", Toast.LENGTH_SHORT).show()
+                                AdMobManager.showInterstitialAdWithCounter(context as Activity) {
+                                    try {
+                                        val searchUrl = "https://google.com/search?q=${car.name.replace(" ", "+")}+di+${marketplace.name.replace(" ", "+")}"
+                                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(searchUrl))
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                        context.startActivity(intent)
+                                    } catch (e: Exception) {
+                                        Toast.makeText(context, "Gagal membuka link", Toast.LENGTH_SHORT).show()
+                                    }
+                                    showBottomSheet = false
                                 }
-                                showBottomSheet = false
                             }
                             .padding(vertical = 12.dp),
                         verticalAlignment = Alignment.CenterVertically

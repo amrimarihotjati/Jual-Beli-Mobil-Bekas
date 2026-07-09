@@ -19,6 +19,9 @@ import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarViewModel
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiState
+import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
+import android.app.Activity
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun MainLayoutScreen(
@@ -26,6 +29,7 @@ fun MainLayoutScreen(
     onNavigateToDetail: (Marketplace) -> Unit,
     onNavigateToCarDetail: (UsedCar) -> Unit
 ) {
+    val context = LocalContext.current
     val navController = rememberNavController()
     val items = listOf(
         BottomNavItem.CarPrices,
@@ -76,7 +80,11 @@ fun MainLayoutScreen(
             composable(BottomNavItem.Home.route) {
                 MainScreen(
                     viewModel = viewModel,
-                    onNavigateToDetail = onNavigateToDetail,
+                    onNavigateToDetail = { marketplace ->
+                        AdMobManager.showInterstitialAdWithCounter(context as Activity) {
+                            onNavigateToDetail(marketplace)
+                        }
+                    },
                     onNavigateToCalculator = {
                         navController.navigate(BottomNavItem.Calculator.route) {
                             launchSingleTop = true
@@ -94,7 +102,11 @@ fun MainLayoutScreen(
                 if (state is UiState.Success) {
                     CarPriceInfoScreen(
                         config = state.config,
-                        onCarClick = onNavigateToCarDetail
+                        onCarClick = { car ->
+                            AdMobManager.showInterstitialAdWithCounter(context as Activity) {
+                                onNavigateToCarDetail(car)
+                            }
+                        }
                     )
                 }
             }

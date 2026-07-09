@@ -10,10 +10,18 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
+import com.google.android.gms.ads.nativead.NativeAd
+import com.google.android.gms.ads.AdLoader
+import com.google.android.gms.ads.nativead.NativeAdOptions
+
 object AdMobManager {
     private const val TAG = "AdMobManager"
     private var interstitialAd: InterstitialAd? = null
     private var isAdLoading = false
+    
+    // Frequency capping: show every 3 interactions
+    private var interactionCount = 0
+    private const val INTERACTION_THRESHOLD = 3
 
     fun loadInterstitialAd(context: Context, adUnitId: String) {
         if (interstitialAd != null || isAdLoading) {
@@ -68,5 +76,43 @@ object AdMobManager {
             Log.d(TAG, "The interstitial ad wasn't ready yet.")
             onAdDismissed()
         }
+    }
+    
+    fun showInterstitialAdWithCounter(activity: Activity, onAdDismissed: () -> Unit) {
+        interactionCount++
+        Log.d(TAG, "Interaction Count: $interactionCount / $INTERACTION_THRESHOLD")
+        
+        if (interactionCount >= INTERACTION_THRESHOLD) {
+            interactionCount = 0 // Reset counter
+            if (interstitialAd != null) {
+                showInterstitialAd(activity) {
+                    // Pre-load next ad immediately
+                    loadInterstitialAd(activity, "ca-app-pub-3940256099942544/1033173712") // Using Test ID, replace in production
+                    onAdDismissed()
+                }
+            } else {
+                Log.d(TAG, "Ad reached threshold but is null. Loading for next time.")
+                loadInterstitialAd(activity, "ca-app-pub-3940256099942544/1033173712")
+                onAdDismissed()
+            }
+        } else {
+            onAdDismissed()
+        }
+    }
+
+    fun loadNativeAd(context: Context, adUnitId: String, onAdLoaded: (NativeAd?) -> Unit) {
+        val builder = AdLoader.Builder(context, adUnitId)
+            .forNativeAd { nativeAd ->
+                onAdLoaded(nativeAd)
+            }
+            .withAdListener(object : com.google.android.gms.ads.AdListener() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d(TAG, "Native ad failed to load: ${adError.message}")
+                    onAdLoaded(null)
+                }
+            })
+            .withNativeAdOptions(NativeAdOptions.Builder().build())
+            
+        builder.build().loadAd(AdRequest.Builder().build())
     }
 }

@@ -1,0 +1,26 @@
+{
+  "admob_config": {
+    "native_id": "ca-app-pub-3940256099942544/2247696110",
+    "interstitial_id": "ca-app-pub-3940256099942544/1033173712",
+    "interstitial_interval": 3
+  },
+  "slideshow": [
+    { "id": 1, "title": "Beli Mobil Idaman Tanpa Ribet", "image_url": "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2" },
+    { "id": 2, "title": "Inspeksi Ketat, Jaminan Kualitas", "image_url": "https://images.unsplash.com/photo-1503376780353-7e6692767b70" },
+    { "id": 3, "title": "Promo DP Ringan & Bunga Rendah", "image_url": "https://images.unsplash.com/photo-1605810230434-7631ac76ec81" }
+  ],
+  "marketplaces": [
+    { "id": 1, "name": "OLX Autos", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/OLX_green_logo.svg", "description": "Platform terbesar untuk jual beli mobil bekas.", "direct_link": "https://www.olx.co.id/mobil-bekas_c198" },
+    { "id": 2, "name": "Carsome", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Carsome_Logo.png", "description": "Mobil bekas berkualitas dengan garansi 1 tahun.", "direct_link": "https://www.carsome.id/" },
+    { "id": 3, "name": "Carro", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Carro_Logo.png", "description": "Marketplace otomotif terpercaya dengan fasilitas test drive di rumah.", "direct_link": "https://carro.co.id/" },
+    { "id": 4, "name": "Mobil123", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Mobil123_Logo.png", "description": "Portal otomotif nomor 1 di Indonesia dengan jutaan listing mobil baru dan bekas.", "direct_link": "https://www.mobil123.com/" },
+    { "id": 5, "name": "Carmudi", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Carmudi_logo.png", "description": "Situs jual beli kendaraan online yang menawarkan pilihan mobil bekas berkualitas.", "direct_link": "https://www.carmudi.co.id/" },
+    { "id": 6, "name": "OTO", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Oto_Logo.png", "description": "Temukan harga mobil bekas, review, dan spesifikasi lengkap.", "direct_link": "https://www.oto.com/mobil-bekas" },
+    { "id": 7, "name": "Caroline.id", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png", "description": "Platform transparan untuk jual beli mobil bekas dengan jaminan mesin.", "direct_link": "https://www.caroline.id/" },
+    { "id": 8, "name": "Seva", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png", "description": "Platform dari Astra untuk pembelian mobil dengan fitur Instant Approval.", "direct_link": "https://www.seva.id/" },
+    { "id": 9, "name": "CintaMobil", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png", "description": "Marketplace mobil dengan tips otomotif, review, dan harga terbaik.", "direct_link": "https://cintamobil.com/" },
+    { "id": 10, "name": "Momobil", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png", "description": "Situs jual beli mobil bekas dari Adira Finance.", "direct_link": "https://momobil.id/" },
+    { "id": 11, "name": "Garasi.id", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png", "description": "Platform dengan fitur Inspeksi Mobil dan Garansi Mesin.", "direct_link": "https://garasi.id/" },
+    { "id": 12, "name": "Auto2000", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Placeholder_logo.png", "description": "Mobil bekas Toyota resmi dan bersertifikat.", "direct_link": "https://auto2000.co.id/" }
+  ]
+}

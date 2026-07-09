@@ -50,7 +50,8 @@ This project is built focusing on scalability, maintainability, and testing, uti
    ```
 
 2. **Open the project in Android Studio**
-   - We recommend using **Android Studio Ladybug** or newer to fully support the latest Jetpack Compose versions.
+   - We recommend using **Android Studio Ladybug** or newer.
+   - The project is configured with **Android Gradle Plugin (AGP) 8.7.2** and **Gradle 8.9** to ensure high compatibility with most stable development environments.
 
 3. **AdMob Configuration**
    - The project currently utilizes Google's test ad units for development purposes.

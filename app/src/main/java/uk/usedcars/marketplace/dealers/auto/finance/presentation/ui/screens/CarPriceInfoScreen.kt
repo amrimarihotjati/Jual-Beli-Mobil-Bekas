@@ -12,6 +12,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -228,6 +229,7 @@ fun CarCard(
                     ) {
                         SpecChip(icon = Icons.Default.Settings, text = car.transmission)
                         SpecChip(icon = Icons.Default.LocationOn, text = car.fuelType)
+                        SpecChip(icon = Icons.Default.Person, text = car.seats)
                     }
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(

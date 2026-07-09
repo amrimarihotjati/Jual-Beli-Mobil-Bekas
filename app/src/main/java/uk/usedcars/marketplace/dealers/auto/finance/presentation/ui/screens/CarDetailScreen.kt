@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
@@ -263,8 +264,9 @@ fun CarDetailScreen(
                             SpecItem(Icons.Default.Place, "Lokasi", car.location)
                         }
                         Spacer(modifier = Modifier.height(16.dp))
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                             SpecItem(Icons.Default.Info, "Kilometer", car.mileage)
+                            SpecItem(Icons.Default.Person, "Kursi", car.seats)
                         }
                     }
                 }

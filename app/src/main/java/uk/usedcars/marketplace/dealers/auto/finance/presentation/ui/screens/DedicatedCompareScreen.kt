@@ -107,6 +107,8 @@ fun DedicatedCompareScreen(
                         HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
                         SmartCompareRow("Kilometer", c1.mileage, c2.mileage, type = CompareType.LOWER_IS_BETTER)
                         HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
+                        SmartCompareRow("Kapasitas Penumpang", c1.seats, c2.seats, type = CompareType.NEUTRAL)
+                        HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
                         SmartCompareRow("Transmisi", c1.transmission, c2.transmission, type = CompareType.NEUTRAL)
                         HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
                         SmartCompareRow("Bahan Bakar", c1.fuelType, c2.fuelType, type = CompareType.NEUTRAL)

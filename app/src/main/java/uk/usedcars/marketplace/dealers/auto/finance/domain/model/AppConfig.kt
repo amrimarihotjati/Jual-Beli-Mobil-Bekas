@@ -23,7 +23,8 @@ data class UsedCar(
     val transmission: String = "Automatic (AT)",
     @SerializedName("fuel_type") val fuelType: String = "Bensin",
     val mileage: String = "50,000 km",
-    val location: String = "Jakarta"
+    val location: String = "Jakarta",
+    val seats: String = "5 Seater"
 )
 
 data class AdMobConfig(

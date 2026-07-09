@@ -475,7 +475,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "44,000 km",
-            "location": "Jakarta Barat"
+            "location": "Jakarta Barat",
+            "seats": "7 Seater"
         },
         {
             "id": "c2",
@@ -497,7 +498,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "20,000 km",
-            "location": "Bandung"
+            "location": "Bandung",
+            "seats": "5 Seater"
         },
         {
             "id": "c3",
@@ -519,7 +521,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "29,000 km",
-            "location": "Jakarta Selatan"
+            "location": "Jakarta Selatan",
+            "seats": "7 Seater"
         },
         {
             "id": "c4",
@@ -541,7 +544,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin/Diesel",
             "mileage": "33,000 km",
-            "location": "Tangerang"
+            "location": "Tangerang",
+            "seats": "7 Seater"
         },
         {
             "id": "c5",
@@ -563,7 +567,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "72,000 km",
-            "location": "Jakarta Selatan"
+            "location": "Jakarta Selatan",
+            "seats": "7 Seater"
         },
         {
             "id": "c6",
@@ -585,7 +590,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "17,000 km",
-            "location": "Jakarta Selatan"
+            "location": "Jakarta Selatan",
+            "seats": "7 Seater"
         },
         {
             "id": "c7",
@@ -606,7 +612,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "15,000 km",
-            "location": "Bandung"
+            "location": "Bandung",
+            "seats": "5 Seater"
         },
         {
             "id": "c8",
@@ -628,7 +635,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin/Diesel",
             "mileage": "73,000 km",
-            "location": "Jakarta Selatan"
+            "location": "Jakarta Selatan",
+            "seats": "7 Seater"
         },
         {
             "id": "c9",
@@ -637,9 +645,8 @@
             "year": "2018-2023",
             "price_range": "Rp 190 Jt - Rp 270 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c9_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c9_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c9_2.jpg"
+                "https://upload.wikimedia.org/wikipedia/commons/3/36/2018_Toyota_Rush_1.5_TRD_Sportivo_F800RE_%2820181223%29.jpg",
+                "https://upload.wikimedia.org/wikipedia/commons/5/53/2018_Toyota_Rush_1.5_TRD_Sportivo_F800RE_rear_%2820181223%29.jpg"
             ],
             "description": "Low SUV andalan keluarga. Penggerak roda belakang (RWD) membuatnya sangat bisa diandalkan untuk tanjakan dan jalan rusak.",
             "tags": [
@@ -650,7 +657,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "66,000 km",
-            "location": "Surabaya"
+            "location": "Surabaya",
+            "seats": "7 Seater"
         },
         {
             "id": "c10",
@@ -659,9 +667,8 @@
             "year": "2018-2022",
             "price_range": "Rp 150 Jt - Rp 230 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c10_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c10_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c10_2.jpg"
+                "https://upload.wikimedia.org/wikipedia/commons/4/4b/2018_Suzuki_Ertiga_GL_1.5_NC22S_%2820190529%29.jpg",
+                "https://upload.wikimedia.org/wikipedia/commons/2/23/2018_Suzuki_Ertiga_GL_1.5_NC22S_rear_%2820190529%29.jpg"
             ],
             "description": "LMPV dengan efisiensi BBM terbaik di kelasnya serta kabin yang sangat senyap dan halus.",
             "tags": [
@@ -672,7 +679,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "59,000 km",
-            "location": "Tangerang"
+            "location": "Tangerang",
+            "seats": "7 Seater"
         },
         {
             "id": "c11",
@@ -693,7 +701,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "74,000 km",
-            "location": "Bekasi"
+            "location": "Bekasi",
+            "seats": "5 Seater"
         },
         {
             "id": "c12",
@@ -702,9 +711,8 @@
             "year": "2016-2023",
             "price_range": "Rp 100 Jt - Rp 145 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c12_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c12_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c12_2.jpg"
+                "https://upload.wikimedia.org/wikipedia/commons/f/fe/2016_Toyota_Calya_1.2_G_B401RA_%2820190224%29.jpg",
+                "https://upload.wikimedia.org/wikipedia/commons/6/6e/2016_Toyota_Calya_1.2_G_B401RA_rear_%2820190224%29.jpg"
             ],
             "description": "Kembaran Sigra dengan lambang Toyota. Kualitas terjamin dan nilai purna jual sangat baik.",
             "tags": [
@@ -715,7 +723,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "84,000 km",
-            "location": "Jakarta Barat"
+            "location": "Jakarta Barat",
+            "seats": "7 Seater"
         },
         {
             "id": "c13",
@@ -724,9 +733,8 @@
             "year": "2020-2023",
             "price_range": "Rp 200 Jt - Rp 270 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c13_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c13_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c13_2.jpg"
+                "https://upload.wikimedia.org/wikipedia/commons/a/ae/2020_Suzuki_XL7_Zeta_%2820200215%29.jpg",
+                "https://upload.wikimedia.org/wikipedia/commons/b/b5/2020_Suzuki_XL7_Zeta_rear_%2820200215%29.jpg"
             ],
             "description": "Versi SUV dari Ertiga. Lebih tinggi, lebih maskulin, dan dilengkapi fitur canggih seperti Smart E-Mirror.",
             "tags": [
@@ -737,7 +745,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "55,000 km",
-            "location": "Surabaya"
+            "location": "Surabaya",
+            "seats": "7 Seater"
         },
         {
             "id": "c14",
@@ -746,9 +755,8 @@
             "year": "2016-2021",
             "price_range": "Rp 150 Jt - Rp 230 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c14_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c14_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c14_2.jpg"
+                "https://upload.wikimedia.org/wikipedia/commons/e/ec/2016_Honda_BR-V_1.5_E_Prestige_wagon_%28DG1%3B_11-19-2019%29.jpg",
+                "https://upload.wikimedia.org/wikipedia/commons/0/07/2016_Honda_BR-V_1.5_E_Prestige_wagon_%28DG1%3B_11-19-2019%29_rear.jpg"
             ],
             "description": "Crossover 7-penumpang dengan performa mesin i-VTEC terkuat di kelasnya. Desain kokoh khas SUV.",
             "tags": [
@@ -759,7 +767,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "38,000 km",
-            "location": "Bekasi"
+            "location": "Bekasi",
+            "seats": "7 Seater"
         },
         {
             "id": "c15",
@@ -780,7 +789,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "55,000 km",
-            "location": "Surabaya"
+            "location": "Surabaya",
+            "seats": "5 Seater"
         },
         {
             "id": "c16",
@@ -801,7 +811,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "39,000 km",
-            "location": "Jakarta Selatan"
+            "location": "Jakarta Selatan",
+            "seats": "5 Seater"
         },
         {
             "id": "c17",
@@ -822,7 +833,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "66,000 km",
-            "location": "Jakarta Barat"
+            "location": "Jakarta Barat",
+            "seats": "7 Seater"
         },
         {
             "id": "c18",
@@ -843,7 +855,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "75,000 km",
-            "location": "Bekasi"
+            "location": "Bekasi",
+            "seats": "7 Seater"
         },
         {
             "id": "c19",
@@ -864,7 +877,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "46,000 km",
-            "location": "Bandung"
+            "location": "Bandung",
+            "seats": "7 Seater"
         },
         {
             "id": "c20",
@@ -885,7 +899,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "59,000 km",
-            "location": "Tangerang"
+            "location": "Tangerang",
+            "seats": "7 Seater"
         },
         {
             "id": "c21",
@@ -906,7 +921,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "85,000 km",
-            "location": "Tangerang"
+            "location": "Tangerang",
+            "seats": "7 Seater"
         },
         {
             "id": "c22",
@@ -927,7 +943,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "18,000 km",
-            "location": "Jakarta Selatan"
+            "location": "Jakarta Selatan",
+            "seats": "7 Seater"
         },
         {
             "id": "c23",
@@ -948,7 +965,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "40,000 km",
-            "location": "Tangerang"
+            "location": "Tangerang",
+            "seats": "7 Seater"
         },
         {
             "id": "c24",
@@ -969,7 +987,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "66,000 km",
-            "location": "Jakarta Barat"
+            "location": "Jakarta Barat",
+            "seats": "7 Seater"
         },
         {
             "id": "c25",
@@ -990,7 +1009,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "51,000 km",
-            "location": "Tangerang"
+            "location": "Tangerang",
+            "seats": "7 Seater"
         },
         {
             "id": "c26",
@@ -1011,7 +1031,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "48,000 km",
-            "location": "Jakarta Barat"
+            "location": "Jakarta Barat",
+            "seats": "7 Seater"
         },
         {
             "id": "c27",
@@ -1032,7 +1053,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "73,000 km",
-            "location": "Bandung"
+            "location": "Bandung",
+            "seats": "7 Seater"
         },
         {
             "id": "c28",
@@ -1053,7 +1075,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "22,000 km",
-            "location": "Tangerang"
+            "location": "Tangerang",
+            "seats": "7 Seater"
         },
         {
             "id": "c29",
@@ -1074,7 +1097,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "25,000 km",
-            "location": "Jakarta Barat"
+            "location": "Jakarta Barat",
+            "seats": "7 Seater"
         },
         {
             "id": "c30",
@@ -1095,7 +1119,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "58,000 km",
-            "location": "Bekasi"
+            "location": "Bekasi",
+            "seats": "7 Seater"
         },
         {
             "id": "c31",
@@ -1116,7 +1141,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "30,000 km",
-            "location": "Bandung"
+            "location": "Bandung",
+            "seats": "7 Seater"
         },
         {
             "id": "c32",
@@ -1137,7 +1163,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "36,000 km",
-            "location": "Surabaya"
+            "location": "Surabaya",
+            "seats": "7 Seater"
         },
         {
             "id": "c33",
@@ -1158,7 +1185,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "85,000 km",
-            "location": "Jakarta Barat"
+            "location": "Jakarta Barat",
+            "seats": "7 Seater"
         },
         {
             "id": "c34",
@@ -1179,7 +1207,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "42,000 km",
-            "location": "Surabaya"
+            "location": "Surabaya",
+            "seats": "7 Seater"
         },
         {
             "id": "c35",
@@ -1200,7 +1229,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "25,000 km",
-            "location": "Surabaya"
+            "location": "Surabaya",
+            "seats": "7 Seater"
         },
         {
             "id": "c36",
@@ -1221,7 +1251,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "43,000 km",
-            "location": "Bandung"
+            "location": "Bandung",
+            "seats": "7 Seater"
         },
         {
             "id": "c37",
@@ -1242,7 +1273,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "64,000 km",
-            "location": "Surabaya"
+            "location": "Surabaya",
+            "seats": "7 Seater"
         },
         {
             "id": "c38",
@@ -1263,7 +1295,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "43,000 km",
-            "location": "Jakarta Barat"
+            "location": "Jakarta Barat",
+            "seats": "7 Seater"
         },
         {
             "id": "c39",
@@ -1284,7 +1317,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "49,000 km",
-            "location": "Bandung"
+            "location": "Bandung",
+            "seats": "7 Seater"
         },
         {
             "id": "c40",
@@ -1305,7 +1339,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "72,000 km",
-            "location": "Bekasi"
+            "location": "Bekasi",
+            "seats": "7 Seater"
         },
         {
             "id": "c41",
@@ -1326,7 +1361,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "71,000 km",
-            "location": "Jakarta Barat"
+            "location": "Jakarta Barat",
+            "seats": "7 Seater"
         },
         {
             "id": "c42",
@@ -1347,7 +1383,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "54,000 km",
-            "location": "Jakarta Selatan"
+            "location": "Jakarta Selatan",
+            "seats": "7 Seater"
         },
         {
             "id": "c43",
@@ -1368,7 +1405,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "68,000 km",
-            "location": "Jakarta Selatan"
+            "location": "Jakarta Selatan",
+            "seats": "7 Seater"
         },
         {
             "id": "c44",
@@ -1389,7 +1427,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "30,000 km",
-            "location": "Bandung"
+            "location": "Bandung",
+            "seats": "7 Seater"
         },
         {
             "id": "c45",
@@ -1410,7 +1449,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "72,000 km",
-            "location": "Bekasi"
+            "location": "Bekasi",
+            "seats": "7 Seater"
         },
         {
             "id": "c46",
@@ -1431,7 +1471,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin/Diesel",
             "mileage": "47,000 km",
-            "location": "Jakarta Selatan"
+            "location": "Jakarta Selatan",
+            "seats": "7 Seater"
         },
         {
             "id": "c47",
@@ -1453,7 +1494,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "65,000 km",
-            "location": "Bekasi"
+            "location": "Bekasi",
+            "seats": "7 Seater"
         },
         {
             "id": "c48",
@@ -1474,7 +1516,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "54,000 km",
-            "location": "Bandung"
+            "location": "Bandung",
+            "seats": "7 Seater"
         },
         {
             "id": "c49",
@@ -1495,7 +1538,8 @@
             "transmission": "Manual (MT)",
             "fuel_type": "Bensin",
             "mileage": "43,000 km",
-            "location": "Bekasi"
+            "location": "Bekasi",
+            "seats": "7 Seater"
         },
         {
             "id": "c50",
@@ -1516,7 +1560,8 @@
             "transmission": "Automatic (AT)",
             "fuel_type": "Bensin",
             "mileage": "26,000 km",
-            "location": "Surabaya"
+            "location": "Surabaya",
+            "seats": "7 Seater"
         }
     ]
 }

@@ -17,5 +17,11 @@ data class NewsItem(
     val link: String,
     val thumbnail: String,
     val description: String,
-    val author: String
+    val author: String,
+    val enclosure: Enclosure?
+)
+
+data class Enclosure(
+    val link: String,
+    val type: String
 )

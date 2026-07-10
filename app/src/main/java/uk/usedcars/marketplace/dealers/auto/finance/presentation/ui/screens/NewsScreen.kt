@@ -29,7 +29,7 @@ import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NewsScreen(viewModel: NewsViewModel) {
+fun NewsScreen(viewModel: NewsViewModel, onNavigateToNewsDetail: (String) -> Unit) {
     val news by viewModel.news.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
     val error by viewModel.error.collectAsState()
@@ -71,7 +71,7 @@ fun NewsScreen(viewModel: NewsViewModel) {
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     items(news) { item ->
-                        NewsCard(item = item)
+                        NewsCard(item = item, onNavigateToNewsDetail = onNavigateToNewsDetail)
                     }
                 }
             }
@@ -80,14 +80,14 @@ fun NewsScreen(viewModel: NewsViewModel) {
 }
 
 @Composable
-fun NewsCard(item: NewsItem) {
+fun NewsCard(item: NewsItem, onNavigateToNewsDetail: (String) -> Unit) {
     val context = LocalContext.current
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(item.link))
-                context.startActivity(intent)
+                val encodedUrl = java.net.URLEncoder.encode(item.link, "UTF-8")
+                onNavigateToNewsDetail(encodedUrl)
             },
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
@@ -99,7 +99,7 @@ fun NewsCard(item: NewsItem) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             ShimmerAsyncImage(
-                model = item.thumbnail,
+                model = item.thumbnail.takeIf { it.isNotEmpty() } ?: item.enclosure?.link,
                 contentDescription = item.title,
                 modifier = Modifier
                     .size(90.dp)

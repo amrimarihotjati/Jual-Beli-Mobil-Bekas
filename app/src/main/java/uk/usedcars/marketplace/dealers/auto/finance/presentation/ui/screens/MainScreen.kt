@@ -16,11 +16,16 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Mic
 
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import android.content.Intent
+import android.speech.RecognizerIntent
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -91,6 +96,20 @@ fun MainScreen(
 @Composable
 fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
     var searchQuery by remember { mutableStateOf("") }
+    
+    val speechRecognizerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult(),
+        onResult = { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data = result.data
+                val results = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+                if (!results.isNullOrEmpty()) {
+                    searchQuery = results[0]
+                }
+            }
+        }
+    )
+
     val filteredMarketplaces = config.marketplaces.filter { 
         it.name.contains(searchQuery, ignoreCase = true) || 
         it.tags.any { tag -> tag.contains(searchQuery, ignoreCase = true) } 
@@ -114,6 +133,19 @@ fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
                     value = searchQuery,
                     onValueChange = { searchQuery = it },
                     placeholder = { Text("Cari mobil atau fitur (Bisa Cicil, Garansi...)") },
+                    trailingIcon = {
+                        IconButton(onClick = {
+                            val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+                                putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+                                putExtra(RecognizerIntent.EXTRA_LANGUAGE, "id-ID")
+                            }
+                            try {
+                                speechRecognizerLauncher.launch(intent)
+                            } catch (e: Exception) {}
+                        }) {
+                            Icon(Icons.Default.Mic, contentDescription = "Pencarian Suara")
+                        }
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp)

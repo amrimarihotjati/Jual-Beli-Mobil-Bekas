@@ -36,7 +36,8 @@ fun MainLayoutScreen(
     viewModel: CarViewModel,
     newsViewModel: NewsViewModel,
     onNavigateToDetail: (Marketplace) -> Unit,
-    onNavigateToCarDetail: (UsedCar) -> Unit
+    onNavigateToCarDetail: (UsedCar) -> Unit,
+    onNavigateToNewsDetail: (String) -> Unit
 ) {
     val context = LocalContext.current
     val navController = rememberNavController()
@@ -136,7 +137,10 @@ fun MainLayoutScreen(
                 }
             }
             composable(BottomNavItem.News.route) {
-                NewsScreen(viewModel = newsViewModel)
+                NewsScreen(
+                    viewModel = newsViewModel,
+                    onNavigateToNewsDetail = onNavigateToNewsDetail
+                )
             }
         }
     }

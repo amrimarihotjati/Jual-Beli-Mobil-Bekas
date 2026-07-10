@@ -28,6 +28,7 @@ import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.Intr
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.MainScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.MainLayoutScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.CarDetailScreen
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.NewsWebViewScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.SplashScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.CreditCalculatorScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarViewModel
@@ -101,6 +102,9 @@ class MainActivity : ComponentActivity() {
                                     // Normally pass to viewModel, let's just add it dynamically or store in viewModel
                                     viewModel.selectedCar = car
                                     navController.navigate("car_detail")
+                                },
+                                onNavigateToNewsDetail = { url ->
+                                    navController.navigate("news_webview/$url")
                                 }
                             )
                         }
@@ -151,6 +155,17 @@ class MainActivity : ComponentActivity() {
                                     )
                                 }
                             }
+                        }
+                        composable(
+                            "news_webview/{url}",
+                            arguments = listOf(navArgument("url") { type = NavType.StringType })
+                        ) { backStackEntry ->
+                            val url = backStackEntry.arguments?.getString("url") ?: ""
+                            val decodedUrl = java.net.URLDecoder.decode(url, "UTF-8")
+                            NewsWebViewScreen(
+                                url = decodedUrl,
+                                onBack = { navController.popBackStack() }
+                            )
                         }
                     }
                 }

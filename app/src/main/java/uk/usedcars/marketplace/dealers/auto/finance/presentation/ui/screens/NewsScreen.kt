@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import uk.usedcars.marketplace.dealers.auto.finance.data.local.ArticleData
 import uk.usedcars.marketplace.dealers.auto.finance.data.local.Article
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -51,6 +52,9 @@ fun NewsScreen(onNavigateToArticleDetail: (String) -> Unit) {
             contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 24.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            item {
+                NativeAdViewComposable(cacheKey = "news_ad")
+            }
             items(articles) { article ->
                 ArticleCard(article = article, onNavigateToArticleDetail = onNavigateToArticleDetail)
             }

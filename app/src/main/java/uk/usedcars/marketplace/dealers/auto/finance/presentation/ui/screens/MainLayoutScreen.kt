@@ -79,7 +79,7 @@ fun MainLayoutScreen(
                             icon = { Icon(item.icon, contentDescription = item.title) },
                             label = { Text(item.title) },
                             selected = currentRoute == item.route,
-                            alwaysShowLabel = false,
+                            alwaysShowLabel = true,
                             onClick = {
                                 navController.navigate(item.route) {
                                     navController.graph.startDestinationRoute?.let { route ->

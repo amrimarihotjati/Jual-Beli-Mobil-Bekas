@@ -26,6 +26,8 @@ import androidx.compose.material.icons.filled.LocalGasStation
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -495,5 +497,103 @@ fun SpecItem(icon: androidx.compose.ui.graphics.vector.ImageVector, label: Strin
             Text(label, fontSize = 12.sp, color = Color.Gray)
             Text(value, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
         }
+    }
+}
+
+@Composable
+fun InspectionTipsSection(car: UsedCar) {
+    val tips = getInspectionTips(car)
+    if (tips.isNotEmpty()) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.3f)),
+            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+            shape = RoundedCornerShape(12.dp)
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        Icons.Default.Warning,
+                        contentDescription = "Tips Inspeksi",
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "Fokus Inspeksi ${car.name}",
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onTertiaryContainer
+                    )
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+                tips.forEach { tip ->
+                    Row(
+                        modifier = Modifier.padding(vertical = 4.dp),
+                        verticalAlignment = Alignment.Top
+                    ) {
+                        Icon(
+                            Icons.Default.CheckCircle,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f),
+                            modifier = Modifier.size(16.dp).padding(top = 2.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = tip,
+                            fontSize = 13.sp,
+                            lineHeight = 18.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+fun getInspectionTips(car: UsedCar): List<String> {
+    val name = car.name.lowercase()
+    val brand = car.brand.lowercase()
+    
+    return when {
+        brand.contains("honda") && (name.contains("cr-v") || name.contains("hr-v") || name.contains("br-v")) -> listOf(
+            "Waspada bunyi 'gluduk' atau oblak dari area steering rack saat melewati jalan rusak atau polisi tidur.",
+            "Cek transmisi CVT: pastikan perpindahan gigi mulus dan tidak ada bunyi dengung pada kecepatan tinggi.",
+            "Periksa kebocoran oli di sekitar paking silinder kop dan carter oli."
+        )
+        brand.contains("honda") && (name.contains("brio") || name.contains("jazz") || name.contains("mobilio")) -> listOf(
+            "Cek kaki-kaki depan (lower arm & tie rod) yang rawan aus karena usia pakai.",
+            "Pastikan kompresor AC tidak berbunyi kasar saat magnetic clutch menyala.",
+            "Cek history penggantian oli transmisi CVT, sangat rentan jika sering telat ganti."
+        )
+        brand.contains("toyota") && (name.contains("innova") || name.contains("fortuner") || name.contains("hilux")) -> listOf(
+            "Untuk mesin Diesel: Cek kepulan asap knalpot. Asap putih/biru tebal menandakan ada kebocoran oli ke ruang bakar atau turbo bermasalah.",
+            "Dengarkan suara siulan Turbo saat mesin digas. Suara siulan yang terlalu nyaring bisa berarti fin turbo mulai aus.",
+            "Cek kondisi suspensi belakang dan gardan, pastikan tidak ada rembesan oli."
+        )
+        brand.contains("toyota") && (name.contains("avanza") || name.contains("calya") || name.contains("agya") || name.contains("rush")) -> listOf(
+            "Periksa keausan kampas kopling (untuk transmisi manual) karena sering digunakan untuk beban berat.",
+            "Cek kebocoran pada water pump dan ekstra fan radiator yang sering bermasalah di usia lebih dari 5 tahun.",
+            "Pastikan AC Double Blower (jika ada) berfungsi normal dan tidak bau apak."
+        )
+        brand.contains("suzuki") && (name.contains("ertiga") || name.contains("xl7") || name.contains("carry")) -> listOf(
+            "Cek sistem pendingin mesin (radiator & selang), mesin Suzuki agak sensitif terhadap overheat.",
+            "Pastikan bushing arm dan sokbreker depan tidak bocor (sering dikeluhkan pengguna).",
+            "Cek fungsi kelistrikan seperti head unit dan power window."
+        )
+        brand.contains("mitsubishi") && (name.contains("xpander") || name.contains("pajero")) -> listOf(
+            "Untuk Xpander: Cek rack steer dan shock absorber belakang yang sering aus atau bocor di generasi awal.",
+            "Untuk Pajero: Cek kondisi EGR (Exhaust Gas Recirculation) yang sering kotor akibat solar berkualitas rendah.",
+            "Cek kebocoran oli di area seal kruk as belakang."
+        )
+        else -> listOf(
+            "Cek keutuhan tulang sasis di ruang mesin dan pastikan tidak ada bekas las atau keriting (indikasi bekas tabrakan).",
+            "Nyalakan AC dan perhatikan putaran mesin (RPM). RPM yang drop drastis menandakan idle speed control (ISC) kotor.",
+            "Tarik seatbelt sampai ujung; jika ada bekas lumpur atau bau apak, kemungkinan besar bekas banjir.",
+            "Lakukan test drive minimal 15 menit untuk merasakan bantingan suspensi dan operan transmisi."
+        )
     }
 }

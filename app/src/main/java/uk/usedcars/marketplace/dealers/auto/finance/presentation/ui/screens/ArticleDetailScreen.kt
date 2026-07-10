@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import uk.usedcars.marketplace.dealers.auto.finance.data.local.ArticleData
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -101,6 +102,14 @@ fun ArticleDetailScreen(articleId: String, onBack: () -> Unit) {
                         lineHeight = 28.sp,
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
                     )
+                    Spacer(modifier = Modifier.height(24.dp))
+                    Text(
+                        text = "Didukung Oleh",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = Color.Gray
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    NativeAdViewComposable(cacheKey = "article_ad")
                     Spacer(modifier = Modifier.height(40.dp))
                 }
             }

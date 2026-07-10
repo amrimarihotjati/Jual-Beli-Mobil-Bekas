@@ -393,7 +393,22 @@ fun CarDetailScreen(
                             .clickable {
                                 AdMobManager.showInterstitialAdWithCounter(context as Activity) {
                                     try {
-                                        val searchUrl = "https://google.com/search?q=${car.name.replace(" ", "+")}+di+${marketplace.name.replace(" ", "+")}"
+                                        val carQuery = car.name.replace(" ", "+")
+                                        val searchUrl = when (marketplace.name.lowercase()) {
+                                            "olx autos" -> "https://www.olx.co.id/mobil-bekas_c198/q-${carQuery}"
+                                            "carsome" -> "https://www.carsome.id/beli-mobil-bekas?search=${carQuery}"
+                                            "carro" -> "https://carro.id/cars/all?search=${carQuery}"
+                                            "mobil123" -> "https://www.mobil123.com/mobil-dijual/indonesia?keyword=${carQuery}"
+                                            "carmudi" -> "https://www.carmudi.co.id/mobil-dijual/indonesia?keyword=${carQuery}"
+                                            "oto" -> "https://www.oto.com/mobil-bekas/pencarian?q=${carQuery}"
+                                            "caroline.id" -> "https://www.caroline.id/beli-mobil-bekas?q=${carQuery}"
+                                            "seva" -> "https://www.seva.id/cari-mobil?search=${carQuery}"
+                                            "cintamobil" -> "https://cintamobil.com/mobil-dijual?keyword=${carQuery}"
+                                            "momobil" -> "https://momobil.id/cari-mobil?q=${carQuery}"
+                                            "garasi.id" -> "https://garasi.id/mobil-bekas?q=${carQuery}"
+                                            "auto2000" -> "https://auto2000.co.id/mobil-bekas-toyota?q=${carQuery}"
+                                            else -> "https://google.com/search?q=${carQuery}+di+${marketplace.name.replace(" ", "+")}"
+                                        }
                                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(searchUrl))
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                                         context.startActivity(intent)

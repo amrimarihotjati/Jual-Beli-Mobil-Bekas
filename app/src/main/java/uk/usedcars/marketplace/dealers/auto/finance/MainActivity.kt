@@ -28,11 +28,9 @@ import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.Intr
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.MainScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.MainLayoutScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.CarDetailScreen
-import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.NewsWebViewScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.SplashScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.CreditCalculatorScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarViewModel
-import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.NewsViewModel
 import uk.usedcars.marketplace.dealers.auto.finance.theme.JualBeliMobilBekasTheme
 
 class MainActivity : ComponentActivity() {
@@ -56,12 +54,6 @@ class MainActivity : ComponentActivity() {
                 @Suppress("UNCHECKED_CAST")
                 override fun <T : ViewModel> create(modelClass: Class<T>): T {
                     return CarViewModel(repository) as T
-                }
-            })
-            val newsViewModel: NewsViewModel = viewModel(factory = object : ViewModelProvider.Factory {
-                @Suppress("UNCHECKED_CAST")
-                override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                    return NewsViewModel(repository) as T
                 }
             })
             val context = LocalContext.current
@@ -93,7 +85,6 @@ class MainActivity : ComponentActivity() {
                         composable("main_layout") {
                             MainLayoutScreen(
                                 viewModel = viewModel,
-                                newsViewModel = newsViewModel,
                                 onNavigateToDetail = { marketplace ->
                                     viewModel.selectedMarketplace = marketplace
                                     navController.navigate("detail")
@@ -103,8 +94,8 @@ class MainActivity : ComponentActivity() {
                                     viewModel.selectedCar = car
                                     navController.navigate("car_detail")
                                 },
-                                onNavigateToNewsDetail = { url ->
-                                    navController.navigate("news_webview/$url")
+                                onNavigateToArticleDetail = { articleId ->
+                                    navController.navigate("article_detail/$articleId")
                                 }
                             )
                         }
@@ -157,13 +148,12 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                         composable(
-                            "news_webview/{url}",
-                            arguments = listOf(navArgument("url") { type = NavType.StringType })
+                            "article_detail/{articleId}",
+                            arguments = listOf(navArgument("articleId") { type = NavType.StringType })
                         ) { backStackEntry ->
-                            val url = backStackEntry.arguments?.getString("url") ?: ""
-                            val decodedUrl = java.net.URLDecoder.decode(url, "UTF-8")
-                            NewsWebViewScreen(
-                                url = decodedUrl,
+                            val articleId = backStackEntry.arguments?.getString("articleId") ?: ""
+                            uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.ArticleDetailScreen(
+                                articleId = articleId,
                                 onBack = { navController.popBackStack() }
                             )
                         }

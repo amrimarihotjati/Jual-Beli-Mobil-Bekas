@@ -23,21 +23,24 @@ import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarViewModel
-import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.NewsViewModel
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiState
 import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
 import android.app.Activity
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.material.icons.filled.List
 
 @Composable
 fun MainLayoutScreen(
     viewModel: CarViewModel,
-    newsViewModel: NewsViewModel,
     onNavigateToDetail: (Marketplace) -> Unit,
     onNavigateToCarDetail: (UsedCar) -> Unit,
-    onNavigateToNewsDetail: (String) -> Unit
+    onNavigateToArticleDetail: (String) -> Unit
 ) {
     val context = LocalContext.current
     val navController = rememberNavController()
@@ -56,35 +59,45 @@ fun MainLayoutScreen(
 
     Scaffold(
         bottomBar = {
-            NavigationBar(
-                containerColor = MaterialTheme.colorScheme.surface,
-                contentColor = MaterialTheme.colorScheme.primary
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 12.dp)
+                    .shadow(elevation = 16.dp, shape = RoundedCornerShape(32.dp), spotColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f))
+                    .clip(RoundedCornerShape(32.dp))
             ) {
-                val navBackStackEntry by navController.currentBackStackEntryAsState()
-                val currentRoute = navBackStackEntry?.destination?.route
+                NavigationBar(
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    contentColor = MaterialTheme.colorScheme.primary,
+                    tonalElevation = 0.dp
+                ) {
+                    val navBackStackEntry by navController.currentBackStackEntryAsState()
+                    val currentRoute = navBackStackEntry?.destination?.route
 
-                items.forEach { item ->
-                    NavigationBarItem(
-                        icon = { Icon(item.icon, contentDescription = item.title) },
-                        label = { Text(item.title) },
-                        selected = currentRoute == item.route,
-                        onClick = {
-                            navController.navigate(item.route) {
-                                navController.graph.startDestinationRoute?.let { route ->
-                                    popUpTo(route) { saveState = true }
+                    items.forEach { item ->
+                        NavigationBarItem(
+                            icon = { Icon(item.icon, contentDescription = item.title) },
+                            label = { Text(item.title) },
+                            selected = currentRoute == item.route,
+                            alwaysShowLabel = false,
+                            onClick = {
+                                navController.navigate(item.route) {
+                                    navController.graph.startDestinationRoute?.let { route ->
+                                        popUpTo(route) { saveState = true }
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
                                 }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
-                        colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = MaterialTheme.colorScheme.primary,
-                            selectedTextColor = MaterialTheme.colorScheme.primary,
-                            indicatorColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
-                            unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
-                            unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+                            },
+                            colors = NavigationBarItemDefaults.colors(
+                                selectedIconColor = MaterialTheme.colorScheme.primary,
+                                selectedTextColor = MaterialTheme.colorScheme.primary,
+                                indicatorColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
+                                unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
+                                unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
                         )
-                    )
+                    }
                 }
             }
         }
@@ -138,8 +151,7 @@ fun MainLayoutScreen(
             }
             composable(BottomNavItem.News.route) {
                 NewsScreen(
-                    viewModel = newsViewModel,
-                    onNavigateToNewsDetail = onNavigateToNewsDetail
+                    onNavigateToArticleDetail = onNavigateToArticleDetail
                 )
             }
         }
@@ -147,9 +159,9 @@ fun MainLayoutScreen(
 }
 
 sealed class BottomNavItem(val route: String, val icon: androidx.compose.ui.graphics.vector.ImageVector, val title: String) {
-    object CarPrices : BottomNavItem("car_prices_tab", Icons.Default.Home, "Beranda")
-    object Home : BottomNavItem("home_tab", Icons.Default.ShoppingCart, "Marketplace")
-    object Compare : BottomNavItem("compare_tab", Icons.Default.CompareArrows, "Bandingkan")
+    object CarPrices : BottomNavItem("car_prices_tab", Icons.Default.Home, "Home")
+    object Home : BottomNavItem("home_tab", Icons.Default.ShoppingCart, "Pasar")
+    object Compare : BottomNavItem("compare_tab", Icons.Default.CompareArrows, "Adu")
     object Calculator : BottomNavItem("calculator_tab", Icons.Default.CreditCard, "Kredit")
-    object News : BottomNavItem("news_tab", Icons.Default.List, "Berita")
+    object News : BottomNavItem("news_tab", Icons.Default.List, "Panduan")
 }

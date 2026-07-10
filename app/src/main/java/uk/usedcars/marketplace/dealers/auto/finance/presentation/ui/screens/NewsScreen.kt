@@ -22,72 +22,49 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import uk.usedcars.marketplace.dealers.auto.finance.domain.model.NewsItem
-import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.NewsViewModel
+import uk.usedcars.marketplace.dealers.auto.finance.data.local.ArticleData
+import uk.usedcars.marketplace.dealers.auto.finance.data.local.Article
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NewsScreen(viewModel: NewsViewModel, onNavigateToNewsDetail: (String) -> Unit) {
-    val news by viewModel.news.collectAsState()
-    val isLoading by viewModel.isLoading.collectAsState()
-    val error by viewModel.error.collectAsState()
+fun NewsScreen(onNavigateToArticleDetail: (String) -> Unit) {
+    val articles = ArticleData.articles
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Berita & Tips Otomotif", fontWeight = FontWeight.Bold) },
+                title = { Text("Tips & Panduan Otomotif", fontWeight = FontWeight.Bold, fontSize = 20.sp) },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
                 )
             )
         }
     ) { innerPadding ->
-        Box(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(innerPadding),
+            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 24.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            if (isLoading) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-            } else if (error != null) {
-                Column(
-                    modifier = Modifier.align(Alignment.Center),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(error ?: "Terjadi kesalahan", color = MaterialTheme.colorScheme.error)
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Button(onClick = { viewModel.fetchNews() }) {
-                        Text("Coba Lagi")
-                    }
-                }
-            } else if (news.isEmpty()) {
-                Text("Tidak ada berita saat ini.", modifier = Modifier.align(Alignment.Center))
-            } else {
-                LazyColumn(
-                    contentPadding = PaddingValues(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    items(news) { item ->
-                        NewsCard(item = item, onNavigateToNewsDetail = onNavigateToNewsDetail)
-                    }
-                }
+            items(articles) { article ->
+                ArticleCard(article = article, onNavigateToArticleDetail = onNavigateToArticleDetail)
             }
         }
     }
 }
 
 @Composable
-fun NewsCard(item: NewsItem, onNavigateToNewsDetail: (String) -> Unit) {
-    val context = LocalContext.current
+fun ArticleCard(article: Article, onNavigateToArticleDetail: (String) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .clickable {
-                val encodedUrl = java.net.URLEncoder.encode(item.link, "UTF-8")
-                onNavigateToNewsDetail(encodedUrl)
+                onNavigateToArticleDetail(article.id)
             },
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
@@ -99,33 +76,26 @@ fun NewsCard(item: NewsItem, onNavigateToNewsDetail: (String) -> Unit) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             ShimmerAsyncImage(
-                model = item.thumbnail.takeIf { it.isNotEmpty() } ?: item.enclosure?.link,
-                contentDescription = item.title,
+                model = article.imageUrl,
+                contentDescription = article.title,
                 modifier = Modifier
-                    .size(90.dp)
-                    .clip(RoundedCornerShape(8.dp)),
+                    .size(100.dp)
+                    .clip(RoundedCornerShape(12.dp)),
                 contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = item.title,
+                    text = article.title,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 15.sp,
+                    fontSize = 16.sp,
                     maxLines = 2,
+                    lineHeight = 22.sp,
                     overflow = TextOverflow.Ellipsis
                 )
-                Spacer(modifier = Modifier.height(6.dp))
-                val formattedDate = try {
-                    val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                    val formatter = SimpleDateFormat("dd MMM yyyy, HH:mm", Locale("id", "ID"))
-                    val date = parser.parse(item.pubDate)
-                    if (date != null) formatter.format(date) else item.pubDate
-                } catch (e: Exception) {
-                    item.pubDate
-                }
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = formattedDate,
+                    text = article.date,
                     fontSize = 12.sp,
                     color = Color.Gray
                 )

@@ -31,6 +31,7 @@ import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.CarD
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.SplashScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.CreditCalculatorScreen
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarViewModel
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.NewsViewModel
 import uk.usedcars.marketplace.dealers.auto.finance.theme.JualBeliMobilBekasTheme
 
 class MainActivity : ComponentActivity() {
@@ -54,6 +55,12 @@ class MainActivity : ComponentActivity() {
                 @Suppress("UNCHECKED_CAST")
                 override fun <T : ViewModel> create(modelClass: Class<T>): T {
                     return CarViewModel(repository) as T
+                }
+            })
+            val newsViewModel: NewsViewModel = viewModel(factory = object : ViewModelProvider.Factory {
+                @Suppress("UNCHECKED_CAST")
+                override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                    return NewsViewModel(repository) as T
                 }
             })
             val context = LocalContext.current
@@ -85,6 +92,7 @@ class MainActivity : ComponentActivity() {
                         composable("main_layout") {
                             MainLayoutScreen(
                                 viewModel = viewModel,
+                                newsViewModel = newsViewModel,
                                 onNavigateToDetail = { marketplace ->
                                     viewModel.selectedMarketplace = marketplace
                                     navController.navigate("detail")

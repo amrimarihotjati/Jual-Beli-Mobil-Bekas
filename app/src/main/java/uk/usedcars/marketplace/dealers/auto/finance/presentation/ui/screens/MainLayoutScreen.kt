@@ -23,15 +23,18 @@ import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarViewModel
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.NewsViewModel
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiState
 import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
 import android.app.Activity
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.material.icons.filled.List
 
 @Composable
 fun MainLayoutScreen(
     viewModel: CarViewModel,
+    newsViewModel: NewsViewModel,
     onNavigateToDetail: (Marketplace) -> Unit,
     onNavigateToCarDetail: (UsedCar) -> Unit
 ) {
@@ -46,7 +49,8 @@ fun MainLayoutScreen(
         BottomNavItem.CarPrices,
         BottomNavItem.Home,
         BottomNavItem.Calculator,
-        BottomNavItem.Compare
+        BottomNavItem.Compare,
+        BottomNavItem.News
     )
 
     Scaffold(
@@ -131,6 +135,9 @@ fun MainLayoutScreen(
                     DedicatedCompareScreen(config = state.config)
                 }
             }
+            composable(BottomNavItem.News.route) {
+                NewsScreen(viewModel = newsViewModel)
+            }
         }
     }
 }
@@ -140,4 +147,5 @@ sealed class BottomNavItem(val route: String, val icon: androidx.compose.ui.grap
     object Home : BottomNavItem("home_tab", Icons.Default.ShoppingCart, "Marketplace")
     object Compare : BottomNavItem("compare_tab", Icons.Default.CompareArrows, "Bandingkan")
     object Calculator : BottomNavItem("calculator_tab", Icons.Default.CreditCard, "Kredit")
+    object News : BottomNavItem("news_tab", Icons.Default.List, "Berita")
 }

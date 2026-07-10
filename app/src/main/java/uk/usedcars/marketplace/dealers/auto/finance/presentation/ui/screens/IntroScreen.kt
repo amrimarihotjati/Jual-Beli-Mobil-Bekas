@@ -19,13 +19,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 
+import coil.compose.AsyncImage
+import androidx.compose.ui.layout.ContentScale
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun IntroScreen(onFinishIntro: () -> Unit) {
     val introPages = listOf(
-        IntroPage("Selamat Datang", "Platform jual beli mobil bekas terpercaya. Temukan mobil impianmu dengan mudah."),
-        IntroPage("Banyak Pilihan", "Temukan berbagai macam mobil dari berbagai marketplace terkemuka di satu tempat."),
-        IntroPage("Mudah & Cepat", "Transaksi aman, cepat, dan transparan. Wujudkan mobil impianmu sekarang juga.")
+        IntroPage("Selamat Datang", "Platform jual beli mobil bekas terpercaya. Temukan mobil impianmu dengan mudah.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c2_0.jpg"),
+        IntroPage("Banyak Pilihan", "Temukan berbagai macam mobil dari berbagai marketplace terkemuka di satu tempat.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c3_0.jpg"),
+        IntroPage("Mudah & Cepat", "Transaksi aman, cepat, dan transparan. Wujudkan mobil impianmu sekarang juga.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c12_0.jpg")
     )
 
     val pagerState = rememberPagerState(pageCount = { introPages.size })
@@ -107,15 +110,20 @@ fun IntroScreen(onFinishIntro: () -> Unit) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                // Placeholder for an illustration image
+                // Car Image
                 Box(
                     modifier = Modifier
                         .size(240.dp)
                         .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.secondary),
+                        .background(MaterialTheme.colorScheme.surfaceVariant),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("Gambar\nIlustrasi", color = MaterialTheme.colorScheme.onSurface, textAlign = TextAlign.Center)
+                    AsyncImage(
+                        model = introPages[page].imageUrl,
+                        contentDescription = "Intro Image",
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop
+                    )
                 }
                 
                 Spacer(modifier = Modifier.height(48.dp))
@@ -139,4 +147,4 @@ fun IntroScreen(onFinishIntro: () -> Unit) {
     }
 }
 
-data class IntroPage(val title: String, val description: String)
+data class IntroPage(val title: String, val description: String, val imageUrl: String)

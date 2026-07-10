@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -19,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 
-import coil.compose.AsyncImage
 import androidx.compose.ui.layout.ContentScale
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -118,7 +118,7 @@ fun IntroScreen(onFinishIntro: () -> Unit) {
                         .background(MaterialTheme.colorScheme.surfaceVariant),
                     contentAlignment = Alignment.Center
                 ) {
-                    AsyncImage(
+                    ShimmerAsyncImage(
                         model = introPages[page].imageUrl,
                         contentDescription = "Intro Image",
                         modifier = Modifier.fillMaxSize(),

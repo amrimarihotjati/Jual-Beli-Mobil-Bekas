@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import android.app.Activity
 import android.view.LayoutInflater
 import android.widget.Button
@@ -31,7 +32,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import coil.compose.AsyncImage
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.nativead.NativeAd
@@ -144,7 +144,7 @@ fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
                             .padding(horizontal = 16.dp)
                             .clip(androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
                     ) {
-                        AsyncImage(
+                        ShimmerAsyncImage(
                             model = item.imageUrl,
                             contentDescription = item.title,
                             contentScale = ContentScale.Crop,
@@ -201,7 +201,7 @@ fun MainContent(config: AppConfig, onMarketplaceClick: (Marketplace) -> Unit) {
                             .background(Color.White),
                         contentAlignment = Alignment.Center
                     ) {
-                        AsyncImage(
+                        ShimmerAsyncImage(
                             model = marketplace.logoUrl,
                             contentDescription = marketplace.name,
                             modifier = Modifier.fillMaxSize().padding(8.dp),

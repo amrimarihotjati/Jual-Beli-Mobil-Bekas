@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import android.app.Activity
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -21,7 +22,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
@@ -147,7 +147,7 @@ fun DedicatedCompareScreen(
                                     .padding(vertical = 12.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                AsyncImage(
+                                ShimmerAsyncImage(
                                     model = compareCar.imageUrls.firstOrNull() ?: "",
                                     contentDescription = compareCar.name,
                                     modifier = Modifier.size(50.dp).clip(RoundedCornerShape(8.dp)),
@@ -187,7 +187,7 @@ fun AddCarButton(onClick: () -> Unit) {
 @Composable
 fun CarHeader(car: UsedCar, onRemove: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.clickable(onClick = onRemove)) {
-        AsyncImage(
+        ShimmerAsyncImage(
             model = car.imageUrls.firstOrNull() ?: "",
             contentDescription = car.name,
             modifier = Modifier

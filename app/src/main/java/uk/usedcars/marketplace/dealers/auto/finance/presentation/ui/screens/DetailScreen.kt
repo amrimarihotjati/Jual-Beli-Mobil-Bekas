@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -28,7 +29,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
@@ -103,7 +103,7 @@ fun DetailScreen(
                     .padding(vertical = 32.dp),
                 contentAlignment = Alignment.Center
             ) {
-                AsyncImage(
+                ShimmerAsyncImage(
                     model = marketplace.logoUrl,
                     contentDescription = marketplace.name,
                     modifier = Modifier

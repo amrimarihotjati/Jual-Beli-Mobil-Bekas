@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -17,7 +18,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
 
@@ -59,7 +59,7 @@ fun CompareScreen(
             ) {
                 // Car 1 Column
                 Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
-                    AsyncImage(
+                    ShimmerAsyncImage(
                         model = car1.imageUrls.firstOrNull() ?: "",
                         contentDescription = car1.name,
                         modifier = Modifier
@@ -75,7 +75,7 @@ fun CompareScreen(
                 
                 // Car 2 Column
                 Column(modifier = Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
-                    AsyncImage(
+                    ShimmerAsyncImage(
                         model = car2.imageUrls.firstOrNull() ?: "",
                         contentDescription = car2.name,
                         modifier = Modifier

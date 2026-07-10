@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -36,7 +37,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
@@ -143,7 +143,7 @@ fun CarDetailScreen(
                     state = pagerState,
                     modifier = Modifier.fillMaxSize()
                 ) { page ->
-                    AsyncImage(
+                    ShimmerAsyncImage(
                         model = car.imageUrls.getOrNull(page) ?: "",
                         contentDescription = car.name,
                         modifier = Modifier.fillMaxSize(),
@@ -421,7 +421,7 @@ fun CarDetailScreen(
                             .padding(vertical = 12.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        AsyncImage(
+                        ShimmerAsyncImage(
                             model = marketplace.logoUrl,
                             contentDescription = marketplace.name,
                             modifier = Modifier.size(40.dp).clip(RoundedCornerShape(8.dp))
@@ -464,7 +464,7 @@ fun CarDetailScreen(
                                     .padding(vertical = 12.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                AsyncImage(
+                                ShimmerAsyncImage(
                                     model = compareCar.imageUrls.firstOrNull() ?: "",
                                     contentDescription = compareCar.name,
                                     modifier = Modifier.size(60.dp).clip(RoundedCornerShape(8.dp)),

@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -21,7 +22,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
@@ -176,7 +176,7 @@ fun CarCard(
                     .height(130.dp)
                     .background(Color.White)
             ) {
-                AsyncImage(
+                ShimmerAsyncImage(
                     model = car.imageUrls.firstOrNull() ?: "",
                     contentDescription = car.name,
                     contentScale = ContentScale.Crop,

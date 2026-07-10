@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.clickable
@@ -21,7 +22,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.NewsItem
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.NewsViewModel
 import java.text.SimpleDateFormat
@@ -98,7 +98,7 @@ fun NewsCard(item: NewsItem) {
                 .padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            AsyncImage(
+            ShimmerAsyncImage(
                 model = item.thumbnail,
                 contentDescription = item.title,
                 modifier = Modifier

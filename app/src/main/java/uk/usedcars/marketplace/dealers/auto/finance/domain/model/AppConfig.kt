@@ -24,7 +24,14 @@ data class UsedCar(
     @SerializedName("fuel_type") val fuelType: String = "Bensin",
     val mileage: String = "50,000 km",
     val location: String = "Jakarta",
-    val seats: String = "5 Seater"
+    val seats: String = "5 Seater",
+    val variants: List<CarVariant> = emptyList()
+)
+
+data class CarVariant(
+    val name: String,
+    val price: String,
+    val level: String // e.g., "Terendah", "Menengah", "Tertinggi"
 )
 
 data class AdMobConfig(

@@ -297,6 +297,58 @@ fun CarDetailScreen(
                     Spacer(modifier = Modifier.height(16.dp))
                 }
 
+                if (car.variants.isNotEmpty()) {
+                    Card(
+                        modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+                    ) {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            Text(
+                                text = "Daftar Tipe / Varian",
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.height(12.dp))
+                            car.variants.forEachIndexed { index, variant ->
+                                Row(
+                                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Column(modifier = Modifier.weight(1f)) {
+                                        Text(variant.name, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
+                                        Text(variant.price, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                                    }
+                                    Surface(
+                                        color = when(variant.level) {
+                                            "Terendah" -> Color(0xFFE8F5E9)
+                                            "Tertinggi" -> Color(0xFFFFEBEE)
+                                            else -> Color(0xFFE3F2FD)
+                                        },
+                                        shape = RoundedCornerShape(8.dp)
+                                    ) {
+                                        Text(
+                                            text = variant.level,
+                                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                                            fontSize = 11.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = when(variant.level) {
+                                                "Terendah" -> Color(0xFF2E7D32)
+                                                "Tertinggi" -> Color(0xFFC62828)
+                                                else -> Color(0xFF1565C0)
+                                            }
+                                        )
+                                    }
+                                }
+                                if (index < car.variants.size - 1) {
+                                    HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp), color = Color.LightGray.copy(alpha = 0.3f))
+                                }
+                            }
+                        }
+                    }
+                }
+
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),

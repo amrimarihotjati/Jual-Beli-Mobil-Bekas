@@ -5,7 +5,7 @@ import os
 import time
 import random
 
-repo_raw_base = "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images"
+repo_raw_base = "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images"
 
 new_cars_def = [
     {

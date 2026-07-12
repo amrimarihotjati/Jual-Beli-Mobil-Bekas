@@ -4,6 +4,6 @@ import retrofit2.http.GET
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 
 interface ApiService {
-    @GET("amrimarihotjati/Jual-Beli-Mobil-Bekas/main/config.json")
+    @GET("mobil-bekas/config.json")
     suspend fun getConfig(): AppConfig
 }

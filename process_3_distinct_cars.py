@@ -4,7 +4,7 @@ import json
 import os
 import time
 
-repo_raw_base = "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images"
+repo_raw_base = "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images"
 
 urls_to_scrape = {
     "c1": "https://www.oto.com/mobil-baru/toyota/avanza/gambar",

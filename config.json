@@ -25,7 +25,7 @@
         {
             "id": 1,
             "name": "OLX Autos",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/olx.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/olx.png",
             "description": "Platform terbesar untuk jual beli mobil bekas dengan pilihan terluas di Indonesia.",
             "direct_link": "https://www.olx.co.id/mobil-bekas_c198",
             "rating": 4.8,
@@ -61,7 +61,7 @@
         {
             "id": 2,
             "name": "Carsome",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/carsome.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/carsome.png",
             "description": "Mobil bekas berkualitas dengan garansi 1 tahun dan layanan terpercaya.",
             "direct_link": "https://www.carsome.id/",
             "rating": 4.9,
@@ -96,7 +96,7 @@
         {
             "id": 3,
             "name": "Carro",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/carro.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/carro.png",
             "description": "Marketplace otomotif inovatif dengan fasilitas test drive di rumah Anda.",
             "direct_link": "https://carro.co.id/",
             "rating": 4.8,
@@ -131,7 +131,7 @@
         {
             "id": 4,
             "name": "Mobil123",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/mobil123.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/mobil123.png",
             "description": "Portal otomotif nomor 1 di Indonesia dengan jutaan listing mobil baru dan bekas.",
             "direct_link": "https://www.mobil123.com/",
             "rating": 4.7,
@@ -167,7 +167,7 @@
         {
             "id": 5,
             "name": "Carmudi",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/carmudi.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/carmudi.png",
             "description": "Situs jual beli kendaraan online terkemuka dengan pilihan mobil bekas berkualitas.",
             "direct_link": "https://www.carmudi.co.id/",
             "rating": 4.6,
@@ -203,7 +203,7 @@
         {
             "id": 6,
             "name": "OTO",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/oto.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/oto.png",
             "description": "Temukan harga mobil bekas, review, dan spesifikasi lengkap untuk pilihan yang tepat.",
             "direct_link": "https://www.oto.com/mobil-bekas",
             "rating": 4.7,
@@ -239,7 +239,7 @@
         {
             "id": 7,
             "name": "Caroline.id",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/caroline.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/caroline.png",
             "description": "Platform transparan untuk jual beli mobil bekas dengan jaminan mesin dan harga pasti.",
             "direct_link": "https://www.caroline.id/",
             "rating": 4.8,
@@ -275,7 +275,7 @@
         {
             "id": 8,
             "name": "Seva",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/seva.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/seva.png",
             "description": "Platform dari Astra untuk pembelian mobil dengan fitur Instant Approval.",
             "direct_link": "https://www.seva.id/",
             "rating": 4.9,
@@ -311,7 +311,7 @@
         {
             "id": 9,
             "name": "CintaMobil",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/cintamobil.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/cintamobil.png",
             "description": "Marketplace mobil dengan tips otomotif, review lengkap, dan harga terbaik.",
             "direct_link": "https://cintamobil.com/",
             "rating": 4.6,
@@ -347,7 +347,7 @@
         {
             "id": 10,
             "name": "Momobil",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/momobil.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/momobil.png",
             "description": "Situs jual beli mobil bekas dari Adira Finance dengan pembiayaan yang mudah.",
             "direct_link": "https://momobil.id/",
             "rating": 4.7,
@@ -383,7 +383,7 @@
         {
             "id": 11,
             "name": "Garasi.id",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/garasi.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/garasi.png",
             "description": "Platform otomotif modern dengan fitur Inspeksi Mobil menyeluruh dan Garansi Mesin.",
             "direct_link": "https://garasi.id/",
             "rating": 4.8,
@@ -419,7 +419,7 @@
         {
             "id": 12,
             "name": "Auto2000",
-            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/auto2000.png",
+            "logo_url": "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/auto2000.png",
             "description": "Layanan jual beli mobil bekas Toyota resmi dan bersertifikat kualitas terbaik.",
             "direct_link": "https://auto2000.co.id/",
             "rating": 4.9,
@@ -461,9 +461,9 @@
             "year": "2015-2022",
             "price_range": "Rp 120 Jt - Rp 230 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c1_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c1_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c1_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c1_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c1_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c1_2.jpg"
             ],
             "description": "Mobil sejuta umat. Perawatan super mudah, irit, dan harga jual kembali stabil. Cocok untuk keluarga dan sangat diminati untuk taksi online.",
             "tags": [
@@ -502,9 +502,9 @@
             "year": "2016-2023",
             "price_range": "Rp 115 Jt - Rp 180 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c2_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c2_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c2_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c2_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c2_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c2_2.jpg"
             ],
             "description": "Rajanya city car Indonesia. Gesit, sangat irit BBM, dan punya desain sporty yang tak lekang oleh waktu.",
             "tags": [
@@ -542,9 +542,9 @@
             "year": "2016-2022",
             "price_range": "Rp 250 Jt - Rp 450 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c3_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c3_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c3_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c3_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c3_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c3_2.jpg"
             ],
             "description": "Medium MPV ternyaman. Varian mesin diesel sangat diburu karena badak (tangguh) dan torsi besar.",
             "tags": [
@@ -582,9 +582,9 @@
             "year": "2017-2023",
             "price_range": "Rp 170 Jt - Rp 270 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c4_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c4_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c4_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c4_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c4_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c4_2.jpg"
             ],
             "description": "LMPV dengan kabin terlega dan bantingan suspensi paling nyaman di kelasnya, dipadukan desain Dynamic Shield yang garang.",
             "tags": [
@@ -622,9 +622,9 @@
             "year": "2016-2023",
             "price_range": "Rp 90 Jt - Rp 140 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c5_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c5_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c5_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c5_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c5_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c5_2.jpg"
             ],
             "description": "Mobil 7-penumpang termurah dan paling ekonomis. Pilihan rasional sebagai mobil keluarga pertama.",
             "tags": [
@@ -662,9 +662,9 @@
             "year": "2016-2023",
             "price_range": "Rp 380 Jt - Rp 600 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c6_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c6_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c6_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c6_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c6_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c6_2.jpg"
             ],
             "description": "SUV ladder frame idaman. Tampil intimidatif, mesin diesel badak, dan kaki-kaki kuat.",
             "tags": [
@@ -702,9 +702,9 @@
             "year": "2015-2021",
             "price_range": "Rp 180 Jt - Rp 290 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c7_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c7_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c7_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c7_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c7_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c7_2.jpg"
             ],
             "description": "Compact SUV paling stylish. Interior mewah, stabil, dan tenaga melimpah khas Honda.",
             "tags": [
@@ -742,9 +742,9 @@
             "year": "2016-2022",
             "price_range": "Rp 400 Jt - Rp 620 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c8_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c8_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c8_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c8_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c8_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c8_2.jpg"
             ],
             "description": "Rival utama Fortuner. Menawarkan torsi yang lebih menjambak dan desain fascia depan yang sangat garang.",
             "tags": [
@@ -782,9 +782,9 @@
             "year": "2018-2023",
             "price_range": "Rp 190 Jt - Rp 270 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c9_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c9_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c9_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c9_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c9_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c9_2.jpg"
             ],
             "description": "Low SUV andalan keluarga. Penggerak roda belakang (RWD) membuatnya sangat bisa diandalkan untuk tanjakan dan jalan rusak.",
             "tags": [
@@ -822,9 +822,9 @@
             "year": "2018-2022",
             "price_range": "Rp 150 Jt - Rp 230 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c10_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c10_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c10_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c10_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c10_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c10_2.jpg"
             ],
             "description": "LMPV dengan efisiensi BBM terbaik di kelasnya serta kabin yang sangat senyap dan halus.",
             "tags": [
@@ -862,9 +862,9 @@
             "year": "2013-2022",
             "price_range": "Rp 70 Jt - Rp 120 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c11_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c11_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c11_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c11_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c11_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c11_2.jpg"
             ],
             "description": "Mobil LCGC paling murah meriah. Mudah parkir, perawatan murah, dan suku cadang melimpah.",
             "tags": [
@@ -902,9 +902,9 @@
             "year": "2016-2023",
             "price_range": "Rp 100 Jt - Rp 145 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c12_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c12_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c12_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c12_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c12_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c12_2.jpg"
             ],
             "description": "Kembaran Sigra dengan lambang Toyota. Kualitas terjamin dan nilai purna jual sangat baik.",
             "tags": [
@@ -942,9 +942,9 @@
             "year": "2020-2023",
             "price_range": "Rp 200 Jt - Rp 270 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c13_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c13_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c13_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c13_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c13_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c13_2.jpg"
             ],
             "description": "Versi SUV dari Ertiga. Lebih tinggi, lebih maskulin, dan dilengkapi fitur canggih seperti Smart E-Mirror.",
             "tags": [
@@ -982,9 +982,9 @@
             "year": "2016-2021",
             "price_range": "Rp 150 Jt - Rp 230 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c14_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c14_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c14_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c14_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c14_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c14_2.jpg"
             ],
             "description": "Crossover 7-penumpang dengan performa mesin i-VTEC terkuat di kelasnya. Desain kokoh khas SUV.",
             "tags": [
@@ -1022,9 +1022,9 @@
             "year": "2013-2022",
             "price_range": "Rp 80 Jt - Rp 130 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c15_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c15_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c15_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c15_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c15_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c15_2.jpg"
             ],
             "description": "Hatchback kompak favorit anak muda. Sangat reliable, pajak murah, dan konsumsi bensin super irit.",
             "tags": [
@@ -1062,9 +1062,9 @@
             "year": "2022-2023",
             "price_range": "Rp 240 Jt - Rp 350 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c16_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c16_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c16_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c16_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c16_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c16_2.jpg"
             ],
             "description": "Compact SUV modern dengan fitur canggih Hyundai SmartSense dan panoramic sunroof. Desain futuristik.",
             "tags": [
@@ -1102,9 +1102,9 @@
             "year": "2022-2023",
             "price_range": "Rp 200 Jt - Rp 270 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c17_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c17_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c17_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c17_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c17_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c17_2.jpg"
             ],
             "description": "LMPV dengan desain 'One Curve' yang unik layaknya pesawat ruang angkasa, kabin super lega dan captain seat.",
             "tags": [
@@ -1142,9 +1142,9 @@
             "year": "2019-2023",
             "price_range": "Rp 220 Jt - Rp 330 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c18_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c18_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c18_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c18_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c18_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c18_2.jpg"
             ],
             "description": "Medium SUV bermesin Turbo dengan fitur Wuling Indonesian Command (WIND). Sangat *value for money*.",
             "tags": [
@@ -1182,9 +1182,9 @@
             "year": "2017-2023",
             "price_range": "Rp 110 Jt - Rp 160 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c19_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c19_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c19_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c19_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c19_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c19_2.jpg"
             ],
             "description": "LMPV penggerak belakang termurah. Kabin sangat luas, plat bodi tebal, sangat nyaman untuk bepergian jauh.",
             "tags": [
@@ -1222,9 +1222,9 @@
             "year": "2017-2022",
             "price_range": "Rp 320 Jt - Rp 500 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c20_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c20_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c20_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c20_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c20_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c20_2.jpg"
             ],
             "description": "Medium SUV legendaris. Varian 1.5L Turbo sangat bertenaga, kabin mewah, dan suspensi nyaman layaknya sedan.",
             "tags": [
@@ -1262,7 +1262,7 @@
             "year": "2016-2021",
             "price_range": "Rp 350 Jt - Rp 450 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c21_0.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c21_0.jpg"
             ],
             "description": "Sedan sporty paling dicari anak muda dan eksekutif muda. Desain coupe-like dengan mesin turbo yang sangat kencang.",
             "tags": [
@@ -1295,9 +1295,9 @@
             "year": "2014-2022",
             "price_range": "Rp 150 Jt - Rp 250 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c22_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c22_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c22_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c22_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c22_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c22_2.jpg"
             ],
             "description": "Hatchback favorit selain Honda Jazz. Terkenal bandel, perawatannya mudah, dan AC sangat dingin.",
             "tags": [
@@ -1335,9 +1335,9 @@
             "year": "2017-2022",
             "price_range": "Rp 350 Jt - Rp 550 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c23_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c23_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c23_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c23_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c23_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c23_2.jpg"
             ],
             "description": "SUV Jepang dengan rasa Eropa. Desain KODO yang sangat cantik, handling tajam, dan interior berkualitas tinggi.",
             "tags": [
@@ -1375,9 +1375,9 @@
             "year": "2013-2018",
             "price_range": "Rp 90 Jt - Rp 140 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c24_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c24_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c24_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c24_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c24_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c24_2.jpg"
             ],
             "description": "LMPV dengan posisi duduk layaknya sedan. Sangat nyaman, bantingan empuk, cocok untuk perjalanan jauh.",
             "tags": [
@@ -1415,9 +1415,9 @@
             "year": "2017-2022",
             "price_range": "Rp 160 Jt - Rp 210 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c25_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c25_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c25_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c25_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c25_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c25_2.jpg"
             ],
             "description": "Hatchback *underrated* yang menawarkan ruang kabin sangat lega, irit bbm, dengan harga bekas sangat terjangkau.",
             "tags": [
@@ -1455,9 +1455,9 @@
             "year": "2018-2023",
             "price_range": "Rp 180 Jt - Rp 250 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c26_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c26_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c26_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c26_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c26_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c26_2.jpg"
             ],
             "description": "Kembaran Toyota Rush. Low SUV 7-penumpang dengan penggerak RWD, sangat tangguh dan ground clearance tinggi.",
             "tags": [
@@ -1495,9 +1495,9 @@
             "year": "2015-2022",
             "price_range": "Rp 110 Jt - Rp 200 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c27_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c27_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c27_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c27_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c27_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c27_2.jpg"
             ],
             "description": "Kembaran Toyota Avanza. MPV andalan dengan harga yang sedikit lebih terjangkau, irit BBM, dan perawatannya sangat murah.",
             "tags": [
@@ -1535,9 +1535,9 @@
             "year": "2014-2021",
             "price_range": "Rp 120 Jt - Rp 190 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c28_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c28_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c28_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c28_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c28_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c28_2.jpg"
             ],
             "description": "LMPV dengan handling terbaik dan mesin i-VTEC terkuat di kelasnya. Desain *sporty* yang disukai keluarga muda.",
             "tags": [
@@ -1575,9 +1575,9 @@
             "year": "2014-2021",
             "price_range": "Rp 160 Jt - Rp 270 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c29_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c29_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c29_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c29_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c29_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c29_2.jpg"
             ],
             "description": "Hatchback legendaris yang selalu menjadi idola. Desain sporty abadi, kabin ultra lega berkat fitur Ultra Seat.",
             "tags": [
@@ -1615,9 +1615,9 @@
             "year": "2021-2023",
             "price_range": "Rp 190 Jt - Rp 280 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c30_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c30_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c30_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c30_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c30_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c30_2.jpg"
             ],
             "description": "Compact SUV bermesin 1.0L Turbo yang sangat responsif, dilengkapi fitur keselamatan canggih TSS (Toyota Safety Sense).",
             "tags": [
@@ -1655,9 +1655,9 @@
             "year": "2021-2023",
             "price_range": "Rp 180 Jt - Rp 260 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c31_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c31_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c31_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c31_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c31_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c31_2.jpg"
             ],
             "description": "Kembaran Toyota Raize dengan harga yang lebih terjangkau, menawarkan teknologi platform DNGA terbaru.",
             "tags": [
@@ -1695,9 +1695,9 @@
             "year": "2022-2023",
             "price_range": "Rp 230 Jt - Rp 290 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c32_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c32_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c32_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c32_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c32_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c32_2.jpg"
             ],
             "description": "Small SUV dengan mesin 1.5L terkuat di kelasnya (121 PS). Desain sporty dengan teknologi Honda Sensing.",
             "tags": [
@@ -1735,9 +1735,9 @@
             "year": "2022-2023",
             "price_range": "Rp 380 Jt - Rp 600 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c33_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c33_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c33_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c33_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c33_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c33_2.jpg"
             ],
             "description": "Evolusi Kijang ke platform monokok TNGA. Tersedia dalam varian Hybrid yang sangat efisien dan nyaman layaknya mobil premium.",
             "tags": [
@@ -1809,9 +1809,9 @@
             "year": "2022-2023",
             "price_range": "Rp 600 Jt - Rp 800 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c35_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c35_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c35_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c35_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c35_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c35_2.jpg"
             ],
             "description": "Mobil listrik (EV) premium buatan Cikarang dengan desain retro-futuristik, kabin super lega, dan pengisian daya ultra-cepat.",
             "tags": [
@@ -1849,9 +1849,9 @@
             "year": "2014-2022",
             "price_range": "Rp 130 Jt - Rp 250 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c36_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c36_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c36_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c36_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c36_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c36_2.jpg"
             ],
             "description": "Sedan andalan yang terkenal karena 'badak' (durabilitas tinggi). Banyak diminati sebagai mobil harian karena irit dan perawatannya gampang.",
             "tags": [
@@ -1889,9 +1889,9 @@
             "year": "2015-2021",
             "price_range": "Rp 250 Jt - Rp 500 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c37_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c37_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c37_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c37_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c37_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c37_2.jpg"
             ],
             "description": "Sedan mid-size langganan para bos dan pejabat. Bantingan sangat empuk, kabin super kedap dan mewah.",
             "tags": [
@@ -1929,9 +1929,9 @@
             "year": "2014-2021",
             "price_range": "Rp 180 Jt - Rp 400 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c38_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c38_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c38_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c38_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c38_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c38_2.jpg"
             ],
             "description": "Sedan C-segment yang legendaris, menawarkan kenyamanan lebih baik dari Vios dengan desain yang elegan.",
             "tags": [
@@ -1969,9 +1969,9 @@
             "year": "2021-2023",
             "price_range": "Rp 260 Jt - Rp 330 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c39_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c39_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c39_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c39_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c39_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c39_2.jpg"
             ],
             "description": "Penerus tongkat estafet Honda Jazz. Desain lebih dewasa, ruang kabin lapang, dan dibekali teknologi keselamatan Honda Sensing.",
             "tags": [
@@ -2009,9 +2009,9 @@
             "year": "2017-2022",
             "price_range": "Rp 110 Jt - Rp 160 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c40_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c40_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c40_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c40_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c40_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c40_2.jpg"
             ],
             "description": "Urban SUV mungil dengan desain nyentrik ala retro Eropa. Ground clearance lumayan tinggi (180mm) dan mesin 1.2L sangat irit.",
             "tags": [
@@ -2049,9 +2049,9 @@
             "year": "2020-2023",
             "price_range": "Rp 200 Jt - Rp 270 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c41_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c41_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c41_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c41_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c41_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c41_2.jpg"
             ],
             "description": "Compact SUV dari Korea dengan fitur berlimpah di kelasnya, seperti Sunroof, Bose Speaker, dan Ventilated Seat.",
             "tags": [
@@ -2089,9 +2089,9 @@
             "year": "2020-2023",
             "price_range": "Rp 250 Jt - Rp 350 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c42_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c42_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c42_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c42_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c42_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c42_2.jpg"
             ],
             "description": "SUV bermesin 1.4L Turbo + transmisi kopling ganda (DCT) yang memberikan akselerasi instan. Desain berotot dan sangat maskulin.",
             "tags": [
@@ -2129,9 +2129,9 @@
             "year": "2014-2020",
             "price_range": "Rp 180 Jt - Rp 300 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c43_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c43_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c43_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c43_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c43_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c43_2.jpg"
             ],
             "description": "Medium SUV terempuk di kelasnya, mengalahkan CR-V dalam hal kenyamanan bantingan suspensi. Kursi Zero Gravity sangat nyaman.",
             "tags": [
@@ -2169,9 +2169,9 @@
             "year": "2013-2021",
             "price_range": "Rp 150 Jt - Rp 380 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c44_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c44_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c44_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c44_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c44_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c44_2.jpg"
             ],
             "description": "High MPV *boxy* dengan ruang kabin masif. Spesialis membawa keluarga liburan berkat captain seat dan pintu geser elektrik (PSD).",
             "tags": [
@@ -2209,9 +2209,9 @@
             "year": "2016-2022",
             "price_range": "Rp 250 Jt - Rp 450 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c45_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c45_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c45_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c45_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c45_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c45_2.jpg"
             ],
             "description": "Raja *Double Cabin* yang tak tertandingi soal durabilitas di tambang dan medan off-road ekstrem. Suku cadang bisa ditemukan di mana saja.",
             "tags": [
@@ -2249,9 +2249,9 @@
             "year": "2016-2022",
             "price_range": "Rp 230 Jt - Rp 430 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c46_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c46_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c46_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c46_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c46_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c46_2.jpg"
             ],
             "description": "Pesaing Hilux dengan kenyamanan suspensi yang sedikit lebih baik. Desainnya garang berkat bahasa desain Dynamic Shield.",
             "tags": [
@@ -2289,7 +2289,7 @@
             "year": "2005-2020",
             "price_range": "Rp 80 Jt - Rp 180 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c47_0.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c47_0.jpg"
             ],
             "description": "Rajanya Rajanya Diesel! Mesin legendaris yang tidak pernah rusak asal diisi Solar dan oli. Sangat digemari di luar kota.",
             "tags": [
@@ -2406,9 +2406,9 @@
             "year": "2010-2019",
             "price_range": "Rp 50 Jt - Rp 90 Jt",
             "image_urls": [
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c50_0.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c50_1.jpg",
-                "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c50_2.jpg"
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c50_0.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c50_1.jpg",
+                "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c50_2.jpg"
             ],
             "description": "Mobil legendaris angkutan umum/keluarga desa di Indonesia (Futura). Bandel, perbaikan murah, dan muat hingga 9 orang.",
             "tags": [

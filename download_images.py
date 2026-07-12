@@ -3,7 +3,7 @@ import os
 import urllib.request
 import time
 
-repo_raw_base = "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images"
+repo_raw_base = "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images"
 
 os.makedirs('images', exist_ok=True)
 

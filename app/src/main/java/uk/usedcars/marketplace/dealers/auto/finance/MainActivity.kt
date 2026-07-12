@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
 
         // Manual DI
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com/")
+            .baseUrl("https://code.amrimarihotjati.workers.dev/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val apiService = retrofit.create(ApiService::class.java)

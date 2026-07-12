@@ -46,7 +46,8 @@ class CarViewModel(private val repository: CarRepository) : ViewModel() {
                     _uiState.value = UiState.Success(config)
                 },
                 onFailure = { error ->
-                    _uiState.value = UiState.Error(error.message ?: "Unknown error")
+                    val errorMsg = "${error.javaClass.simpleName}: ${error.message ?: "Unknown error"}"
+                    _uiState.value = UiState.Error(errorMsg)
                 }
             )
         }

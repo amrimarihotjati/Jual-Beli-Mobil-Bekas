@@ -49,6 +49,7 @@ import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarVi
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiState
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.GlobalShimmerLoading
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ErrorScreen
 import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
 
 @Composable
@@ -66,9 +67,7 @@ fun MainScreen(
             GlobalShimmerLoading()
         }
         is UiState.Error -> {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text("Error: ${state.message}", color = Color.Red)
-            }
+            ErrorScreen(message = state.message, onRetry = { viewModel.fetchConfig() })
         }
         is UiState.Success -> {
             LaunchedEffect(Unit) {

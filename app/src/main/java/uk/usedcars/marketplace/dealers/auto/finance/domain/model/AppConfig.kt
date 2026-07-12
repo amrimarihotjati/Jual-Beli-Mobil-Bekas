@@ -1,7 +1,9 @@
 package uk.usedcars.marketplace.dealers.auto.finance.domain.model
 
 import com.google.gson.annotations.SerializedName
+import androidx.annotation.Keep
 
+@Keep
 data class AppConfig(
     val version: String,
     val updateUrl: String,
@@ -11,6 +13,7 @@ data class AppConfig(
     @SerializedName("used_cars") val usedCars: List<UsedCar> = emptyList()
 )
 
+@Keep
 data class UsedCar(
     val id: String,
     val name: String,
@@ -28,24 +31,28 @@ data class UsedCar(
     val variants: List<CarVariant> = emptyList()
 )
 
+@Keep
 data class CarVariant(
     val name: String,
     val price: String,
     val level: String // e.g., "Terendah", "Menengah", "Tertinggi"
 )
 
+@Keep
 data class AdMobConfig(
     @SerializedName("native_id") val nativeId: String,
     @SerializedName("interstitial_id") val interstitialId: String,
     @SerializedName("interstitial_interval") val interstitialInterval: Int
 )
 
+@Keep
 data class SlideshowItem(
     @SerializedName("id") val id: Int,
     @SerializedName("title") val title: String,
     @SerializedName("image_url") val imageUrl: String
 )
 
+@Keep
 data class Marketplace(
     val id: Int,
     val name: String,

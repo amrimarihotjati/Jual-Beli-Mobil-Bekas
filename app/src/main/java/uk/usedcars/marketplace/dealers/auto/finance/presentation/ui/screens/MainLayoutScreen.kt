@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.material.icons.filled.List
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.GlobalShimmerLoading
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ErrorScreen
 
 @Composable
 fun MainLayoutScreen(
@@ -145,6 +146,8 @@ fun MainLayoutScreen(
                     )
                 } else if (state is UiState.Loading) {
                     GlobalShimmerLoading()
+                } else if (state is UiState.Error) {
+                    ErrorScreen(message = state.message, onRetry = { viewModel.fetchConfig() })
                 }
             }
             composable(BottomNavItem.Compare.route) {
@@ -153,6 +156,8 @@ fun MainLayoutScreen(
                     DedicatedCompareScreen(config = state.config)
                 } else if (state is UiState.Loading) {
                     GlobalShimmerLoading()
+                } else if (state is UiState.Error) {
+                    ErrorScreen(message = state.message, onRetry = { viewModel.fetchConfig() })
                 }
             }
             composable(BottomNavItem.News.route) {

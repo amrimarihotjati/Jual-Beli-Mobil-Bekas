@@ -26,9 +26,9 @@ import androidx.compose.ui.layout.ContentScale
 @Composable
 fun IntroScreen(onFinishIntro: () -> Unit) {
     val introPages = listOf(
-        IntroPage("Selamat Datang", "Platform jual beli mobil bekas terpercaya. Temukan mobil impianmu dengan mudah.", "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c2_0.jpg"),
-        IntroPage("Banyak Pilihan", "Temukan berbagai macam mobil dari berbagai marketplace terkemuka di satu tempat.", "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c3_0.jpg"),
-        IntroPage("Mudah & Cepat", "Transaksi aman, cepat, dan transparan. Wujudkan mobil impianmu sekarang juga.", "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/c12_0.jpg")
+        IntroPage("Selamat Datang", "Platform jual beli mobil bekas terpercaya. Temukan mobil impianmu dengan mudah.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c2_0.jpg"),
+        IntroPage("Banyak Pilihan", "Temukan berbagai macam mobil dari berbagai marketplace terkemuka di satu tempat.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c3_0.jpg"),
+        IntroPage("Mudah & Cepat", "Transaksi aman, cepat, dan transparan. Wujudkan mobil impianmu sekarang juga.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c12_0.jpg")
     )
 
     val pagerState = rememberPagerState(pageCount = { introPages.size })

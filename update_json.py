@@ -1,6 +1,6 @@
 import json
 
-base_url = "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/assets/logos/"
+base_url = "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/logos/"
 logo_map = {
     "OLX Autos": "olx.png",
     "Carsome": "carsome.png",

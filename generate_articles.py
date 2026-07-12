@@ -36,7 +36,7 @@ articles = [
     ("Beli Mobil Bekas Cash atau Kredit?", "21 Jun 2026", "c45_0.jpg", "Beli cash membebaskan Anda dari bunga dan cicilan bulanan, namun menguras likuiditas. Beli kredit menjaga cash flow Anda, tapi total biaya membengkak. Pilihan terbaik? Beli cash jika ada dana lebih, atau DP 50% jika harus kredit.")
 ]
 
-base_url = "https://raw.githubusercontent.com/amrimarihotjati/my-apps-api/main/images/"
+base_url = "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/"
 
 for i, (title, date, img, text) in enumerate(articles):
     content += f"""    Article(

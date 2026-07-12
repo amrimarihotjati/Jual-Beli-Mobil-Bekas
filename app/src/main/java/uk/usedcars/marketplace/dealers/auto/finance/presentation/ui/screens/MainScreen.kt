@@ -46,8 +46,9 @@ import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.CarViewModel
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiState
-import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.GlobalShimmerLoading
+import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
 
 @Composable
 fun MainScreen(
@@ -61,9 +62,7 @@ fun MainScreen(
 
     when (val state = uiState) {
         is UiState.Loading -> {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator()
-            }
+            GlobalShimmerLoading()
         }
         is UiState.Error -> {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

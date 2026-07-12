@@ -12,6 +12,7 @@ import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
 import uk.usedcars.marketplace.dealers.auto.finance.utils.FavoriteManager
 import android.content.Context
+import android.util.Log
 
 sealed class UiState {
     object Loading : UiState()
@@ -47,6 +48,7 @@ class CarViewModel(private val repository: CarRepository) : ViewModel() {
                 },
                 onFailure = { error ->
                     val errorMsg = "${error.javaClass.simpleName}: ${error.message ?: "Unknown error"}"
+                    Log.e("CarViewModel", "Failed to fetch config", error)
                     _uiState.value = UiState.Error(errorMsg)
                 }
             )

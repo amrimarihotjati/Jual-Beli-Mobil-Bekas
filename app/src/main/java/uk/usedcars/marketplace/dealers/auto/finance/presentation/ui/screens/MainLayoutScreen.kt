@@ -34,6 +34,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.material.icons.filled.List
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.GlobalShimmerLoading
 
 @Composable
 fun MainLayoutScreen(
@@ -141,12 +142,16 @@ fun MainLayoutScreen(
                             }
                         }
                     )
+                } else if (state is UiState.Loading) {
+                    GlobalShimmerLoading()
                 }
             }
             composable(BottomNavItem.Compare.route) {
                 val state = viewModel.uiState.collectAsState().value
                 if (state is UiState.Success) {
                     DedicatedCompareScreen(config = state.config)
+                } else if (state is UiState.Loading) {
+                    GlobalShimmerLoading()
                 }
             }
             composable(BottomNavItem.News.route) {

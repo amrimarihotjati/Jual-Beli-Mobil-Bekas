@@ -2,6 +2,7 @@ package uk.usedcars.marketplace.dealers.auto.finance.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.ContextWrapper
 import android.util.Log
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
@@ -54,8 +55,8 @@ object AdMobManager {
         )
     }
 
-    fun showInterstitialAd(activity: Activity, onAdDismissed: () -> Unit) {
-        if (interstitialAd != null) {
+    fun showInterstitialAd(activity: Activity?, onAdDismissed: () -> Unit) {
+        if (interstitialAd != null && activity != null) {
             interstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
                     Log.d(TAG, "Ad was dismissed.")
@@ -81,7 +82,7 @@ object AdMobManager {
         }
     }
     
-    fun showInterstitialAdWithCounter(activity: Activity, onAdDismissed: () -> Unit) {
+    fun showInterstitialAdWithCounter(activity: Activity?, onAdDismissed: () -> Unit) {
         interactionCount++
         Log.d(TAG, "Interaction Count: $interactionCount / $INTERACTION_THRESHOLD")
         
@@ -89,13 +90,16 @@ object AdMobManager {
             interactionCount = 0 // Reset counter
             if (interstitialAd != null) {
                 showInterstitialAd(activity) {
-                    // Pre-load next ad immediately
-                    loadInterstitialAd(activity, "ca-app-pub-3940256099942544/1033173712") // Using Test ID, replace in production
+                    if (activity != null) {
+                        loadInterstitialAd(activity, "ca-app-pub-3940256099942544/1033173712") // Using Test ID, replace in production
+                    }
                     onAdDismissed()
                 }
             } else {
                 Log.d(TAG, "Ad reached threshold but is null. Loading for next time.")
-                loadInterstitialAd(activity, "ca-app-pub-3940256099942544/1033173712")
+                if (activity != null) {
+                    loadInterstitialAd(activity, "ca-app-pub-3940256099942544/1033173712")
+                }
                 onAdDismissed()
             }
         } else {
@@ -137,4 +141,11 @@ object AdMobManager {
             onAdLoaded(ad)
         }
     }
+}
+
+
+fun Context.findActivity(): Activity? = when (this) {
+    is Activity -> this
+    is ContextWrapper -> baseContext.findActivity()
+    else -> null
 }

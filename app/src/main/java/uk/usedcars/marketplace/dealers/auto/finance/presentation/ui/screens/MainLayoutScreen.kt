@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.utils.findActivity
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -112,7 +113,7 @@ fun MainLayoutScreen(
                 MainScreen(
                     viewModel = viewModel,
                     onNavigateToDetail = { marketplace ->
-                        AdMobManager.showInterstitialAdWithCounter(context as Activity) {
+                        AdMobManager.showInterstitialAdWithCounter(context.findActivity()) {
                             onNavigateToDetail(marketplace)
                         }
                     },
@@ -137,7 +138,7 @@ fun MainLayoutScreen(
                         favorites = favorites,
                         onFavoriteToggle = { carId -> viewModel.toggleFavorite(context, carId) },
                         onCarClick = { car ->
-                            AdMobManager.showInterstitialAdWithCounter(context as Activity) {
+                            AdMobManager.showInterstitialAdWithCounter(context.findActivity()) {
                                 onNavigateToCarDetail(car)
                             }
                         }

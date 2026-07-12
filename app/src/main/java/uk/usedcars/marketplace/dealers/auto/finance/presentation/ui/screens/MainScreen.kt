@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.utils.findActivity
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import android.app.Activity
 import android.view.LayoutInflater
@@ -58,7 +59,7 @@ fun MainScreen(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
-    val activity = context as? Activity
+    val activity = context.findActivity()
 
     when (val state = uiState) {
         is UiState.Loading -> {

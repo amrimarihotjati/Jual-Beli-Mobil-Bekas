@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.utils.findActivity
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import android.app.Activity
 import androidx.compose.foundation.*
@@ -139,7 +140,7 @@ fun DedicatedCompareScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .clickable {
-                                        AdMobManager.showInterstitialAdWithCounter(context as Activity) {
+                                        AdMobManager.showInterstitialAdWithCounter(context.findActivity()) {
                                             if (showSheetFor == 1) car1 = compareCar else car2 = compareCar
                                             showSheetFor = null
                                         }

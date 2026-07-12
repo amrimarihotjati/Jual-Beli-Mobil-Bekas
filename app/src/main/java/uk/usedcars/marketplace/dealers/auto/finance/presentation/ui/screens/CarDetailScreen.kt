@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.utils.findActivity
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.ShimmerAsyncImage
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -393,7 +394,7 @@ fun CarDetailScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                AdMobManager.showInterstitialAdWithCounter(context as Activity) {
+                                AdMobManager.showInterstitialAdWithCounter(context.findActivity()) {
                                     try {
                                         val carQuery = car.name.replace(" ", "+")
                                         val searchUrl = when (marketplace.name.lowercase()) {
@@ -458,7 +459,7 @@ fun CarDetailScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .clickable {
-                                        AdMobManager.showInterstitialAdWithCounter(context as Activity) {
+                                        AdMobManager.showInterstitialAdWithCounter(context.findActivity()) {
                                             showCompareSheet = false
                                             onCompare(compareCar.id)
                                         }

@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens
 
+import uk.usedcars.marketplace.dealers.auto.finance.utils.findActivity
 import android.app.Activity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -39,7 +40,7 @@ fun CreditCalculatorScreen(onBack: () -> Unit) {
     var showResult by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
-    val activity = context as? Activity
+    val activity = context.findActivity()
 
     fun calculate() {
         val price = carPrice.toDoubleOrNull() ?: 0.0

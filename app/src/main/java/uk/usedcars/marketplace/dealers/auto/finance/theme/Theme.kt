@@ -1,5 +1,6 @@
 package uk.usedcars.marketplace.dealers.auto.finance.theme
 
+import uk.usedcars.marketplace.dealers.auto.finance.utils.findActivity
 import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -50,9 +51,11 @@ fun JualBeliMobilBekasTheme(
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.surface.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+            val window = (view.context.findActivity())?.window
+            if (window != null) {
+                window.statusBarColor = colorScheme.surface.toArgb()
+                WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
+            }
         }
     }
 

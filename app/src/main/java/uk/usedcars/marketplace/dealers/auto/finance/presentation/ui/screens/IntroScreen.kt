@@ -26,9 +26,9 @@ import androidx.compose.ui.layout.ContentScale
 @Composable
 fun IntroScreen(onFinishIntro: () -> Unit) {
     val introPages = listOf(
-        IntroPage("Selamat Datang", "Platform jual beli mobil bekas terpercaya. Temukan mobil impianmu dengan mudah.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c2_0.jpg"),
-        IntroPage("Banyak Pilihan", "Temukan berbagai macam mobil dari berbagai marketplace terkemuka di satu tempat.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c3_0.jpg"),
-        IntroPage("Mudah & Cepat", "Transaksi aman, cepat, dan transparan. Wujudkan mobil impianmu sekarang juga.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/images/c12_0.jpg")
+        IntroPage("Transaksi Aman", "Jual Beli Mobil Bekas Transaksi Aman, Mobil Nyaman.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/images/slide_1.png"),
+        IntroPage("Mudah & Cepat", "Cari Mobil Impian Anda dengan Mudah.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/images/slide_2.png"),
+        IntroPage("Pilihan Keluarga", "Pilihan Keluarga, Harga Bahagia.", "https://raw.githubusercontent.com/amrimarihotjati/Jual-Beli-Mobil-Bekas/main/assets/images/slide_3.png")
     )
 
     val pagerState = rememberPagerState(pageCount = { introPages.size })
@@ -113,8 +113,9 @@ fun IntroScreen(onFinishIntro: () -> Unit) {
                 // Car Image
                 Box(
                     modifier = Modifier
-                        .size(240.dp)
-                        .clip(CircleShape)
+                        .fillMaxWidth()
+                        .aspectRatio(2f)
+                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(16.dp))
                         .background(MaterialTheme.colorScheme.surfaceVariant),
                     contentAlignment = Alignment.Center
                 ) {

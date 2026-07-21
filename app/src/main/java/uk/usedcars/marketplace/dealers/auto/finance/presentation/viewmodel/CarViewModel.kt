@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import uk.usedcars.marketplace.dealers.auto.finance.data.repository.CarRepository
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
+import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
 import uk.usedcars.marketplace.dealers.auto.finance.utils.FavoriteManager
@@ -44,7 +45,8 @@ class CarViewModel(private val repository: CarRepository) : ViewModel() {
             repository.getConfig().fold(
                 onSuccess = { config ->
                     interstitialInterval = config.admobConfig.interstitialInterval
-                    _uiState.value = UiState.Success(config)
+                    AdMobManager.adMobConfig = config.admobConfig
+                _uiState.value = UiState.Success(config)
                 },
                 onFailure = { error ->
                     val errorMsg = "${error.javaClass.simpleName}: ${error.message ?: "Unknown error"}"

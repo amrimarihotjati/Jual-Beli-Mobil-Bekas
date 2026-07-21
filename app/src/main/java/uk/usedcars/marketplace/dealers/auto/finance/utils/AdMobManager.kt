@@ -15,7 +15,11 @@ import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.nativead.NativeAdOptions
 
+import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AdMobConfig
+
 object AdMobManager {
+    var adMobConfig: AdMobConfig? = null
+
     private const val TAG = "AdMobManager"
     private var interstitialAd: InterstitialAd? = null
     private var isAdLoading = false
@@ -84,21 +88,22 @@ object AdMobManager {
     
     fun showInterstitialAdWithCounter(activity: Activity?, onAdDismissed: () -> Unit) {
         interactionCount++
-        Log.d(TAG, "Interaction Count: $interactionCount / $INTERACTION_THRESHOLD")
+        Log.d(TAG, "Interaction Count: $interactionCount / ${adMobConfig?.interstitialInterval ?: INTERACTION_THRESHOLD}")
         
-        if (interactionCount >= INTERACTION_THRESHOLD) {
+        val threshold = adMobConfig?.interstitialInterval ?: INTERACTION_THRESHOLD
+        if (interactionCount >= threshold) {
             interactionCount = 0 // Reset counter
             if (interstitialAd != null) {
                 showInterstitialAd(activity) {
                     if (activity != null) {
-                        loadInterstitialAd(activity, "ca-app-pub-3940256099942544/1033173712") // Using Test ID, replace in production
+                        loadInterstitialAd(activity, adMobConfig?.interstitialId ?: "ca-app-pub-3940256099942544/1033173712")
                     }
                     onAdDismissed()
                 }
             } else {
                 Log.d(TAG, "Ad reached threshold but is null. Loading for next time.")
                 if (activity != null) {
-                    loadInterstitialAd(activity, "ca-app-pub-3940256099942544/1033173712")
+                    loadInterstitialAd(activity, adMobConfig?.interstitialId ?: "ca-app-pub-3940256099942544/1033173712")
                 }
                 onAdDismissed()
             }

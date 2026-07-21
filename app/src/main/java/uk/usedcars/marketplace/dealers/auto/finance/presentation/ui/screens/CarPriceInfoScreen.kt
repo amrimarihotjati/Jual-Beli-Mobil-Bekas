@@ -10,7 +10,11 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.LocalGasStation
 import androidx.compose.material.icons.filled.Person
@@ -22,6 +26,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.platform.LocalContext
+import uk.usedcars.marketplace.dealers.auto.finance.utils.RateAppUtils
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AppConfig
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.UsedCar
 import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
@@ -59,13 +65,19 @@ fun CarPriceInfoScreen(
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
-        // Search Bar
-        Box(modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp)) {
+        val context = LocalContext.current
+        
+        // Search Bar and Rate Button
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
                 placeholder = { Text("Cari mobil (Avanza, SUV, dll)") },
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.weight(1f),
+                leadingIcon = { Icon(Icons.Default.Search, contentDescription = "Search") },
                 shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp),
                 singleLine = true,
                 colors = OutlinedTextFieldDefaults.colors(
@@ -73,6 +85,18 @@ fun CarPriceInfoScreen(
                     unfocusedContainerColor = MaterialTheme.colorScheme.surface
                 )
             )
+            Spacer(modifier = Modifier.width(8.dp))
+            IconButton(
+                onClick = { RateAppUtils.rateApp(context) },
+                modifier = Modifier
+                    .background(MaterialTheme.colorScheme.primaryContainer, shape = androidx.compose.foundation.shape.RoundedCornerShape(12.dp))
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Star,
+                    contentDescription = "Rate App",
+                    tint = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+            }
         }
 
         // Brand Filter Chips

@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 
 import androidx.compose.ui.layout.ContentScale
+import uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.components.NativeAdViewComposable
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -143,6 +144,9 @@ fun IntroScreen(onFinishIntro: () -> Unit) {
                     color = MaterialTheme.colorScheme.onBackground,
                     textAlign = TextAlign.Center
                 )
+                
+                Spacer(modifier = Modifier.height(32.dp))
+                NativeAdViewComposable(cacheKey = "intro_ad_$page")
             }
         }
     }

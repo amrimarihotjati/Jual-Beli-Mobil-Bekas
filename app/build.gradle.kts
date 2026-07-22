@@ -7,11 +7,11 @@ plugins {
 
 android {
     namespace = "uk.usedcars.marketplace.dealers.auto.finance"
-    compileSdk = 35
+    compileSdk = 36
     defaultConfig {
         applicationId = "uk.usedcars.marketplace.dealers.auto.finance"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 3
         versionName = "3.0"
     }

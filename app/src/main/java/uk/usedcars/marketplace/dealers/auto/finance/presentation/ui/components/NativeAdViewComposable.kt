@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.ImageView
+import com.google.android.gms.ads.nativead.MediaView
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -53,6 +55,8 @@ fun NativeAdViewComposable(
                 adView.headlineView = adView.findViewById<TextView>(R.id.ad_headline)
                 adView.bodyView = adView.findViewById<TextView>(R.id.ad_body)
                 adView.callToActionView = adView.findViewById<Button>(R.id.ad_call_to_action)
+                adView.mediaView = adView.findViewById<MediaView>(R.id.ad_media)
+                adView.iconView = adView.findViewById<ImageView>(R.id.ad_app_icon)
 
                 // Populate Views
                 (adView.headlineView as TextView).text = nativeAd.headline
@@ -69,6 +73,13 @@ fun NativeAdViewComposable(
                 } else {
                     adView.callToActionView?.visibility = View.VISIBLE
                     (adView.callToActionView as Button).text = nativeAd.callToAction
+                }
+                
+                if (nativeAd.icon == null) {
+                    adView.iconView?.visibility = View.GONE
+                } else {
+                    (adView.iconView as ImageView).setImageDrawable(nativeAd.icon?.drawable)
+                    adView.iconView?.visibility = View.VISIBLE
                 }
 
                 adView.setNativeAd(nativeAd)

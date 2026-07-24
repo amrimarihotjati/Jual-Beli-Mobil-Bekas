@@ -60,6 +60,7 @@ fun NativeAdViewComposable(
 
                 // Populate Views
                 (adView.headlineView as TextView).text = nativeAd.headline
+                adView.mediaView?.mediaContent = nativeAd.mediaContent
                 
                 if (nativeAd.body == null) {
                     adView.bodyView?.visibility = View.INVISIBLE

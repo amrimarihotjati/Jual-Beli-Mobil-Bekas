@@ -16,6 +16,7 @@ import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.nativead.NativeAdOptions
 
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AdMobConfig
+import uk.usedcars.marketplace.dealers.auto.finance.BuildConfig
 
 object AdMobManager {
     var adMobConfig: AdMobConfig? = null
@@ -30,6 +31,32 @@ object AdMobManager {
     // Frequency capping: show every 3 interactions
     private var interactionCount = 0
     private const val INTERACTION_THRESHOLD = 3
+    
+    fun getInterstitialId(): String {
+        return if (BuildConfig.DEBUG) {
+            "ca-app-pub-3940256099942544/1033173712"
+        } else {
+            adMobConfig?.interstitialId ?: "ca-app-pub-3940256099942544/1033173712"
+        }
+    }
+
+    fun getNativeId(): String {
+        return if (BuildConfig.DEBUG) {
+            "ca-app-pub-3940256099942544/2247696110"
+        } else {
+            adMobConfig?.nativeId ?: "ca-app-pub-3940256099942544/2247696110"
+        }
+    }
+
+    private fun getOptimizedAdRequest(): AdRequest {
+        return AdRequest.Builder()
+            .addKeyword("kredit mobil")
+            .addKeyword("asuransi kendaraan")
+            .addKeyword("finance")
+            .addKeyword("otomotif")
+            .addKeyword("mobil bekas")
+            .build()
+    }
 
     fun loadInterstitialAd(context: Context, adUnitId: String) {
         if (interstitialAd != null || isAdLoading) {
@@ -37,7 +64,7 @@ object AdMobManager {
         }
 
         isAdLoading = true
-        val adRequest = AdRequest.Builder().build()
+        val adRequest = getOptimizedAdRequest()
         
         InterstitialAd.load(
             context,
@@ -96,14 +123,14 @@ object AdMobManager {
             if (interstitialAd != null) {
                 showInterstitialAd(activity) {
                     if (activity != null) {
-                        loadInterstitialAd(activity, adMobConfig?.interstitialId ?: "ca-app-pub-3940256099942544/1033173712")
+                        loadInterstitialAd(activity, getInterstitialId())
                     }
                     onAdDismissed()
                 }
             } else {
                 Log.d(TAG, "Ad reached threshold but is null. Loading for next time.")
                 if (activity != null) {
-                    loadInterstitialAd(activity, adMobConfig?.interstitialId ?: "ca-app-pub-3940256099942544/1033173712")
+                    loadInterstitialAd(activity, getInterstitialId())
                 }
                 onAdDismissed()
             }
@@ -125,7 +152,7 @@ object AdMobManager {
             })
             .withNativeAdOptions(NativeAdOptions.Builder().build())
             
-        builder.build().loadAd(AdRequest.Builder().build())
+        builder.build().loadAd(getOptimizedAdRequest())
     }
 
     fun loadNativeAdCached(context: Context, adUnitId: String, cacheKey: String, onAdLoaded: (NativeAd?) -> Unit) {

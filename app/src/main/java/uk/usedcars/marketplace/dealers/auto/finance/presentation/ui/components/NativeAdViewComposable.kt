@@ -24,7 +24,7 @@ import uk.usedcars.marketplace.dealers.auto.finance.utils.AdMobManager
 
 @Composable
 fun NativeAdViewComposable(
-    adUnitId: String = AdMobManager.adMobConfig?.nativeId ?: "ca-app-pub-3940256099942544/2247696110",
+    adUnitId: String = AdMobManager.getNativeId(),
     cacheKey: String = "default_native_ad",
     modifier: Modifier = Modifier
 ) {

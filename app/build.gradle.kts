@@ -12,8 +12,8 @@ android {
         applicationId = "uk.usedcars.marketplace.dealers.auto.finance"
         minSdk = 24
         targetSdk = 36
-        versionCode = 3
-        versionName = "3.0"
+        versionCode = 4
+        versionName = "4.0"
     }
 
     buildTypes {
@@ -30,7 +30,7 @@ android {
     buildFeatures {
       compose = true
       aidl = false
-      buildConfig = false
+      buildConfig = true
       shaders = false
     }
 

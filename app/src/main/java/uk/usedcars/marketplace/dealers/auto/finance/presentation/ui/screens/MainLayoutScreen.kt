@@ -65,7 +65,7 @@ fun MainLayoutScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 12.dp)
+                    .padding(start = 16.dp, end = 16.dp, bottom = 12.dp)
                     .shadow(elevation = 16.dp, shape = RoundedCornerShape(32.dp), spotColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f))
                     .clip(RoundedCornerShape(32.dp))
             ) {

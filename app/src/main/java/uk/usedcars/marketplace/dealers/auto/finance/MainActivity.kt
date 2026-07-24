@@ -3,6 +3,11 @@ package uk.usedcars.marketplace.dealers.auto.finance
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+
+import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -63,9 +68,10 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background,
                     contentColor = MaterialTheme.colorScheme.onBackground
                 ) {
-                    NavHost(navController = navController, startDestination = "splash") {
-                        composable("splash") {
-                            SplashScreen(
+                    Box(modifier = Modifier.fillMaxSize().safeDrawingPadding()) {
+                        NavHost(navController = navController, startDestination = "splash") {
+                            composable("splash") {
+                                SplashScreen(
                                 onNavigateToIntro = {
                                     navController.navigate("intro") {
                                         popUpTo("splash") { inclusive = true }
@@ -156,6 +162,7 @@ class MainActivity : ComponentActivity() {
                                 articleId = articleId,
                                 onBack = { navController.popBackStack() }
                             )
+                        }
                         }
                     }
                 }

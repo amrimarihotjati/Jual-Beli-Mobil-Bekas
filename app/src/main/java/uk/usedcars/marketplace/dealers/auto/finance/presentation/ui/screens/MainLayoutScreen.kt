@@ -52,6 +52,13 @@ fun MainLayoutScreen(
         viewModel.loadFavorites(context)
     }
     
+    val state = viewModel.uiState.collectAsState().value
+    LaunchedEffect(state) {
+        if (state is UiState.Success) {
+            AdMobManager.preloadAds(context)
+        }
+    }
+    
     val items = listOf(
         BottomNavItem.CarPrices,
         BottomNavItem.Home,

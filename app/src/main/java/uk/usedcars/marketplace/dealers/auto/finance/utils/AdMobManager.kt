@@ -14,6 +14,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.nativead.NativeAdOptions
+import com.google.android.gms.ads.VideoOptions
 
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AdMobConfig
 import uk.usedcars.marketplace.dealers.auto.finance.BuildConfig
@@ -150,7 +151,12 @@ object AdMobManager {
                     onAdLoaded(null)
                 }
             })
-            .withNativeAdOptions(NativeAdOptions.Builder().build())
+            .withNativeAdOptions(
+                NativeAdOptions.Builder()
+                    .setVideoOptions(VideoOptions.Builder().setStartMuted(true).build())
+                    .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
+                    .build()
+            )
             
         builder.build().loadAd(getOptimizedAdRequest())
     }
@@ -171,6 +177,25 @@ object AdMobManager {
                 nativeAdCache[cacheKey] = ad
             }
             onAdLoaded(ad)
+        }
+    }
+    
+    fun preloadAds(context: Context) {
+        // Preload Interstitial
+        if (interstitialAd == null && !isAdLoading) {
+            loadInterstitialAd(context, getInterstitialId())
+        }
+        
+        // Preload common Native Ads
+        val commonKeys = listOf("home_native", "detail_native", "calculator_native")
+        commonKeys.forEach { key ->
+            if (!nativeAdCache.containsKey(key)) {
+                loadNativeAd(context, getNativeId()) { ad ->
+                    if (ad != null) {
+                        nativeAdCache[key] = ad
+                    }
+                }
+            }
         }
     }
 }

@@ -252,13 +252,13 @@ fun CarCard(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
-                        SpecChip(icon = Icons.Default.Settings, text = car.transmission)
-                        SpecChip(icon = Icons.Default.LocalGasStation, text = car.fuelType)
-                        SpecChip(icon = Icons.Default.Person, text = car.seats)
+                        SpecChip(icon = Icons.Default.Settings, text = car.transmission ?: "AT/MT")
+                        SpecChip(icon = Icons.Default.LocalGasStation, text = car.fuelType ?: "Bensin")
+                        SpecChip(icon = Icons.Default.Person, text = car.seats ?: "5 Seater")
                     }
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
-                        text = "${car.year} • ${car.mileage}",
+                        text = "${car.year} • ${car.mileage ?: "N/A"}",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )

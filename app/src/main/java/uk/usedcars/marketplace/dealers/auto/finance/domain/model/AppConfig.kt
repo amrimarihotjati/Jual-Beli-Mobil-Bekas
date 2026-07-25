@@ -23,11 +23,11 @@ data class UsedCar(
     @SerializedName("image_urls") val imageUrls: List<String> = emptyList(),
     val description: String,
     val tags: List<String> = emptyList(),
-    val transmission: String = "Automatic (AT)",
-    @SerializedName("fuel_type") val fuelType: String = "Bensin",
-    val mileage: String = "50,000 km",
-    val location: String = "Jakarta",
-    val seats: String = "5 Seater",
+    val transmission: String? = "Automatic (AT)",
+    @SerializedName("fuel_type") val fuelType: String? = "Bensin",
+    val mileage: String? = "50,000 km",
+    val location: String? = "Jakarta",
+    val seats: String? = "5 Seater",
     val variants: List<CarVariant> = emptyList()
 )
 

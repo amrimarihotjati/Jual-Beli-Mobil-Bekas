@@ -107,13 +107,13 @@ fun CompareScreen(
                     HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
                     CompareRow("Tahun", car1.year, car2.year)
                     HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
-                    CompareRow("Transmisi", car1.transmission, car2.transmission)
+                    CompareRow("Transmisi", car1.transmission ?: "AT/MT", car2.transmission ?: "AT/MT")
                     HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
-                    CompareRow("Bahan Bakar", car1.fuelType, car2.fuelType)
+                    CompareRow("Bahan Bakar", car1.fuelType ?: "Bensin", car2.fuelType ?: "Bensin")
                     HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
-                    CompareRow("Kilometer", car1.mileage, car2.mileage)
+                    CompareRow("Kilometer", car1.mileage ?: "N/A", car2.mileage ?: "N/A")
                     HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
-                    CompareRow("Lokasi", car1.location, car2.location)
+                    CompareRow("Lokasi", car1.location ?: "Jakarta", car2.location ?: "Jakarta")
                 }
             }
             Spacer(modifier = Modifier.height(32.dp))

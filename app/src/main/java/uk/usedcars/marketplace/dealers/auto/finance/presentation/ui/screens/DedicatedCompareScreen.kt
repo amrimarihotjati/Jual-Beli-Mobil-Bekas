@@ -105,13 +105,13 @@ fun DedicatedCompareScreen(
                         HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
                         SmartCompareRow("Tahun", c1.year, c2.year, type = CompareType.HIGHER_IS_BETTER)
                         HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
-                        SmartCompareRow("Kilometer", c1.mileage, c2.mileage, type = CompareType.LOWER_IS_BETTER)
+                        SmartCompareRow("Kilometer", c1.mileage ?: "N/A", c2.mileage ?: "N/A", type = CompareType.LOWER_IS_BETTER)
                         HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
-                        SmartCompareRow("Kapasitas Penumpang", c1.seats, c2.seats, type = CompareType.NEUTRAL)
+                        SmartCompareRow("Kapasitas Penumpang", c1.seats ?: "5 Seater", c2.seats ?: "5 Seater", type = CompareType.NEUTRAL)
                         HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
-                        SmartCompareRow("Transmisi", c1.transmission, c2.transmission, type = CompareType.NEUTRAL)
+                        SmartCompareRow("Transmisi", c1.transmission ?: "AT/MT", c2.transmission ?: "AT/MT", type = CompareType.NEUTRAL)
                         HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f), modifier = Modifier.padding(vertical = 12.dp))
-                        SmartCompareRow("Bahan Bakar", c1.fuelType, c2.fuelType, type = CompareType.NEUTRAL)
+                        SmartCompareRow("Bahan Bakar", c1.fuelType ?: "Bensin", c2.fuelType ?: "Bensin", type = CompareType.NEUTRAL)
                     }
                 }
             } else {

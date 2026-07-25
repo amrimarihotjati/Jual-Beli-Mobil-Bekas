@@ -258,18 +258,18 @@ fun CarDetailScreen(
                         HorizontalDivider(color = Color.LightGray.copy(alpha = 0.5f))
                         Spacer(modifier = Modifier.height(16.dp))
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            SpecItem(Icons.Default.Settings, "Transmisi", car.transmission)
+                            SpecItem(Icons.Default.Settings, "Transmisi", car.transmission ?: "AT/MT")
                             SpecItem(Icons.Default.Info, "Tahun", car.year)
                         }
                         Spacer(modifier = Modifier.height(16.dp))
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            SpecItem(Icons.Default.LocalGasStation, "BBM", car.fuelType)
-                            SpecItem(Icons.Default.Place, "Lokasi", car.location)
+                            SpecItem(Icons.Default.LocalGasStation, "BBM", car.fuelType ?: "Bensin")
+                            SpecItem(Icons.Default.Place, "Lokasi", car.location ?: "Jakarta")
                         }
                         Spacer(modifier = Modifier.height(16.dp))
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            SpecItem(Icons.Default.Info, "Kilometer", car.mileage)
-                            SpecItem(Icons.Default.Person, "Kursi", car.seats)
+                            SpecItem(Icons.Default.Info, "Kilometer", car.mileage ?: "N/A")
+                            SpecItem(Icons.Default.Person, "Kursi", car.seats ?: "5 Seater")
                         }
                     }
                 }

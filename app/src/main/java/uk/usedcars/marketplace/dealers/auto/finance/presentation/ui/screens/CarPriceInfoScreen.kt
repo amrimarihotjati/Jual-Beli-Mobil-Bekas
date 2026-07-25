@@ -138,10 +138,12 @@ fun CarPriceInfoScreen(
         } else {
             val gridItems = remember(filteredCars) {
                 val list = mutableListOf<Any>()
+                var adCount = 0
                 filteredCars.forEachIndexed { index, car ->
                     list.add(car)
-                    if ((index + 1) % 4 == 0) {
+                    if ((index + 1) % 5 == 0 && adCount < 3) {
                         list.add("AD")
+                        adCount++
                     }
                 }
                 list

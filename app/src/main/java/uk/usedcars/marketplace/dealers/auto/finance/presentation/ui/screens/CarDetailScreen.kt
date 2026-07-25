@@ -302,7 +302,7 @@ fun CarDetailScreen(
                     Spacer(modifier = Modifier.height(16.dp))
                 }
 
-                if (car.variants.isNotEmpty()) {
+                if (!car.variants.isNullOrEmpty()) {
                     Card(
                         modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
                         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -315,7 +315,7 @@ fun CarDetailScreen(
                                 fontWeight = FontWeight.Bold
                             )
                             Spacer(modifier = Modifier.height(12.dp))
-                            car.variants.forEachIndexed { index, variant ->
+                            car.variants?.forEachIndexed { index, variant ->
                                 Row(
                                     modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
                                     horizontalArrangement = Arrangement.SpaceBetween,

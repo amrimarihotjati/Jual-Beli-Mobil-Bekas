@@ -33,7 +33,7 @@ data class UsedCar(
     val mileage: String? = "50,000 km",
     val location: String? = "Jakarta",
     val seats: String? = "5 Seater",
-    val variants: List<CarVariant> = emptyList()
+    val variants: List<CarVariant>? = emptyList()
 ) {
     fun getPriceHistoryMap(): Map<String, String> {
         if (priceHistoryRaw.isNullOrEmpty()) return emptyMap()

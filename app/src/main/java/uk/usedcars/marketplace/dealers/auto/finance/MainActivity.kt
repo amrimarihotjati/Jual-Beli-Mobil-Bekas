@@ -25,6 +25,8 @@ import androidx.navigation.navArgument
 import com.google.android.gms.ads.MobileAds
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import okhttp3.OkHttpClient
+import okhttp3.Interceptor
 import uk.usedcars.marketplace.dealers.auto.finance.data.api.ApiService
 import uk.usedcars.marketplace.dealers.auto.finance.data.repository.CarRepository
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.Marketplace
@@ -45,9 +47,22 @@ class MainActivity : ComponentActivity() {
         // Initialize AdMob
         MobileAds.initialize(this) {}
 
+        // Add Interceptor for API Key
+        val apiKeyInterceptor = Interceptor { chain ->
+            val request = chain.request().newBuilder()
+                .addHeader("x-api-key", "app_2989bba1e41f427ba7194d21")
+                .build()
+            chain.proceed(request)
+        }
+        
+        val client = OkHttpClient.Builder()
+            .addInterceptor(apiKeyInterceptor)
+            .build()
+
         // Manual DI
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://code.amrimarihotjati.workers.dev/")
+            .baseUrl("https://cms-app-api.amrimarihotjati.workers.dev/api/v1/")
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val apiService = retrofit.create(ApiService::class.java)

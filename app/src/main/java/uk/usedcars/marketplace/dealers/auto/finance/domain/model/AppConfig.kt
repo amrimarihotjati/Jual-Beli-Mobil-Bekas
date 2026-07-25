@@ -70,3 +70,9 @@ data class Marketplace(
     val tags: List<String> = emptyList(),
     @SerializedName("payment_methods") val paymentMethods: List<String> = emptyList()
 )
+
+@Keep
+data class ApiResponse<T>(
+    val success: Boolean,
+    val data: T
+)

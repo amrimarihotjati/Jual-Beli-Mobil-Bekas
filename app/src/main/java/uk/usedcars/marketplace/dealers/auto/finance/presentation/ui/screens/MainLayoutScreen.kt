@@ -112,6 +112,20 @@ fun MainLayoutScreen(
             }
         }
     ) { paddingValues ->
+        val requestedTab by viewModel.requestedTab.collectAsState()
+        LaunchedEffect(requestedTab) {
+            requestedTab?.let { tab ->
+                navController.navigate(tab) {
+                    navController.graph.startDestinationRoute?.let { route ->
+                        popUpTo(route) { saveState = true }
+                    }
+                    launchSingleTop = true
+                    restoreState = true
+                }
+                viewModel.requestedTab.value = null
+            }
+        }
+
         NavHost(
             navController = navController,
             startDestination = BottomNavItem.CarPrices.route,
@@ -180,7 +194,7 @@ fun MainLayoutScreen(
 sealed class BottomNavItem(val route: String, val icon: androidx.compose.ui.graphics.vector.ImageVector, val title: String) {
     object CarPrices : BottomNavItem("car_prices_tab", Icons.Default.Home, "Home")
     object Home : BottomNavItem("home_tab", Icons.Default.ShoppingCart, "Pasar")
-    object Compare : BottomNavItem("compare_screen", Icons.Default.CompareArrows, "Bandingkan")
+    object Compare : BottomNavItem("compare_screen", Icons.Default.CompareArrows, "Banding")
     object Calculator : BottomNavItem("calculator_tab", Icons.Default.CreditCard, "Kredit")
     object News : BottomNavItem("news_tab", Icons.Default.List, "Panduan")
 }

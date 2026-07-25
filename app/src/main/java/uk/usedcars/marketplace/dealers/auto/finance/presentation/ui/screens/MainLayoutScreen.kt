@@ -62,6 +62,7 @@ fun MainLayoutScreen(
     val items = listOf(
         BottomNavItem.CarPrices,
         BottomNavItem.Home,
+        BottomNavItem.Compare,
         BottomNavItem.Calculator,
         BottomNavItem.News
     )
@@ -107,19 +108,6 @@ fun MainLayoutScreen(
                             )
                         )
                     }
-                }
-            }
-        },
-        floatingActionButton = {
-            val navBackStackEntry by navController.currentBackStackEntryAsState()
-            val currentRoute = navBackStackEntry?.destination?.route
-            if (currentRoute == BottomNavItem.CarPrices.route) {
-                FloatingActionButton(
-                    onClick = { navController.navigate("compare_screen") },
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    contentColor = MaterialTheme.colorScheme.onPrimary
-                ) {
-                    Icon(Icons.Default.CompareArrows, contentDescription = "Bandingkan Harga")
                 }
             }
         }
@@ -176,7 +164,7 @@ fun MainLayoutScreen(
                 )
             }
             
-            composable("compare_screen") {
+            composable(BottomNavItem.Compare.route) {
                 val state = viewModel.uiState.collectAsState().value
                 if (state is UiState.Success) {
                     CompareScreen(
@@ -192,6 +180,7 @@ fun MainLayoutScreen(
 sealed class BottomNavItem(val route: String, val icon: androidx.compose.ui.graphics.vector.ImageVector, val title: String) {
     object CarPrices : BottomNavItem("car_prices_tab", Icons.Default.Home, "Home")
     object Home : BottomNavItem("home_tab", Icons.Default.ShoppingCart, "Pasar")
+    object Compare : BottomNavItem("compare_screen", Icons.Default.CompareArrows, "Bandingkan")
     object Calculator : BottomNavItem("calculator_tab", Icons.Default.CreditCard, "Kredit")
     object News : BottomNavItem("news_tab", Icons.Default.List, "Panduan")
 }

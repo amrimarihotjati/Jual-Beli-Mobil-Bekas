@@ -57,7 +57,8 @@ fun CarDetailScreen(
     config: AppConfig,
     isFavorite: Boolean,
     onFavoriteToggle: () -> Unit,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onNavigateToCompare: () -> Unit
 ) {
     val context = LocalContext.current
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
@@ -97,11 +98,21 @@ fun CarDetailScreen(
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Button(
                             onClick = { showMarketplaceSheet = true },
-                            modifier = Modifier.fillMaxWidth().height(50.dp),
+                            modifier = Modifier.weight(1f).height(50.dp),
                             shape = RoundedCornerShape(8.dp),
                             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                         ) {
-                            Text("Cari di Marketplace", fontSize = 14.sp, fontWeight = FontWeight.Bold, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                            Text("Marketplace", fontSize = 14.sp, fontWeight = FontWeight.Bold, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                        }
+                        
+                        OutlinedButton(
+                            onClick = onNavigateToCompare,
+                            modifier = Modifier.weight(1f).height(50.dp),
+                            shape = RoundedCornerShape(8.dp),
+                            colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.primary),
+                            border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.primary)
+                        ) {
+                            Text("Bandingkan", fontSize = 14.sp, fontWeight = FontWeight.Bold, maxLines = 1)
                         }
                     }
                 }

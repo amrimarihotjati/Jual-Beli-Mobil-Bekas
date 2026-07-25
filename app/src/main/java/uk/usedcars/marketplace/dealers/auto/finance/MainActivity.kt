@@ -157,7 +157,11 @@ class MainActivity : ComponentActivity() {
                                         config = state.config,
                                         isFavorite = favorites.contains(car.id),
                                         onFavoriteToggle = { viewModel.toggleFavorite(context, car.id) },
-                                        onBack = { navController.popBackStack() }
+                                        onBack = { navController.popBackStack() },
+                                        onNavigateToCompare = {
+                                            navController.popBackStack("main_layout", false)
+                                            navController.navigate("compare_screen")
+                                        }
                                     )
                                 }
                             }

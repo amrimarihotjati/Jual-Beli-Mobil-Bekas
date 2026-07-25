@@ -15,13 +15,18 @@ data class AppConfig(
 
 @Keep
 data class UsedCar(
-    val id: String,
-    val name: String,
-    val brand: String,
-    val year: String,
-    @SerializedName("price_range") val priceRange: String,
+    @SerializedName("id") val id: String,
+    @SerializedName("brand") val brand: String,
+    @SerializedName("model") val model: String,
+    @SerializedName("description") val description: String?,
+    @SerializedName("image_url") val imageUrl: String?,
+    @SerializedName("price_history") val priceHistoryRaw: String?,
+    
+    // Legacy fields (kept as optional to avoid breaking other parts of the app during migration, if any are still accessed implicitly)
+    val name: String = "",
+    val year: String = "",
+    @SerializedName("price_range") val priceRange: String = "",
     @SerializedName("image_urls") val imageUrls: List<String> = emptyList(),
-    val description: String,
     val tags: List<String> = emptyList(),
     val transmission: String? = "Automatic (AT)",
     @SerializedName("fuel_type") val fuelType: String? = "Bensin",
@@ -29,7 +34,17 @@ data class UsedCar(
     val location: String? = "Jakarta",
     val seats: String? = "5 Seater",
     val variants: List<CarVariant> = emptyList()
-)
+) {
+    fun getPriceHistoryMap(): Map<String, String> {
+        if (priceHistoryRaw.isNullOrEmpty()) return emptyMap()
+        return try {
+            val type = object : com.google.gson.reflect.TypeToken<Map<String, String>>() {}.type
+            com.google.gson.Gson().fromJson(priceHistoryRaw, type)
+        } catch (e: Exception) {
+            emptyMap()
+        }
+    }
+}
 
 @Keep
 data class CarVariant(

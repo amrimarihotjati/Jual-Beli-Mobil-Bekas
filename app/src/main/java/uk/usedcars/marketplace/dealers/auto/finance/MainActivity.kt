@@ -157,31 +157,6 @@ class MainActivity : ComponentActivity() {
                                         config = state.config,
                                         isFavorite = favorites.contains(car.id),
                                         onFavoriteToggle = { viewModel.toggleFavorite(context, car.id) },
-                                        onBack = { navController.popBackStack() },
-                                        onCompare = { car2Id ->
-                                            navController.navigate("compare/${car.id}/$car2Id")
-                                        }
-                                    )
-                                }
-                            }
-                        }
-                        composable(
-                            "compare/{carId1}/{carId2}",
-                            arguments = listOf(
-                                navArgument("carId1") { type = NavType.StringType },
-                                navArgument("carId2") { type = NavType.StringType }
-                            )
-                        ) { backStackEntry ->
-                            val carId1 = backStackEntry.arguments?.getString("carId1")
-                            val carId2 = backStackEntry.arguments?.getString("carId2")
-                            val state = viewModel.uiState.collectAsState().value
-                            if (state is uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiState.Success) {
-                                val car1 = state.config.usedCars.find { it.id == carId1 }
-                                val car2 = state.config.usedCars.find { it.id == carId2 }
-                                if (car1 != null && car2 != null) {
-                                    uk.usedcars.marketplace.dealers.auto.finance.presentation.ui.screens.CompareScreen(
-                                        car1 = car1,
-                                        car2 = car2,
                                         onBack = { navController.popBackStack() }
                                     )
                                 }

@@ -54,13 +54,11 @@ fun CarDetailScreen(
     config: AppConfig,
     isFavorite: Boolean,
     onFavoriteToggle: () -> Unit,
-    onBack: () -> Unit,
-    onCompare: (String) -> Unit
+    onBack: () -> Unit
 ) {
     val context = LocalContext.current
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     var showMarketplaceSheet by remember { mutableStateOf(false) }
-    var showCompareSheet by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -95,16 +93,8 @@ fun CarDetailScreen(
                 Box(modifier = Modifier.padding(16.dp)) {
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Button(
-                            onClick = { showCompareSheet = true },
-                            modifier = Modifier.weight(1f).height(50.dp),
-                            shape = RoundedCornerShape(8.dp),
-                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
-                        ) {
-                            Text("Bandingkan", fontSize = 14.sp, fontWeight = FontWeight.Bold, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
-                        }
-                        Button(
                             onClick = { showMarketplaceSheet = true },
-                            modifier = Modifier.weight(1.5f).height(50.dp),
+                            modifier = Modifier.fillMaxWidth().height(50.dp),
                             shape = RoundedCornerShape(8.dp),
                             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                         ) {
@@ -243,38 +233,49 @@ fun CarDetailScreen(
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = car.name,
+                            text = car.model.ifEmpty { car.name },
                             style = MaterialTheme.typography.headlineSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onBackground
                         )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = car.priceRange,
-                            style = MaterialTheme.typography.titleLarge,
-                            fontWeight = FontWeight.ExtraBold,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                        HorizontalDivider(color = Color.LightGray.copy(alpha = 0.5f))
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            SpecItem(Icons.Default.Settings, "Transmisi", car.transmission ?: "AT/MT")
-                            SpecItem(Icons.Default.Info, "Tahun", car.year)
-                        }
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            SpecItem(Icons.Default.LocalGasStation, "BBM", car.fuelType ?: "Bensin")
-                            SpecItem(Icons.Default.Place, "Lokasi", car.location ?: "Jakarta")
-                        }
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            SpecItem(Icons.Default.Info, "Kilometer", car.mileage ?: "N/A")
-                            SpecItem(Icons.Default.Person, "Kursi", car.seats ?: "5 Seater")
-                        }
                     }
                 }
                 
                 Spacer(modifier = Modifier.height(16.dp))
+                
+                val priceMap = car.getPriceHistoryMap()
+                if (priceMap.isNotEmpty()) {
+                    Card(
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+                    ) {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            Text(
+                                text = "Riwayat Harga Rata-rata",
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.height(12.dp))
+                            val sortedYears = priceMap.keys.sortedDescending()
+                            sortedYears.forEachIndexed { index, year ->
+                                Row(
+                                    modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text("Tahun $year", fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
+                                    Text(priceMap[year] ?: "-", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                                }
+                                if (index < sortedYears.size - 1) {
+                                    HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f))
+                                }
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
+                
                 
                 if (car.tags.isNotEmpty()) {
                     FlowRow(
@@ -439,67 +440,7 @@ fun CarDetailScreen(
         }
     }
 
-    if (showCompareSheet) {
-        ModalBottomSheet(
-            onDismissRequest = { showCompareSheet = false },
-            sheetState = sheetState
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
-            ) {
-                Text("Bandingkan dengan...", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
-                Spacer(modifier = Modifier.height(16.dp))
-                androidx.compose.foundation.lazy.LazyColumn {
-                    items(config.usedCars.size) { index ->
-                        val compareCar = config.usedCars[index]
-                        if (compareCar.id != car.id) {
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable {
-                                        AdMobManager.showInterstitialAdWithCounter(context.findActivity()) {
-                                            showCompareSheet = false
-                                            onCompare(compareCar.id)
-                                        }
-                                    }
-                                    .padding(vertical = 12.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                ShimmerAsyncImage(
-                                    model = compareCar.imageUrls.firstOrNull() ?: "",
-                                    contentDescription = compareCar.name,
-                                    modifier = Modifier.size(60.dp).clip(RoundedCornerShape(8.dp)),
-                                    contentScale = ContentScale.Crop
-                                )
-                                Spacer(modifier = Modifier.width(16.dp))
-                                Column {
-                                    Text(compareCar.name, fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
-                                    Text(compareCar.priceRange, color = MaterialTheme.colorScheme.primary, fontSize = 14.sp, fontWeight = FontWeight.Bold)
-                                }
-                            }
-                            HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f))
-                        }
-                    }
-                }
-                Spacer(modifier = Modifier.height(32.dp))
-            }
-        }
-    }
-}
 
-@Composable
-fun SpecItem(icon: androidx.compose.ui.graphics.vector.ImageVector, label: String, value: String) {
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.width(150.dp)) {
-        Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(24.dp))
-        Spacer(modifier = Modifier.width(8.dp))
-        Column {
-            Text(label, fontSize = 12.sp, color = Color.Gray)
-            Text(value, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onSurface)
-        }
-    }
-}
 
 @Composable
 fun InspectionTipsSection(car: UsedCar) {

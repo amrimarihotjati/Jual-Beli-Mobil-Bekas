@@ -198,12 +198,12 @@ fun CarCard(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(130.dp)
+                    .height(180.dp)
                     .background(Color.White)
             ) {
                 ShimmerAsyncImage(
-                    model = car.imageUrls.firstOrNull() ?: "",
-                    contentDescription = car.name,
+                    model = car.imageUrl ?: (car.imageUrls.firstOrNull() ?: ""),
+                    contentDescription = car.model.ifEmpty { car.name },
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
@@ -232,60 +232,23 @@ fun CarCard(
                 Column {
                     Text(
                         text = car.brand,
-                        style = MaterialTheme.typography.labelSmall,
+                        style = MaterialTheme.typography.labelMedium,
                         color = Color.Gray,
                         fontWeight = FontWeight.Bold
                     )
-                    Spacer(modifier = Modifier.height(2.dp))
+                    Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = car.name,
-                        style = MaterialTheme.typography.titleMedium,
+                        text = car.model.ifEmpty { car.name },
+                        style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onSurface,
-                        maxLines = 1,
+                        maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )
-                    Spacer(modifier = Modifier.height(6.dp))
-                    
-                    // Chips for specs
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(4.dp)
-                    ) {
-                        SpecChip(icon = Icons.Default.Settings, text = car.transmission ?: "AT/MT")
-                        SpecChip(icon = Icons.Default.LocalGasStation, text = car.fuelType ?: "Bensin")
-                        SpecChip(icon = Icons.Default.Person, text = car.seats ?: "5 Seater")
-                    }
-                    Spacer(modifier = Modifier.height(6.dp))
-                    Text(
-                        text = "${car.year} • ${car.mileage ?: "N/A"}",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
                 }
-                Text(
-                    text = car.priceRange,
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
             }
         }
     }
 }
 
-@Composable
-fun SpecChip(icon: androidx.compose.ui.graphics.vector.ImageVector, text: String) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f), androidx.compose.foundation.shape.RoundedCornerShape(4.dp))
-            .padding(horizontal = 6.dp, vertical = 4.dp)
-    ) {
-        Icon(icon, contentDescription = null, modifier = Modifier.size(12.dp), tint = MaterialTheme.colorScheme.primary)
-        Spacer(modifier = Modifier.width(4.dp))
-        Text(text, fontSize = 10.sp, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
-    }
-}
+

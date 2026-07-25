@@ -24,6 +24,8 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.LocalGasStation
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Info
@@ -246,6 +248,29 @@ fun CarDetailScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 
                 val priceList = car.getPriceHistoryList()
+                if (priceList.isNotEmpty()) {
+                    val uniqueTransmissions = priceList.map { it.transmission }.distinct()
+                    val uniqueFuels = priceList.map { it.fuel }.distinct()
+                    val years = priceList.map { it.year }
+                    val minYear = years.minOrNull()
+                    val maxYear = years.maxOrNull()
+                    
+                    Row(
+                        modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        if (minYear != null && maxYear != null) {
+                            SpecChip(text = if (minYear == maxYear) "$minYear" else "$minYear - $maxYear", icon = Icons.Default.Star)
+                        }
+                        uniqueTransmissions.forEach { t ->
+                            SpecChip(text = t, icon = Icons.Default.Settings)
+                        }
+                        uniqueFuels.forEach { f ->
+                            SpecChip(text = f, icon = Icons.Default.LocalGasStation)
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
                 if (priceList.isNotEmpty()) {
                     Card(
                         modifier = Modifier.fillMaxWidth(),
@@ -552,5 +577,27 @@ fun getInspectionTips(car: UsedCar): List<String> {
             "Tarik seatbelt sampai ujung; jika ada bekas lumpur atau bau apak, kemungkinan besar bekas banjir.",
             "Lakukan test drive minimal 15 menit untuk merasakan bantingan suspensi dan operan transmisi."
         )
+    }
+}
+
+@Composable
+fun SpecChip(text: String, icon: androidx.compose.ui.graphics.vector.ImageVector) {
+    Surface(
+        color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
+        shape = RoundedCornerShape(16.dp)
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+            verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+        ) {
+            Icon(icon, contentDescription = null, modifier = Modifier.size(16.dp), tint = MaterialTheme.colorScheme.primary)
+            Spacer(modifier = Modifier.width(4.dp))
+            Text(
+                text = text,
+                fontSize = 12.sp,
+                color = MaterialTheme.colorScheme.primary,
+                fontWeight = FontWeight.SemiBold
+            )
+        }
     }
 }

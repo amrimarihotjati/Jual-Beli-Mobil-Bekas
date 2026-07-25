@@ -109,6 +109,19 @@ fun MainLayoutScreen(
                     }
                 }
             }
+        },
+        floatingActionButton = {
+            val navBackStackEntry by navController.currentBackStackEntryAsState()
+            val currentRoute = navBackStackEntry?.destination?.route
+            if (currentRoute == BottomNavItem.CarPrices.route) {
+                FloatingActionButton(
+                    onClick = { navController.navigate("compare_screen") },
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
+                ) {
+                    Icon(Icons.Default.CompareArrows, contentDescription = "Bandingkan Harga")
+                }
+            }
         }
     ) { paddingValues ->
         NavHost(
@@ -161,6 +174,16 @@ fun MainLayoutScreen(
                 NewsScreen(
                     onNavigateToArticleDetail = onNavigateToArticleDetail
                 )
+            }
+            
+            composable("compare_screen") {
+                val state = viewModel.uiState.collectAsState().value
+                if (state is UiState.Success) {
+                    CompareScreen(
+                        config = state.config,
+                        onBack = { navController.popBackStack() }
+                    )
+                }
             }
         }
     }

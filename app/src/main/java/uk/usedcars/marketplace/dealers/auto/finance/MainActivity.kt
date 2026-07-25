@@ -48,11 +48,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
-        // Configure AdMob for Maximum eCPM and Fill Rate
+        // Configure AdMob to match Play Store 'Rated for 3+' Rating (G = General Audiences)
         val requestConfiguration = RequestConfiguration.Builder()
             .setTagForChildDirectedTreatment(RequestConfiguration.TAG_FOR_CHILD_DIRECTED_TREATMENT_FALSE)
             .setTagForUnderAgeOfConsent(RequestConfiguration.TAG_FOR_UNDER_AGE_OF_CONSENT_FALSE)
-            .setMaxAdContentRating(RequestConfiguration.MAX_AD_CONTENT_RATING_MA)
+            .setMaxAdContentRating(RequestConfiguration.MAX_AD_CONTENT_RATING_G)
             .build()
         MobileAds.setRequestConfiguration(requestConfiguration)
 

@@ -21,7 +21,7 @@ class CarRepository(private val apiService: ApiService) {
                 val slideshow = slideshowDeferred.await().data
                 val admobConfigList = admobConfigDeferred.await().data
 
-                val admobConfig = admobConfigList.firstOrNull() ?: AdMobConfig("", "", 0)
+                val admobConfig = admobConfigList.firstOrNull() ?: AdMobConfig("", "", 0, 4)
 
                 val appConfig = AppConfig(
                     version = "1.0",

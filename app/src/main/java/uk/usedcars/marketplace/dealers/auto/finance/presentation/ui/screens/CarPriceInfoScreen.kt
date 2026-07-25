@@ -136,14 +136,13 @@ fun CarPriceInfoScreen(
                 Text("Mobil tidak ditemukan", color = Color.Gray)
             }
         } else {
-            val gridItems = remember(filteredCars) {
+            val gridItems = remember(filteredCars, config.admobConfig.nativeFreq) {
                 val list = mutableListOf<Any>()
-                var adCount = 0
                 filteredCars.forEachIndexed { index, car ->
                     list.add(car)
-                    if ((index + 1) % 5 == 0 && adCount < 3) {
+                    val freq = if (config.admobConfig.nativeFreq > 0) config.admobConfig.nativeFreq else 4
+                    if ((index + 1) % freq == 0) {
                         list.add("AD")
-                        adCount++
                     }
                 }
                 list

@@ -52,8 +52,9 @@ fun CarPriceInfoScreen(
     }
 
     val filteredCars = config.usedCars.filter { car ->
-        val matchesSearch = car.name.contains(searchQuery, ignoreCase = true) ||
-                            car.tags.any { tag -> tag.contains(searchQuery, ignoreCase = true) }
+        val carModelName = car.model.ifEmpty { car.name ?: "" }
+        val matchesSearch = carModelName.contains(searchQuery, ignoreCase = true) ||
+                            (car.tags?.any { tag -> tag.contains(searchQuery, ignoreCase = true) } == true)
         val matchesBrand = selectedBrand == "Semua" || car.brand.equals(selectedBrand, ignoreCase = true)
         val matchesFavorite = !showOnlyFavorites || favorites.contains(car.id)
         
@@ -202,8 +203,8 @@ fun CarCard(
                     .background(Color.White)
             ) {
                 ShimmerAsyncImage(
-                    model = car.imageUrl ?: (car.imageUrls.firstOrNull() ?: ""),
-                    contentDescription = car.model.ifEmpty { car.name },
+                    model = car.imageUrl ?: (car.imageUrls?.firstOrNull() ?: ""),
+                    contentDescription = car.model.ifEmpty { car.name ?: "" },
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
@@ -238,7 +239,7 @@ fun CarCard(
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = car.model.ifEmpty { car.name },
+                        text = car.model.ifEmpty { car.name ?: "" },
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onSurface,

@@ -112,16 +112,17 @@ fun CarDetailScreen(
                 .background(MaterialTheme.colorScheme.background)
                 .verticalScroll(rememberScrollState())
         ) {
-            val pagerState = rememberPagerState(pageCount = { if (car.imageUrls.isEmpty()) 1 else car.imageUrls.size })
+            val safeImageUrls = car.imageUrls ?: emptyList()
+            val pagerState = rememberPagerState(pageCount = { if (safeImageUrls.isEmpty()) 1 else safeImageUrls.size })
             var isAutoScrolling by remember { mutableStateOf(true) }
 
             LaunchedEffect(pagerState.currentPage, pagerState.isScrollInProgress) {
                 if (pagerState.isScrollInProgress) {
                     isAutoScrolling = false
                 }
-                if (isAutoScrolling && car.imageUrls.size > 1) {
+                if (isAutoScrolling && safeImageUrls.size > 1) {
                     kotlinx.coroutines.delay(3000)
-                    val nextPage = (pagerState.currentPage + 1) % car.imageUrls.size
+                    val nextPage = (pagerState.currentPage + 1) % safeImageUrls.size
                     pagerState.animateScrollToPage(nextPage)
                 }
             }
@@ -137,8 +138,8 @@ fun CarDetailScreen(
                     modifier = Modifier.fillMaxSize()
                 ) { page ->
                     ShimmerAsyncImage(
-                        model = car.imageUrls.getOrNull(page) ?: "",
-                        contentDescription = car.name,
+                        model = safeImageUrls.getOrNull(page) ?: "",
+                        contentDescription = car.name ?: "",
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
                     )
@@ -146,14 +147,14 @@ fun CarDetailScreen(
                 
                 
                 // Indicators
-                if (car.imageUrls.size > 1) {
+                if (safeImageUrls.size > 1) {
                     Row(
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
                             .padding(bottom = 12.dp),
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        repeat(car.imageUrls.size) { iteration ->
+                        repeat(safeImageUrls.size) { iteration ->
                             val color = if (pagerState.currentPage == iteration) MaterialTheme.colorScheme.primary else Color.LightGray
                             Box(
                                 modifier = Modifier
@@ -185,7 +186,7 @@ fun CarDetailScreen(
                     }
                     
                     // Right Arrow & Hint
-                    if (pagerState.currentPage < car.imageUrls.size - 1) {
+                    if (pagerState.currentPage < safeImageUrls.size - 1) {
                         Row(
                             modifier = Modifier
                                 .align(Alignment.CenterEnd)
@@ -233,7 +234,7 @@ fun CarDetailScreen(
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = car.model.ifEmpty { car.name },
+                            text = car.model.ifEmpty { car.name ?: "" },
                             style = MaterialTheme.typography.headlineSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onBackground
@@ -277,7 +278,7 @@ fun CarDetailScreen(
                 }
                 
                 
-                if (car.tags.isNotEmpty()) {
+                if (!car.tags.isNullOrEmpty()) {
                     FlowRow(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -397,7 +398,7 @@ fun CarDetailScreen(
                             .clickable {
                                 AdMobManager.showInterstitialAdWithCounter(context.findActivity()) {
                                     try {
-                                        val carQuery = car.name.replace(" ", "+")
+                                        val carQuery = (car.model.ifEmpty { car.name ?: "" }).replace(" ", "+")
                                         val searchUrl = when (marketplace.name.lowercase()) {
                                             "olx autos" -> "https://www.olx.co.id/mobil-bekas_c198/q-${carQuery}"
                                             "carsome" -> "https://www.carsome.id/beli-mobil-bekas?search=${carQuery}"
@@ -463,7 +464,7 @@ fun InspectionTipsSection(car: UsedCar) {
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "Fokus Inspeksi ${car.name}",
+                        text = "Fokus Inspeksi ${car.model.ifEmpty { car.name ?: "" }}",
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onTertiaryContainer
@@ -496,7 +497,7 @@ fun InspectionTipsSection(car: UsedCar) {
 }
 
 fun getInspectionTips(car: UsedCar): List<String> {
-    val name = car.name.lowercase()
+    val name = (car.model.ifEmpty { car.name ?: "" }).lowercase()
     val brand = car.brand.lowercase()
     
     return when {

@@ -23,11 +23,11 @@ data class UsedCar(
     @SerializedName("price_history") val priceHistoryRaw: String?,
     
     // Legacy fields (kept as optional to avoid breaking other parts of the app during migration, if any are still accessed implicitly)
-    val name: String = "",
-    val year: String = "",
-    @SerializedName("price_range") val priceRange: String = "",
-    @SerializedName("image_urls") val imageUrls: List<String> = emptyList(),
-    val tags: List<String> = emptyList(),
+    val name: String? = "",
+    val year: String? = "",
+    @SerializedName("price_range") val priceRange: String? = "",
+    @SerializedName("image_urls") val imageUrls: List<String>? = emptyList(),
+    val tags: List<String>? = emptyList(),
     val transmission: String? = "Automatic (AT)",
     @SerializedName("fuel_type") val fuelType: String? = "Bensin",
     val mileage: String? = "50,000 km",

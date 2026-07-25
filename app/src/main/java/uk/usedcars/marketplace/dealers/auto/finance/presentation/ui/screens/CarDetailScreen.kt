@@ -28,6 +28,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Warning
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -112,7 +113,7 @@ fun CarDetailScreen(
                 .background(MaterialTheme.colorScheme.background)
                 .verticalScroll(rememberScrollState())
         ) {
-            val safeImageUrls = car.imageUrls ?: emptyList()
+            val safeImageUrls = car.getGalleryImages()
             val pagerState = rememberPagerState(pageCount = { if (safeImageUrls.isEmpty()) 1 else safeImageUrls.size })
             var isAutoScrolling by remember { mutableStateOf(true) }
 
@@ -244,8 +245,8 @@ fun CarDetailScreen(
                 
                 Spacer(modifier = Modifier.height(16.dp))
                 
-                val priceMap = car.getPriceHistoryMap()
-                if (priceMap.isNotEmpty()) {
+                val priceList = car.getPriceHistoryList()
+                if (priceList.isNotEmpty()) {
                     Card(
                         modifier = Modifier.fillMaxWidth(),
                         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -258,17 +259,31 @@ fun CarDetailScreen(
                                 fontWeight = FontWeight.Bold
                             )
                             Spacer(modifier = Modifier.height(12.dp))
-                            val sortedYears = priceMap.keys.sortedDescending()
-                            sortedYears.forEachIndexed { index, year ->
+                            
+                            Row(
+                                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text("Tahun", fontWeight = FontWeight.Bold, fontSize = 12.sp, modifier = Modifier.weight(0.8f))
+                                Text("Transmisi", fontWeight = FontWeight.Bold, fontSize = 12.sp, modifier = Modifier.weight(1.2f))
+                                Text("BBM", fontWeight = FontWeight.Bold, fontSize = 12.sp, modifier = Modifier.weight(1f))
+                                Text("Harga", fontWeight = FontWeight.Bold, fontSize = 12.sp, modifier = Modifier.weight(1.5f), textAlign = TextAlign.End)
+                            }
+                            HorizontalDivider(color = Color.LightGray.copy(alpha = 0.5f), thickness = 2.dp)
+
+                            priceList.forEachIndexed { index, item ->
                                 Row(
                                     modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
                                     horizontalArrangement = Arrangement.SpaceBetween,
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Text("Tahun $year", fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
-                                    Text(priceMap[year] ?: "-", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                                    Text(item.year.toString(), fontSize = 12.sp, modifier = Modifier.weight(0.8f))
+                                    Text(item.transmission, fontSize = 12.sp, modifier = Modifier.weight(1.2f))
+                                    Text(item.fuel, fontSize = 12.sp, modifier = Modifier.weight(1f))
+                                    Text(item.avgPrice, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold, fontSize = 12.sp, modifier = Modifier.weight(1.5f), textAlign = TextAlign.End)
                                 }
-                                if (index < sortedYears.size - 1) {
+                                if (index < priceList.size - 1) {
                                     HorizontalDivider(color = Color.LightGray.copy(alpha = 0.3f))
                                 }
                             }

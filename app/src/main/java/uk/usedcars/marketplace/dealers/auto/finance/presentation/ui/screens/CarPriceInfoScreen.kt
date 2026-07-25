@@ -203,7 +203,7 @@ fun CarCard(
                     .background(Color.White)
             ) {
                 ShimmerAsyncImage(
-                    model = car.imageUrl ?: (car.imageUrls?.firstOrNull() ?: ""),
+                    model = car.imageUrl ?: (car.getGalleryImages().firstOrNull() ?: ""),
                     contentDescription = car.model.ifEmpty { car.name ?: "" },
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()

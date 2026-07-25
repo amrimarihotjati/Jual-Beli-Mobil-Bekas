@@ -14,6 +14,14 @@ data class AppConfig(
 )
 
 @Keep
+data class PriceHistoryItem(
+    @SerializedName("year") val year: Int,
+    @SerializedName("fuel") val fuel: String,
+    @SerializedName("transmission") val transmission: String,
+    @SerializedName("avg_price") val avgPrice: String
+)
+
+@Keep
 data class UsedCar(
     @SerializedName("id") val id: String,
     @SerializedName("brand") val brand: String,
@@ -26,7 +34,7 @@ data class UsedCar(
     val name: String? = "",
     val year: String? = "",
     @SerializedName("price_range") val priceRange: String? = "",
-    @SerializedName("image_urls") val imageUrls: List<String>? = emptyList(),
+    @SerializedName("image_urls") val imageUrlsRaw: String?,
     val tags: List<String>? = emptyList(),
     val transmission: String? = "Automatic (AT)",
     @SerializedName("fuel_type") val fuelType: String? = "Bensin",
@@ -35,13 +43,23 @@ data class UsedCar(
     val seats: String? = "5 Seater",
     val variants: List<CarVariant>? = emptyList()
 ) {
-    fun getPriceHistoryMap(): Map<String, String> {
-        if (priceHistoryRaw.isNullOrEmpty()) return emptyMap()
+    fun getGalleryImages(): List<String> {
+        if (imageUrlsRaw.isNullOrEmpty()) return emptyList()
         return try {
-            val type = object : com.google.gson.reflect.TypeToken<Map<String, String>>() {}.type
+            val type = object : com.google.gson.reflect.TypeToken<List<String>>() {}.type
+            com.google.gson.Gson().fromJson(imageUrlsRaw, type)
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+    fun getPriceHistoryList(): List<PriceHistoryItem> {
+        if (priceHistoryRaw.isNullOrEmpty()) return emptyList()
+        return try {
+            val type = object : com.google.gson.reflect.TypeToken<List<PriceHistoryItem>>() {}.type
             com.google.gson.Gson().fromJson(priceHistoryRaw, type)
         } catch (e: Exception) {
-            emptyMap()
+            emptyList()
         }
     }
 }

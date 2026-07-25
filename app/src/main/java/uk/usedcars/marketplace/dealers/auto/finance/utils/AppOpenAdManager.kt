@@ -33,11 +33,19 @@ class AppOpenAdManager(private val application: Application) : Application.Activ
     }
 
     private fun getAdUnitId(): String {
+        val prefs = application.getSharedPreferences("admob_prefs", Context.MODE_PRIVATE)
         val configuredId = AdMobManager.adMobConfig?.openAdId
-        return if (BuildConfig.DEBUG || configuredId.isNullOrEmpty()) {
+        
+        if (!configuredId.isNullOrEmpty()) {
+            prefs.edit().putString("open_ad_id", configuredId).apply()
+        }
+        
+        val cachedId = prefs.getString("open_ad_id", null)
+        
+        return if (BuildConfig.DEBUG || cachedId.isNullOrEmpty()) {
             "ca-app-pub-3940256099942544/9257395921" // Test ID
         } else {
-            configuredId
+            cachedId
         }
     }
 

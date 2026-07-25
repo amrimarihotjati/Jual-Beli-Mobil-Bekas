@@ -9,7 +9,7 @@ import uk.usedcars.marketplace.dealers.auto.finance.domain.model.SlideshowItem
 import uk.usedcars.marketplace.dealers.auto.finance.domain.model.AdMobConfig
 
 interface ApiService {
-    @GET("used_cars")
+    @GET("used_cars?limit=100")
     suspend fun getUsedCars(): ApiResponse<List<UsedCar>>
 
     @GET("marketplaces")

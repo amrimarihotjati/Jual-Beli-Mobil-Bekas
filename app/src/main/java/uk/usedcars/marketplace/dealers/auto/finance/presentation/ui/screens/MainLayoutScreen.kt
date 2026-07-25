@@ -63,7 +63,6 @@ fun MainLayoutScreen(
         BottomNavItem.CarPrices,
         BottomNavItem.Home,
         BottomNavItem.Calculator,
-        BottomNavItem.Compare,
         BottomNavItem.News
     )
 
@@ -157,16 +156,7 @@ fun MainLayoutScreen(
                     ErrorScreen(message = state.message, onRetry = { viewModel.fetchConfig() })
                 }
             }
-            composable(BottomNavItem.Compare.route) {
-                val state = viewModel.uiState.collectAsState().value
-                if (state is UiState.Success) {
-                    DedicatedCompareScreen(config = state.config)
-                } else if (state is UiState.Loading) {
-                    GlobalShimmerLoading()
-                } else if (state is UiState.Error) {
-                    ErrorScreen(message = state.message, onRetry = { viewModel.fetchConfig() })
-                }
-            }
+
             composable(BottomNavItem.News.route) {
                 NewsScreen(
                     onNavigateToArticleDetail = onNavigateToArticleDetail
@@ -179,7 +169,6 @@ fun MainLayoutScreen(
 sealed class BottomNavItem(val route: String, val icon: androidx.compose.ui.graphics.vector.ImageVector, val title: String) {
     object CarPrices : BottomNavItem("car_prices_tab", Icons.Default.Home, "Home")
     object Home : BottomNavItem("home_tab", Icons.Default.ShoppingCart, "Pasar")
-    object Compare : BottomNavItem("compare_tab", Icons.Default.CompareArrows, "Adu")
     object Calculator : BottomNavItem("calculator_tab", Icons.Default.CreditCard, "Kredit")
     object News : BottomNavItem("news_tab", Icons.Default.List, "Panduan")
 }

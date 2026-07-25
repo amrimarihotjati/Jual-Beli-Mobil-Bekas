@@ -366,7 +366,7 @@ fun CarDetailScreen(
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
-                            text = car.description,
+                            text = car.description ?: "",
                             style = MaterialTheme.typography.bodyMedium,
                             color = Color.DarkGray,
                             lineHeight = 22.sp
@@ -439,8 +439,7 @@ fun CarDetailScreen(
             }
         }
     }
-
-
+}
 
 @Composable
 fun InspectionTipsSection(car: UsedCar) {

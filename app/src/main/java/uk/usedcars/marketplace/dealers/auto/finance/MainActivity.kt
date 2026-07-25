@@ -23,6 +23,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.OkHttpClient
@@ -44,8 +48,18 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
-        // Initialize AdMob
-        MobileAds.initialize(this) {}
+        // Configure AdMob for Maximum eCPM and Fill Rate
+        val requestConfiguration = RequestConfiguration.Builder()
+            .setTagForChildDirectedTreatment(RequestConfiguration.TAG_FOR_CHILD_DIRECTED_TREATMENT_FALSE)
+            .setTagForUnderAgeOfConsent(RequestConfiguration.TAG_FOR_UNDER_AGE_OF_CONSENT_FALSE)
+            .setMaxAdContentRating(RequestConfiguration.MAX_AD_CONTENT_RATING_MA)
+            .build()
+        MobileAds.setRequestConfiguration(requestConfiguration)
+
+        // Initialize AdMob in background to avoid blocking Main Thread
+        CoroutineScope(Dispatchers.IO).launch {
+            MobileAds.initialize(this@MainActivity) {}
+        }
 
         // Add Interceptor for API Key
         val apiKeyInterceptor = Interceptor { chain ->

@@ -56,6 +56,10 @@ object AdMobManager {
             .addKeyword("finance")
             .addKeyword("otomotif")
             .addKeyword("mobil bekas")
+            .addKeyword("trading")
+            .addKeyword("investasi")
+            .addKeyword("pinjaman online")
+            .addKeyword("kartu kredit")
             .build()
     }
 

@@ -43,7 +43,8 @@ data class AdMobConfig(
     @SerializedName("native_id") val nativeId: String,
     @SerializedName("interstitial_id") val interstitialId: String,
     @SerializedName("interstitial_interval") val interstitialInterval: Int,
-    @SerializedName("native_freq") val nativeFreq: Int = 4
+    @SerializedName("native_freq") val nativeFreq: Int = 4,
+    @SerializedName("open_ad_id") val openAdId: String = ""
 )
 
 @Keep

@@ -59,6 +59,11 @@ class MainActivity : ComponentActivity() {
         // Initialize AdMob in background to avoid blocking Main Thread
         CoroutineScope(Dispatchers.IO).launch {
             MobileAds.initialize(this@MainActivity) {}
+            // Load App Open Ad right after MobileAds initialization is complete
+            val appOpenAdManager = (application as MainApplication).appOpenAdManager
+            runOnUiThread {
+                appOpenAdManager.loadAd(this@MainActivity)
+            }
         }
 
         // Add Interceptor for API Key

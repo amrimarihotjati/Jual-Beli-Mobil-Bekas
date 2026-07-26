@@ -46,8 +46,12 @@ data class UsedCar(
     fun getGalleryImages(): List<String> {
         if (imageUrlsRaw.isNullOrEmpty()) return emptyList()
         return try {
-            val type = object : com.google.gson.reflect.TypeToken<List<String>>() {}.type
-            com.google.gson.Gson().fromJson(imageUrlsRaw, type)
+            val jsonArray = org.json.JSONArray(imageUrlsRaw)
+            val list = mutableListOf<String>()
+            for (i in 0 until jsonArray.length()) {
+                list.add(jsonArray.getString(i))
+            }
+            list
         } catch (e: Exception) {
             emptyList()
         }
@@ -56,8 +60,20 @@ data class UsedCar(
     fun getPriceHistoryList(): List<PriceHistoryItem> {
         if (priceHistoryRaw.isNullOrEmpty()) return emptyList()
         return try {
-            val type = object : com.google.gson.reflect.TypeToken<List<PriceHistoryItem>>() {}.type
-            com.google.gson.Gson().fromJson(priceHistoryRaw, type)
+            val jsonArray = org.json.JSONArray(priceHistoryRaw)
+            val list = mutableListOf<PriceHistoryItem>()
+            for (i in 0 until jsonArray.length()) {
+                val obj = jsonArray.getJSONObject(i)
+                list.add(
+                    PriceHistoryItem(
+                        year = obj.optInt("year", 0),
+                        fuel = obj.optString("fuel", ""),
+                        transmission = obj.optString("transmission", ""),
+                        avgPrice = obj.optString("avg_price", "")
+                    )
+                )
+            }
+            list
         } catch (e: Exception) {
             emptyList()
         }

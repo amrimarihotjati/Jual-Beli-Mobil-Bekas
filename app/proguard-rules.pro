@@ -16,7 +16,11 @@
 -keep class uk.usedcars.marketplace.dealers.auto.finance.domain.model.** { *; }
 
 # Keep retrofit interfaces
--keep class uk.usedcars.marketplace.dealers.auto.finance.data.remote.** { *; }
+-keep class uk.usedcars.marketplace.dealers.auto.finance.data.api.** { *; }
+
+# Keep annotations and signatures for Gson
+-keepattributes Signature
+-keepattributes *Annotation*
 
 # Keep AdMob specific
 -keep class com.google.android.gms.ads.** { *; }

@@ -96,6 +96,17 @@ class MainActivity : ComponentActivity() {
                 }
             })
             val context = LocalContext.current
+            val state by viewModel.uiState.collectAsState()
+            
+            LaunchedEffect(state) {
+                if (state is uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiState.Success) {
+                    val openAdId = (state as uk.usedcars.marketplace.dealers.auto.finance.presentation.viewmodel.UiState.Success).config.admobConfig.openAdId
+                    if (openAdId.isNotEmpty()) {
+                        val prefs = getSharedPreferences("admob_prefs", Context.MODE_PRIVATE)
+                        prefs.edit().putString("open_ad_id", openAdId).apply()
+                    }
+                }
+            }
 
             JualBeliMobilBekasTheme {
                 Surface(
